@@ -16,7 +16,8 @@ CREATE TABLE [CATEGORY] (
 CREATE TABLE [MANUFACTURER] (
   [manufacturer_id] int IDENTITY(1,1) PRIMARY KEY,
   [manufacturer_name] varchar(30) NOT NULL,
-  [description] varchar(2000) NOT NULL
+  [description] varchar(2000) NOT NULL,
+  [image] image NULL
 )
 
 CREATE TABLE [EQUIPMENT] (
@@ -30,18 +31,22 @@ CREATE TABLE [EQUIPMENT] (
   [price] float NOT NULL,
   [length_or_size] varchar(10) NOT NULL,
   [category_id] int NOT NULL FOREIGN KEY REFERENCES CATEGORY(category_id),
+  [publish_date] date NULL,
+	[last_update_time] date NULL
 )
 
 CREATE TABLE [CUSTOMER] (
   [customer_id] int IDENTITY(1,1) PRIMARY KEY,
   [email] varchar(64) NOT NULL UNIQUE,
-  [fullname] varchar(30) NOT NULL,
-  [address] varchar(128) NOT NULL,
+  [password] varchar(64) NOT NULL,
+  [first_name] varchar(30) NOT NULL,
+  [last_name] varchar(30) NOT NULL,
+  [street] varchar(128) NOT NULL,
+  [home_number] varchar(30) NOT NULL,
   [city] varchar(32) NOT NULL,
+  [zip_code] varchar(32) NOT NULL,
   [country] varchar(64) NOT NULL,
   [phone_number] varchar(15) NOT NULL,
-  [zipCode] varchar(24) NOT NULL,
-  [password] varchar(16) NOT NULL,
   [register_date] datetime NOT NULL
 )
 
