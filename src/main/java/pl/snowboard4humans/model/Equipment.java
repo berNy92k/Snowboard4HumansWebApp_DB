@@ -1,9 +1,14 @@
 package pl.snowboard4humans.model;
 
 import com.sun.istack.internal.NotNull;
+import pl.snowboard4humans.utils.Utils;
 
 import javax.persistence.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "equipment",
@@ -206,9 +211,8 @@ public class Equipment {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    public String getBase64Image() {
-        this.base64Image = Base64.getEncoder().encodeToString(this.image);
-        return this.base64Image;
+    public String getBase64Image() throws IOException {
+        return Utils.getBase64Image(this.image);
     }
 
     public Set<Review> getReviews() {

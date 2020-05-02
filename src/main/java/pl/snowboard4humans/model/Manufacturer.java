@@ -1,9 +1,10 @@
 package pl.snowboard4humans.model;
 
 import com.sun.istack.internal.NotNull;
+import pl.snowboard4humans.utils.Utils;
 
 import javax.persistence.*;
-import java.util.Base64;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -90,9 +91,8 @@ public class Manufacturer {
         this.equipments = equipments;
     }
 
-    public String getBase64Image() {
-        this.base64Image = Base64.getEncoder().encodeToString(this.image);
-        return this.base64Image;
+    public String getBase64Image() throws IOException {
+        return Utils.getBase64Image(this.image);
     }
 
     public void setBase64Image(String base64Image) {
