@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div th:align="center" class="marginTop25">
+    <div>
+        <img class="mb-2" th:src="@{/images/logos/logo.png}" width="25%" alt="logo">
+    </div>
+    &nbsp;
+    &nbsp;
+    <div class="firstMessage">
+        <p class="pTitle fontSize25">Sorry, page could not be found - error 400</p>
+    </div>
+    &nbsp;
+    <div>
+        <a href="javascript:history.go(-1);">Wróć do poprzedniej strony</a>
+    </div>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

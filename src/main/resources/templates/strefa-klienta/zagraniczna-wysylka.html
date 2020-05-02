@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="paddingBottom20">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/}">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link active">&rarr;</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/strefa-klienta/strefa-klienta}">Strefa klienta</a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link active">&rarr;</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/strefa-klienta/zagraniczna-wysylka}">Zagraniczna wysyłka</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div>
+            <p class="fontSize30PaddingBottom20">Zagraniczna wysyłka</p>
+        </div>
+        <div class="firstMessage paddingLeft20paddingRight20textAlignJustify">
+            <ul class="fontSize14">
+                <li>Realizujemy zamówienia w granicach Uni Europejskiej. Każde zamówienie z wysyłką poza granice Polski
+                    podlega dodatkowej opłacie za wysyłkę (nie obowiązuje darmowa wysyłka powyżej 300zł wartości
+                    zamówienia).
+                </li>
+                <li>Maksymalny wymiar pojedyńczej paczki to 200cmx80cmx60cm, maksymalna waga 10kg. Poniżej zamieszczamy
+                    tabelę z zawartymi kosztami dostawy dla poszczególnych krajów Uni Europejskiej dla których
+                    realizujemy wysyłkę.
+                </li>
+                <li>W razie realizacji większego zamówienia wymagającego większej paczki prosimy o złożenie zapytania o
+                    wycenę na adres mailowy info@snowboard4humans.pl
+                </li>
+                <li>Wysyłkę krajową oraz poza granicę Polski realizujemy za pośrednictwem firmy kurierskiej GLS.
+                </li>
+                <li>W handlu zagranicznym nie oferujemy metody płatności za pobraniem.
+                </li>
+                <li>Zamówienie wysyłamy po zaksięgowaniu płatności za zakupiony towar oraz wysyłkę.
+                </li>
+            </ul>
+
+            <table class="width250 fontSize12 border2pxSolidDdc6c8">
+                <tr class="border1pxSolidDdc6c8">
+                    <th class="border1pxSolid#dddddd width200 textAlignLeft">
+                        Państwa <br> do których realizujemy wysyłkę
+                    </th>
+                    <th class="border1pxSolid width50 textAlignLeft">
+                        Koszt wysyłki brutto <br>[PLN]
+                    </th>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Austria</td>
+                    <td class="border1pxSolidDdc6c8">80</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Belgium</td>
+                    <td class="border1pxSolidDdc6c8">74</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Bulgaria</td>
+                    <td class="border1pxSolidDdc6c8">96</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Croatia</td>
+                    <td class="border1pxSolidDdc6c8">140</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Czech Republic</td>
+                    <td class="border1pxSolidDdc6c8">67</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Denmark</td>
+                    <td class="border1pxSolidDdc6c8">74</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Estonia</td>
+                    <td class="border1pxSolidDdc6c8">102</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Finland</td>
+                    <td class="border1pxSolidDdc6c8">145</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">France</td>
+                    <td class="border1pxSolidDdc6c8">104</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Germany</td>
+                    <td class="border1pxSolidDdc6c8">67</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Holland</td>
+                    <td class="border1pxSolidDdc6c8">74</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Hungary</td>
+                    <td class="border1pxSolidDdc6c8">67</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Ireland</td>
+                    <td class="border1pxSolidDdc6c8">132</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Italy</td>
+                    <td class="border1pxSolidDdc6c8">104</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Latvia</td>
+                    <td class="border1pxSolidDdc6c8">86</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Lithuania</td>
+                    <td class="border1pxSolidDdc6c8">67</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Luxembourg</td>
+                    <td class="border1pxSolidDdc6c8">74</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Portugal</td>
+                    <td class="border1pxSolidDdc6c8">157</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Romania</td>
+                    <td class="border1pxSolidDdc6c8">92</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Slovakia</td>
+                    <td class="border1pxSolidDdc6c8">67</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Slovenia</td>
+                    <td class="border1pxSolidDdc6c8">109</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Spain</td>
+                    <td class="border1pxSolidDdc6c8">136</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">Sweden</td>
+                    <td class="border1pxSolidDdc6c8">120</td>
+                </tr>
+                <tr class="border1pxSolidDdc6c8">
+                    <td class="border1pxSolidDdc6c8">United Kingdom</td>
+                    <td class="border1pxSolidDdc6c8">104</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

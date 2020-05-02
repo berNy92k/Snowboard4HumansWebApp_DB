@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<div th:fragment="header">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom border-top box-shadow fontSize10">
+            <div class="my-auto mr-md-auto">
+                <img class="mb-2 marginRight5" th:src="@{/images/logos/poland.png}"
+                     th:width="15" th:height="10">Wybierz język
+            </div>
+            <div class="my-auto mr-md-auto">
+                Do kolejnej wysyłki pozostało: 12:56:11
+            </div>
+            <div class="fontSize12">
+                <!--<c:if test="${sessionScope.customerLogged != null}">-->
+                <!--Witaj,-->
+                <!--<c:out value="${sessionScope.customerLogged.email} || "/>-->
+                <!--<a th:href="@{/homepage/logout}">Wyloguj się</a>-->
+                <!--</c:if>-->
+                <!--<c:if test="${sessionScope.customerLogged == null}">-->
+                <a th:href="@{/homepage/login}" class="marginRight15">Zaloguj się</a>
+                <a th:href="@{/homepage/register}" class="colorRed">Zarejestruj się</a>
+                <!--</c:if>-->
+            </div>
+        </div>
+
+        <div class="header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <div class="displayFlex justifyContentSpaceBetween marginBottom40px">
+                <div>
+                    <a th:href="@{/}">
+                        <img class="mb-2" th:src="@{/images/logos/logo.png}" th:width="450" th:height="60"
+                             th:alt="logo" th:border="30px">
+                    </a>
+                </div>
+                <div class="displayFlex justifyContentSpaceBetween positionRelative" style="margin-top: 10px">
+                    <form class="searchForm" th:action="@{/search}">
+                        <input type="text" placeholder="Szukaj.." name="search" size="60"
+                               class="fontWeightRevertBorRad15MinH35MaxH35BorCol109163207099">
+                        <button type="submit" class="borderRadius15MinHeight35MaxHeight35">Szukaj</button>
+                    </form>
+                    <!--<c:if test="${sessionScope.customerLogged == null}">-->
+                    <a th:href="@{/homepage/register}">
+                        <img class="mb-2 marginLeft5MarginRight15" th:src="@{/images/logos/register.png}"
+                             width="25" height="25" alt="register">
+                    </a>
+                    <!--</c:if>-->
+                    <!--<c:if test="${sessionScope.customerLogged != null}">-->
+                    <a th:href="@{/homepage/myAccount}">
+                        <img class="mb-2 marginLeft5MarginRight15" th:src="@{/images/logos/mojeKonto.PNG}"
+                             width="25" height="24" alt="mojeKonto">
+                    </a>
+                    <!--</c:if>-->
+                    <a th:href="@{/homepage/shoppingCart}">
+                        <img class="mb-2 marginLeft5MarginRight15" th:src="@{/images/logos/koszyk.PNG}"
+                             width="25" height="25" alt="koszyk">
+                    </a>
+                </div>
+            </div>
+
+            <div class="menu">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div class="dropdown">
+                            <button class="dropbtn borderTopLeftRadius5BorderBottomLeftRadius5">
+                                DESKI
+                            </button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/equipment?eq=skis&sex=woman}">DESKI SNOWBOARDOWE DAMSKIE</a>
+                                <a th:href="@{/equipment?eq=skis&sex=man}">DESKI SNOWBOARDOWE MĘSKIE</a>
+                                <a th:href="@{/equipment?eq=skis&sex=child}">DESKI SNOWBOARDOWE JUNIORSKIE</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">BUTY</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/equipment?eq=skiShoes&sex=woman}">BUTY SNOWBOARDOWE DAMSKIE</a>
+                                <a th:href="@{/equipment?eq=skiShoes&sex=man}">BUTY SNOWBOARDOWE MĘSKIE</a>
+                                <a th:href="@{/equipment?eq=skiShoes&sex=child}">BUTY SNOWBOARDOWE JUNIORSKIE</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">WIĄZANIA</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/equipment?eq=skiPoles&sex=woman}">WIĄZANIA SNOWBOARDOWE DAMSKIE</a>
+                                <a th:href="@{/equipment?eq=skiPoles&sex=man}">WIĄZANIA SNOWBOARDOWE MĘSKIE</a>
+                                <a th:href="@{/equipment?eq=skiPoles&sex=child}">WIĄZANIA SNOWBOARDOWE UNIORSKIE</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">ZESTAWY</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/equipment?eq=skiHelmets&sex=woman}">ZESTAWY SNOWBOARDOWE DAMSKIE</a>
+                                <a th:href="@{/equipment?eq=skiHelmets&sex=man}">ZESTAWY SNOWBOARDOWE MĘSKIE</a>
+                                <a th:href="@{/equipment?eq=skiHelmets&sex=child}">ZESTAWY SNOWBOARDOWE JUNIORSKIE</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">RĘKAWICE</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/equipment?eq=skiGloves&sex=woman}">RĘKAWICE SNOWBOARDOWE DAMSKIE</a>
+                                <a th:href="@{/equipment?eq=skiGloves&sex=man}">RĘKAWICE SNOWBOARDOWE MĘSKIE</a>
+                                <a th:href="@{/equipment?eq=skiGloves&sex=child}">RĘKAWICE SNOWBOARDOWE JUNIORSKIE</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">GOGLE</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/equipment?eq=skiGoggles&sex=woman}">GOGLE SNOWBOARDOWE DAMSKIE</a>
+                                <a th:href="@{/equipment?eq=skiGoggles&sex=man}">GOGLE SNOWBOARDOWE MĘSKIE</a>
+                                <a th:href="@{/equipment?eq=skiGoggles&sex=child}">GOGLE SNOWBOARDOWE JUNIORSKIE</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">ODZIEŻ TERMOAKTYWNA</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/equipment?eq=thermoactiveClothing&sex=woman}">ODZIEŻ SNOWBOARDOWA
+                                    DAMSKA</a>
+                                <a th:href="@{/equipment?eq=thermoactiveClothing&sex=man}">ODZIEŻ SNOWBOARDOWA MĘSKA</a>
+                                <a th:href="@{/equipment?eq=thermoactiveClothing&sex=child}">ODZIEŻ SNOWBOARDOWA
+                                    JUNIORSKA</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">KASKI</button>
+                            <div class="dropdown-content">
+                                <a th:href="@{/equipment?eq=thermoactiveClothing&sex=woman}">KASKI SNOWBOARDOWE
+                                    DAMSKA</a>
+                                <a th:href="@{/equipment?eq=thermoactiveClothing&sex=man}">KASKI SNOWBOARDOWE MĘSKA</a>
+                                <a th:href="@{/equipment?eq=thermoactiveClothing&sex=child}">KASKI SNOWBOARDOWE
+                                    JUNIORSKA</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn borderTopRightRadius5BorderBottomRightRadius5">
+                                <a th:href="@{/manufacturer}">PRODUCENCI</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lineUnderMenu"></div>
+    </header>
+</div>

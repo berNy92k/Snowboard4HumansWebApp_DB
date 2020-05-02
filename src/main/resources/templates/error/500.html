@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div th:align="center" class="marginTop25">
+    <div>
+        <img class="mb-2"  th:src="@{/images/logos/logo.png}" width="25%" alt="logo">
+    </div>
+    &nbsp;
+    &nbsp;
+    <div>
+        <h2>Sorry, the server has encountered an error while fulfilling your request.</h2>
+        <h3>Please check back later or contact our administrators - error 500</h3>
+    </div>
+    &nbsp;
+    <div>
+        <a href="javascript:history.go(-1);">Wróć do poprzedniej strony</a>
+    </div>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="width500pxMargin0auto">
+
+        <div th:align="center">
+            &nbsp;
+            <p>Uzupełnij wszystkie pola aby się zarejestrować</p>
+            &nbsp;
+        </div>
+
+        <div th:if="${message != null}">
+            <div th:align="center">
+                <h5 class="color950002" th:text="${message}"/>
+            </div>
+        </div>
+
+        <form th:action="@{/homepage/register}" th:object="${newRegisterCustomer}" method="post"
+              onsubmit="return validateRegisterForm()">
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" name="email" aria-describedby="email"
+                       placeholder="Wpisz email" th:field="*{email}">
+            </div>
+            <div class="form-group">
+                <label for="password">Hasło</label>
+                <input type="text" class="form-control" id="password" name="password"
+                       aria-describedby="password"
+                       placeholder="Wpisz hasło" th:field="*{password}">
+            </div>
+            <div class="form-group">
+                <label for="firstName">Imię</label>
+                <input type="text" class="form-control" id="firstName" name="firstName"
+                       aria-describedby="firstName"
+                       placeholder="Wpisz imię" th:field="*{firstName}">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Nazwisko</label>
+                <input type="text" class="form-control" id="lastName" name="lastName"
+                       aria-describedby="lastName"
+                       placeholder="Wpisz nazwisko" th:field="*{lastName}">
+            </div>
+            <div class="form-group">
+                <label for="street">Ulica</label>
+                <input type="text" class="form-control" id="street" name="street" aria-describedby="street"
+                       placeholder="Wpisz nazwę ulicy" th:field="*{street}">
+            </div>
+            <div class="form-group">
+                <label for="homeNumber">Numer domu</label>
+                <input type="text" class="form-control" id="homeNumber" name="homeNumber"
+                       aria-describedby="homeNumber"
+                       placeholder="Wpisz numer domu" th:field="*{homeNumber}">
+            </div>
+            <div class="form-group">
+                <label for="city">Miasto</label>
+                <input type="text" class="form-control" id="city" name="city" aria-describedby="city"
+                       placeholder="Wpisz miasto" th:field="*{city}">
+            </div>
+            <div class="form-group">
+                <label for="zipCode">Kod pocztowy</label>
+                <input type="text" class="form-control" id="zipCode" name="zipCode" aria-describedby="zipCode"
+                       placeholder="Wpisz kod pocztowy" th:field="*{zipCode}">
+            </div>
+            <div class="form-group">
+                <label for="country">Kraj</label>
+                <input type="text" class="form-control" id="country" name="country" aria-describedby="country"
+                       placeholder="Wpisz kraj" th:field="*{country}">
+            </div>
+            <div class="form-group">
+                <label for="phone">Numer telefonu</label>
+                <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phone"
+                       placeholder="Wpisz numer telefonu" th:field="*{phone}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Zatwierdź</button>
+            <button type="button" class="btn btn-primary" id="cancel" onclick="javascript:history.go(-1);">
+                Anuluj
+            </button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+
+<script type="text/javascript">
+    function validateRegisterForm() {
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var firstName = document.getElementById("firstName");
+        var lastName = document.getElementById("lastName");
+        var street = document.getElementById("street");
+        var homeNumber = document.getElementById("homeNumber");
+        var city = document.getElementById("city");
+        var zipCode = document.getElementById("zipCode");
+        var country = document.getElementById("country");
+        var phone = document.getElementById("phone");
+
+        if (email.value.length == 0) {
+            alert("Email jest wymagany");
+            email.focus();
+            return false;
+        }
+        if (password.value.length == 0) {
+            alert("Hasło jest wymagane");
+            password.focus();
+            return false;
+        }
+        if (firstName.value.length == 0) {
+            alert("Imię jest wymagane");
+            firstName.focus();
+            return false;
+        }
+        if (lastName.value.length == 0) {
+            alert("Nazwisko jest wymagane");
+            lastName.focus();
+            return false;
+        }
+        if (street.value.length == 0) {
+            alert("Nazwa ulicy jest wymagana");
+            street.focus();
+            return false;
+        }
+        if (homeNumber.value.length == 0) {
+            alert("Numer domu jest wymagany");
+            homeNumber.focus();
+            return false;
+        }
+        if (city.value.length == 0) {
+            alert("Miasto jest wymagane");
+            city.focus();
+            return false;
+        }
+        if (zipCode.value.length == 0) {
+            alert("Kod pocztowy jest wymagany");
+            zipCode.focus();
+            return false;
+        }
+        if (country.value.length == 0) {
+            alert("Kraj jest wymagany");
+            country.focus();
+            return false;
+        }
+        if (phone.value.length == 0) {
+            alert("Numer telefonu jest wymagany");
+            phone.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

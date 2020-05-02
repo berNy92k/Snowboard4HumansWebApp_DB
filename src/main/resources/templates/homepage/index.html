@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div>
+        <div class="indexCarousel1">
+            <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-interval="3000">
+                        <img th:src="@{/images/snowboardPic/m_snowboard_5.jpg}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                        <img th:src="@{/images/snowboardPic/m_snowboard_5 (1).jpg}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item" data-interval="3000">
+                        <img th:src="@{/images/snowboardPic/m_snowboard_5 (2).jpg}" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="indexCarousel2">
+            <div class="indexCarousel2a">
+                <div id="carouselExampleInterval1" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-interval="3000">
+                            <img th:src="@{/images/snowboardPic/snowboard_4.jpg}"
+                                 height="365" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-interval="3000">
+                            <img th:src="@{/images/snowboardPic/snowboard_8.jpg}"
+                                 height="365" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item" data-interval="3000">
+                            <img th:src="@{/images/snowboardPic/snowboard_7.jpg}"
+                                 height="365" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleInterval1" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleInterval1" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="indexCarousel2b">
+                <div class="indexCarousel2ba">
+                    <div id="carouselExampleInterval2" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-interval="3000">
+                                <img th:src="@{/images/snowboardPic/m_snowboard_9 (4).jpg}"
+                                     height="365" width="345" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-interval="3000">
+                                <img th:src="@{/images/snowboardPic/m_snowboard_9 (5).jpg}"
+                                     height="365" width="345" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-interval="3000">
+                                <img th:src="@{/images/snowboardPic/m_snowboard_9 (3).jpg}"
+                                     height="365" width="345" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleInterval2" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleInterval2" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="indexCarousel2bb">
+                    <div id="carouselExampleInterval3" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-interval="3000">
+                                <img th:src="@{/images/snowboardPic/m_snowboard_10.jpg}"
+                                     height="365" width="345" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item" data-interval="3000">
+                                <img th:src="@{/images/snowboardPic/m_snowboard_10 (1).jpg}"
+                                     height="365" width="345" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleInterval3" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleInterval3" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="marginBottom30px">
+        <div class="firstMessage">
+            <div class="lineUnderMessage"></div>
+            <p class="pTitle">SKLEP SNOWBOARD4HUMANS.PL - NAJLEPSZY SPRZĘT SNOWBOARDOWY</p>
+            <p class="indexFirstMessage1"> Sklep snowboard4humans.pl to ponad 20 lat doświadczeń związanych ze sprzedażą
+                sprzętu snowboardowego w Polsce oraz w Unii Europejskiej. Od samego początku oferuje swoim klientom
+                najwyższej jakości sprzęt snowboardowy. Naszą misją jest budowanie trwałej pozycji lidera sprzedaży
+                sprzętu snowboardowego online.<br>
+                Dzięki ciężkiej pracy zdobyliśmy zaufanie wielu klientów i cieszymy się bardzo dobrą opinią.
+                Każdego dnia doceniacie nas za to, że możecie liczyć na fachową pomoc i niskie ceny.
+                Doradzamy, jak odpowiednio dobrać deski snowboardowe dla osób początkujących oraz tych
+                z większym doświadczeniem, które wiązania snowboardowe będą właściwe, jakiego rodzaju
+                buty snowboardowe wybrać oraz w jakie inne akcesoria warto się wyposażyć zanim wyjdziemy
+                na stok narciarski. Bardzo dobrze wiemy, że odpowiednio dobrana deska snowboardowa sprawia,
+                iż pewniej czujemy się na stoku narciarskim oraz ograniczamy potencjalne niebezpieczeństwa
+                związane ze źle dopasowanym sprzętem snowboardowym.
+                <br><br>
+                W naszej ofercie znajdziesz sprzęt tak znanych marek jak: <br>
+                Capita, Salomon, Burton, Stepchild, Union, Nitro, Ride, ThirtyTwo, Bataleon, Dakine, DC, Deeluxe,
+                Electric, Dragon i inne..
+        </div>
+
+        <div th:if="${messageEmpty == false}">
+            <div class="firstMessage">
+                <div class="lineUnderMessage"></div>
+                <p class="pTitle">PRZYKŁADOWE NASZE PRODUKTY</p>
+                <div class="width95margin0auto">
+                    <div th:each="equipment: ${equipmentShortList}">
+                        <div class=width250border07255006displayInlineBlockMargin14>
+                            <div class="indexFirstMessage2aa">
+                                <a th:href="@{viewEquipment(id=${equipment.equipmentId})}">
+                                    <img class="book-small"
+                                         th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
+                                         th:width="145px"
+                                         alt="Podgląd sprzętu"/>
+                                </a>
+                            </div>
+                            <div class="textAlignCenterVerticalAlignCenterMarginTop5">
+                                <div class="indexFirstMessage2aba">
+                                    <b class="fontSize10" th:text="${equipment.name}"></b>
+                                </div>
+                                <div>
+                                    <b class="indexFirstMessage2abc" th:text="${equipment.price}"> [zł]</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer with help/ additional information-->
+    <div th:replace="homepage/footerWithHelp :: footerWithHelp"/>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

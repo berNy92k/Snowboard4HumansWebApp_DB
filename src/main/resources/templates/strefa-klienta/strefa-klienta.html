@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="paddingBottom20">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/}">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link active">&rarr;</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/strefa-klienta/strefa-klienta}">Strefa klienta</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div>
+            <p class="fontSize30PaddingBottom20">O nas</p>
+        </div>
+        <div class="firstMessage paddingLeft20paddingRight20textAlignJustify">
+            <ul class="fontSize14">
+                <li>
+                    <a th:href="dane-kontaktowe.html">Dane kontaktowe</a>
+                </li>
+                <li>
+                    <a th:href="polityka-prywatnosci.html">Polityka prywatności</a>
+                </li>
+                <li>
+                    <a th:href="dostawa-i-platnosci.html">Dostawa i płatności</a>
+                </li>
+                <li>
+                    <a th:href="reklamacje-i-zwroty.html">Reklamacje i zwroty</a>
+                </li>
+                <li>
+                    <a th:href="faq.html">FAQ</a>
+                </li>
+                <li>
+                    <a th:href="odbior-osobisty.html">Odbiór osobisty</a>
+                </li>
+                <li>
+                    <a th:href="zagraniczna-wysylka.html">Zagraniczna wysyłka</a>
+                </li>
+                <li>
+                    <a th:href="blog.html">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

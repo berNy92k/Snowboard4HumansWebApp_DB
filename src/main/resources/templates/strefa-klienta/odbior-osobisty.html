@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="paddingBottom20">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/}">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link active">&rarr;</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/strefa-klienta/strefa-klienta}">Strefa klienta</a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link active">&rarr;</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/strefa-klienta/odbior-osobisty}">Odbiór osobisty</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div>
+            <p class="fontSize30PaddingBottom20">Odbiór osobisty</p>
+        </div>
+        <div>
+            <p class="fontSize45PaddingBottom20">ODBIÓR OSOBISTY DLA KLIENTÓW Z XYZ I OKOLIC:</p>
+        </div>
+        <div class="firstMessage paddingLeft20paddingRight20textAlignJustify">
+            <ul class="fontSize14">
+                <li>Zapraszamy do naszej siedziby biura i magazynu sklepu internetowego snowboard4humans.pl w XYZ:
+                    <br><br>
+                    ul. XYZ 00
+                    <br><br>
+                    00-000 XYZ
+                    <br><br>
+                    w następnym dniu roboczym po złożeniu zamówienia (jest to czas potrzebny na skompletowanie i
+                    przygotowanie sprzętu).
+                </li>
+                <br>
+                <li> Akceptujemy płatność gotówką oraz kartą płatniczą.
+                </li>
+                <br>
+                <li>Godziny pracy:
+                    <br><br>
+                    pon - pt: 8:00 - 15:30
+                    <br><br>
+                    sobota: nieczynne
+                    <br><br>
+                    niedziela: nieczynne
+                </li>
+                <br>
+                <li>W razie pytań prosimy o kontakt pod numerem +48 000 000 000</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

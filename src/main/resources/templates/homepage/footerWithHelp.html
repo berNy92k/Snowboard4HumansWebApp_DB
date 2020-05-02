@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<div th:fragment="footerWithHelp">
+    <div class="card-deck mb-3 text-center height490">
+        <div class="card mb-3 box-shadow">
+            <div class="card-header height70">
+                <h5 class="my-0 font-weight-normal lineHeight42">MONTUJEMY WIĄZANIA</h5>
+            </div>
+            <div class="card-body textAlignJustify">
+                <p class="pJustify">Mając na uwadze komfort i bezpieczeństwo naszych klientów,
+                    oferujemy całkowicie darmowy montaż wiązań – wystarczy,
+                    że podasz nam swoją wagę, wzrost i długość skorupy buta.
+                    Po wykonaniu takiej usługi deski snowboardowe są w pełni gotowe do jazdy
+                    i nie wymagają dodatkowej wizyty w serwisie.</p>
+            </div>
+            <div class="card-body height85">
+                <a th:href="@{/}">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-danger">CZYTAJ WIĘCEJ</button>
+                </a>
+            </div>
+        </div>
+        <div class="card mb-3 box-shadow">
+            <div class="card-header height70">
+                <h5 class="my-0 font-weight-normal lineHeight42">JAK DOBRAĆ SPRZĘT?</h5>
+            </div>
+            <div class="card-body textAlignJustify">
+                <p class="pJustify">Odpowiednie dopasowanie sprzętu to jeden z najistotniejszych
+                    czynników, gwarantujących bezpieczną i komfortową jazdę.
+                    Klikając w baner znajdziesz przydatne informacje sporządzone
+                    przez naszych fachowców, w jaki sposób dobrać poszczególne elementy
+                    asortymentu (deski, buty, wiązania...).</p>
+
+            </div>
+            <div class="card-body height110">
+                <a th:href="@{/}">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-danger">DOPASUJ SPRZĘT</button>
+                </a>
+            </div>
+        </div>
+        <div class="card mb-3 box-shadow">
+            <div class="card-header height70">
+                <h5 class="my-0 font-weight-normal lineHeight42">PORADY SPECJALISTÓW</h5>
+            </div>
+            <div class="card-body textAlignJustify">
+                <p class="pJustify">Artykuły, które zainteresują zarówno początkujących jak i
+                    doświadczonych sportowców: ciekawostki ze świata sportowego,
+                    pomoc w przygotowaniu do pierwszych wyjazdów zimowych, porady
+                    z zakresu konserwacji sprzętu.</p>
+            </div>
+            <div class="card-body height63">
+                <a th:href="@{/}">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-danger">CZYTAJ WIĘCEJ</button>
+                </a>
+            </div>
+        </div>
+        <div class="card mb-3 box-shadow">
+            <div class="card-header height70">
+                <h5 class="my-0 font-weight-normal lineHeight22">NATYCHMIASTOWA WYSYŁKA W 24H</h5>
+            </div>
+            <div class="card-body textAlignJustify">
+                <p class="pJustify">Cały towar prezentowany na stronie znajduje się w naszym magazynie.
+                    Składając zamówienie do godziny 13:00 (od poniedziałku do piątku)
+                    możesz mieć pewność, że sprzęt zostanie wysłany jeszcze
+                    tego samego dnia.</p>
+            </div>
+            <div class="card-body height10">
+                <a th:href="@{/}">
+                    <button type="button" class="btn btn-lg btn-block btn-outline-danger">CZYTAJ WIĘCEJ</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

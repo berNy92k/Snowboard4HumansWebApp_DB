@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="paddingBottom20">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/}">Strona główna</a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link active">&rarr;</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/onas/o-nas}">O nas</a>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link active">&rarr;</span>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/onas/kontakt}">Skontaktuj się z nami</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <div class="maxWidth1120">
+            <div class="floatLeftMargin10Padding10Width350Height450"></div>
+            <div class="floatLeftMargin10Padding10Width350Height450">
+                <p class="fontSize22PaddingBottom20">Informacja o sklepie</p>
+                <p class="fontSize15">
+                    snowboard4humans.pl<br>
+                    Biuro i magazyn sprzętu<br>
+                    00-000 Miasto<br>
+                    Polska<br>
+                    Telefon komórkowy: +48 xxx xxx xxx<br>
+                    Telefon stacjonarny: +48 xx xxx xx xx<br>
+                    Napisz do nas: info@snowboard4humans.pl</p>
+            </div>
+            <div class="floatLeftMargin10Padding10Width350Height450">
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp"
+                               placeholder="Adres Email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="textAreaMessege" rows="10" cols="44">Napisz wiadomość...</textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="testIfNotRobot" placeholder="Ile jest dwa razy 2">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Wyślij wiadomość</button>
+                </form>
+            </div>
+        </div>
+        <div class="clearBoth"></div>
+        <div class="maxWidth1120">
+            <div class="floatLeftMargin10Padding10Width255Height250">
+                <img th:src="@{/images/logos/lokalizacja.PNG}" class="paddingBottom6"><br>
+                NASZA LOKALIZACJA<br><br>
+                snowboard4humans.pl<br>
+                Biuro i magazyn sprzętu<br>
+                53-440 Kraków<br>
+                Polska<br>
+            </div>
+            <div class="floatLeftMargin10Padding10Width255Height250">
+                <img th:src="@{/images/logos/email1.PNG}" class="paddingBottom13"><br>
+                DANE KONTAKTOWE<br><br>
+                E-mail:
+                <a href="mailto:info@snowboard4humans.pl">
+                    info@snowboard4humans.pl
+                </a>
+                <br>
+            </div>
+            <div class="floatLeftMargin10Padding10Width260Height250">
+                <img th:src="@{/images/logos/phone1.PNG}"><br>
+                SKONTAKTUJ SIĘ Z NAMI<br><br>
+                Tel. komórkowy: +48 xxx xxx xxx<br>
+                Tel. stacjonarny: +48 xx xxx xx xx<br>
+            </div>
+            <div class="floatLeftMargin10Padding10Width260Height250">
+                <img th:src="@{/images/logos/obslugaKllienta.PNG}"><br>
+                OBSŁUGA KLIENTA<br><br>
+                8:00 - 16:00<br>
+                od poniedziałku do piątku<br>
+            </div>
+        </div>
+        <div class="clearBoth"></div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

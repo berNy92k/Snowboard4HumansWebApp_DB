@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="width500pxMargin0auto">
+
+        <div th:align="center">
+            &nbsp;
+            <p>Uzupełnij wszystkie pola aby zalogować się jako użytkownik</p>
+            &nbsp;
+        </div>
+
+        <div th:if="${message != null}">
+            <div th:align="center">
+                <h5 class="color950002" th:text="${message}"/>
+            </div>
+        </div>
+
+        <form th:action="@{/homepage/login}" th:object="${newLoginCustomer}" method="post"
+              onsubmit="return validateLoginForm()">
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email"
+                       placeholder="Podaj email" th:field="*{email}">
+            </div>
+            <div class="form-group">
+                <label for="password">Hasło:</label>
+                <input type="password" class="form-control" id="password" name="password"
+                       placeholder="Podaj hasło" th:field="*{password}">
+            </div>
+            <button type="submit" class="btn btn-primary">Zatwierdź</button>
+            <button type="button" class="btn btn-primary" id="cancel" onclick="javascript:history.go(-1);">
+                Anuluj
+            </button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+
+<script type="text/javascript">
+    function validateLoginForm() {
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+
+        if (email.value.length == 0) {
+            alert("Email is required");
+            email.focus();
+            return false;
+        }
+        if (password.value.length == 0) {
+            alert("Password is required");
+            password.focus();
+            return false;
+        }
+
+        return true;
+    }
+</script>
+</html>
