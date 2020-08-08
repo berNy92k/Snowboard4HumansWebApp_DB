@@ -1,29 +1,21 @@
-package pl.snowboard4humans.controller.frontend;
+package pl.snowboard4humans.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
 import pl.snowboard4humans.model.Equipment;
 
 import java.util.ArrayList;
 
 @Controller
-public class HomeController {
+@RequestMapping(value = "/admin")
+public class HomeAdminController {
 
     @GetMapping
     public String getHomePage(Model model) {
-        model.addAttribute("messageEmpty", false);
-
-        // TODO - change for equipments from DB
-        ArrayList<Equipment> equipmentShortList = new ArrayList<>();
-        Equipment equipment = new Equipment();
-        equipment.setEquipmentId(1);
-        equipment.setName("Test");
-        equipment.setPrice(5.50f);
-        equipmentShortList.add(equipment);
-        model.addAttribute(ConstantsFrontendPL.EQUIPMENT_SHORT_LIST, equipmentShortList);
-        return "homepage/index";
+        return "admin/index";
     }
 
     // onas - start
