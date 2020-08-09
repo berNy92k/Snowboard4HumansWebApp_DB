@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width80Margin50auto50">
+        <table class="color00042dMargin0autoFontSizeLargeWidth1000px">
+            <tr>
+                <td class="width25percentage">
+                    <a th:href="@{/admin/equipment/details(eqm='thermoactiveClothing',sex='all')}">Odzież termoaktywna - wszystkie</a>
+                </td>
+                <td class="width25percentage">
+                    <a th:href="@{/admin/equipment/details(eqm='thermoactiveClothing',sex='woman')}">Odzież termoaktywna dla kobiet</a>
+                </td>
+                <td class="width25percentage">
+                    <a th:href="@{/admin/equipment/details(eqm='thermoactiveClothing',sex='man')}">Odzież termoaktywna dla mężczyzn</a>
+                </td>
+                <td class="width25percentage">
+                    <a th:href="@{/admin/equipment/details(eqm='thermoactiveClothing',sex='child')}">Odzież termoaktywna dla dzieci</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <footer class="footerFreeSpace80px">
+        <div th:replace="admin/footer :: footer"/>
+    </footer>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

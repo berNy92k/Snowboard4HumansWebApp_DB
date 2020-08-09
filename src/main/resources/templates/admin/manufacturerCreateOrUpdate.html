@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width500pxMargin0auto">
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+        </div>
+
+        <div>
+            <!--<th:block th:if="${manufacturer != null}">-->
+            <form th:action="@{/admin/manufacturer}"
+                  th:object="${manufacturer}"
+                  th:method="post"
+                  enctype="multipart/form-data">
+                <!--TODO add fields validation-->
+                <!--onsubmit="return validateCreateManufacturerForm()">-->
+
+                <input type="hidden" id="manufacturerId" name="manufacturerId"
+                       th:field="*{id}">
+
+                <div class="form-group">
+                    <label for="manufacturerName">Nazwa producenta</label>
+                    <input type="text" class="form-control" id="manufacturerName"
+                           name="manufacturerName" placeholder="Wpisz nazwę producenta"
+                           th:field="*{manufacturerName}">
+                </div>
+                <div class="form-group">
+                    <label for="description">Opis</label>
+                    <textarea rows="5" cols="68" id="description"
+                              name="description"
+                              th:field="*{description}">
+                        </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="manufacturerImage">Zdjęcie</label>
+                    <input type="file" class="form-control" id="manufacturerImage" name="manufacturerImage"
+                           th:field="*{multipartFile}" multiple="multiple">
+                    <img id="smallPic" class="width300 marginTop5" alt="Podgląd zdjęcia" src="#"
+                         th:src="@{'data:image/jpg;base64,'+*{base64Image}}"/>
+
+                    <input type="hidden" id="base64Image" name="base64Image" th:field="*{base64Image}">
+                </div>
+                <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                <button type="button" class="btn btn-primary" id="cancel" onclick="javascript:history.go(-1);">
+                    Anuluj
+                </button>
+            </form>
+            <!--</th:block>-->
+        </div>
+    </div>
+
+    <footer class="footerFreeSpace80px">
+        <div th:replace="admin/footer :: footer"/>
+    </footer>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+
+<script type="text/javascript">
+
+    // function validateCreateManufacturerForm() {
+    //     var manufacturerName = document.getElementById("manufacturerName");
+    //     var description = document.getElementById("description");
+    //     var manufacturerImage = document.getElementById("manufacturerImage");
+    //
+    //     if (manufacturerName.value.length == 0) {
+    //         alert("Nazwa producenta jest wymagana");
+    //         manufacturerName.focus();
+    //         return false;
+    //     }
+    //     if (description.value.length == 0) {
+    //         alert("Opis jest wymagany");
+    //         description.focus();
+    //         return false;
+    //     }
+    //     if (manufacturerImage.value.length == 0) {
+    //         alert("Zdjęcie jest wymagane");
+    //         manufacturerImage.focus();
+    //         return false;
+    //     }
+    //     return true;
+    // }
+    //
+    // $(document).ready(function () {
+    //     $('#manufacturerImage').change(function () {
+    //         showSmallImage(this);
+    //     });
+    // });
+    //
+    // function showSmallImage(fileInput) {
+    //     var file = fileInput.files[0];
+    //
+    //     var reader = new FileReader();
+    //
+    //     reader.onload = function (ev) {
+    //         $('#smallPic').attr('src', ev.target.result)
+    //     };
+    //
+    //     reader.readAsDataURL(file);
+    // }
+</script>
+</html>

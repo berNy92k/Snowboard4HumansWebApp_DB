@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="marginLeft40">
+        <div class="firstMessage">
+            <p class="pTitle fontSize25">SKLEP SNOWBOARDOWY SNOWBOARD4HUMANS.PL - Część dla administratora
+                strony</p>
+            <p class="indexFirstMessage1">
+                Administrator strony posiada możliwość dodawania/ usuwania oraz modyfikowania istniejących jej
+                elementów.</p>
+            <p class="indexFirstMessage1">Elementy, które można edytować/ dodawać to:</p>
+            <b class="fontSize20">Główne:</b>
+            <ul class="fontSize14">
+                <li>deski snowboardowe</li>
+                <li>buty snowboardowe</li>
+                <li>wiązania snowboardowe</li>
+                <li>rekawice snowboardowe</li>
+                <li>gogle snowboardowe</li>
+                <li>kaski snowboardowe</li>
+                <li>odzież snowboardowa</li>
+            </ul>
+            <b class="fontSize20">Inne informacje:</b>
+            <ul class="fontSize14">
+                <li>użytkownicy</li>
+                <li>kategorie</li>
+                <li>klienci</li>
+                <li>recenzje</li>
+                <li>zamówienia</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

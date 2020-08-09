@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width90Margin0auto">
+        <div th:align="center">
+            &nbsp;
+            <h3>
+                <a th:href="@{/admin/manufacturer/create}">
+                    <p class="color2b57b4">DODAJ NOWEGO PRODUCENTA DO BAZY</p>
+                </a>
+            </h3>
+            &nbsp;
+        </div>
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Opis</th>
+                    <th scope="col">Zdjęcie</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="manufacturer: ${manufacturerList}">
+                    <tr>
+                        <td th:text="${manufacturer.id}"></td>
+                        <td th:text="${manufacturer.manufacturerName}"></td>
+                        <td th:text="${manufacturer.description}"></td>
+                        <td>
+                            <img th:src="@{'data:image/jpg;base64,'+${manufacturer.base64Image}}"
+                                 th:width="100px"
+                                 th:alt="Podgląd_sprzętu"/>
+                        </td>
+                        <td>
+                            <a th:href="@{/admin/manufacturer/edit(id=${manufacturer.id})}">EDYCJA</a> &nbsp
+                            <!--TODO-->
+                            <a href="javascript:deleteManufacturer(${manufacturer.manufacturerId})">USUŃ</a>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footerFreeSpace80px">
+        <div th:replace="admin/footer :: footer"/>
+    </footer>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+
+<script>
+    function deleteManufacturer(userId) {
+        if (confirm("Are you sure ? If you agree manufacturer with '" + userId + "' id will be deleted")) {
+            window.location = '../admin/deleteManufacturer?id=' + userId;
+        }
+    }
+</script>
+</html>

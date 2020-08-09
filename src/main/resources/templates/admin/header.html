@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<div th:fragment="header">
+    <header>
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom border-top box-shadow fontSize10">
+            <div class="my-auto mr-md-auto">
+                <img class="mb-2 marginRight5" th:src="@{/images/logos/poland.png}" width="15" height="10">Wybierz język
+            </div>
+            <div class="my-auto mr-md-auto">
+                Do kolejnej wysyłki pozostało: 12:56:11
+            </div>
+
+            <div class="fontSize12">
+                Witaj,
+                <!--<th:if test="${sessionScope.userEmail != null}">-->
+                <!--<c:out value="${sessionScope.userEmail}, "/>-->
+                <!--<a th:href="../admin/logout">Wyloguj się</a>-->
+                <!--</th:if>-->
+                <!--<c:if test="${sessionScope.userEmail == null}">-->
+                Zaloguj się jako administrator aby mieć dostęp
+                <!--</c:if>-->
+            </div>
+        </div>
+
+        <div class="header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <div class="displayFlex justifyContentSpaceBetween marginBottom40px">
+                <div>
+                    <a th:href="@{/admin}">
+                        <img class="mb-2" th:src="@{/images/logos/logoAdmin.png}" th:width="450" th:height="60"
+                             th:alt="logo" th:border="30px">
+                    </a>
+                </div>
+                <div class="displayFlex justifyContentSpaceBetween positionMarker">
+                    <form class="search" th:action="@{/admin/search}">
+                        <input type="text" placeholder="Szukaj.." name="search" size="60"
+                               class="fontWeightRevert borderRadius15MinHeight35MaxHeight35 borderColorRgba109163207099">
+                        <button type="submit" class="borderRadius15MinHeight35MaxHeight35">Szukaj</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="menu">
+                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <div class="dropdown">
+                            <button class="dropbtn borderTopLeftRadius5BorderBottomLeftRadius5">
+                                <a th:href="@{/admin/equipment(type='snowboards')}">DESKI</a>
+                            </button>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a th:href="@{/admin/equipment(type='snowboardShoes')}">BUTY</a>
+                            </button>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a th:href="@{/admin/equipment(type='snowboardBindings')}">WIĄZANIA</a>
+                            </button>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a th:href="@{/admin/equipment(type='snowboardGloves')}">RĘKAWICE</a>
+                            </button>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a th:href="@{/admin/equipment(type='snowboardGoggles')}">GOGLE</a>
+                            </button>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a th:href="@{/admin/equipment(type='snowboardHelmets')}">KASKI</a>
+                            </button>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a th:href="@{/admin/equipment(type='thermoactiveClothing')}">ODZIEŻ TERMOAKTYWNA</a>
+                            </button>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn">
+                                <a th:href="@{/admin/manufacturer}">PRODUCENCI</a>
+                            </button>
+                        </div>
+                        <div class="dropdown">
+                            <button class="dropbtn borderTopRightRadius5BorderBottomRightRadius5">
+                                INNE INFORMACJE
+                            </button>
+                            <div class="dropdown-content">
+                                <a th:href="@{users}">UŻYTKOWNICY</a>
+                                <a th:href="@{categories}">KATEGORIE</a>
+                                <a th:href="@{customers}">KLIENCI</a>
+                                <a th:href="@{reviews}">RECENZJE</a>
+                                <a th:href="@{orders}">ZAMÓWIENIA</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lineUnderMenu"></div>
+    </header>
+</div>
