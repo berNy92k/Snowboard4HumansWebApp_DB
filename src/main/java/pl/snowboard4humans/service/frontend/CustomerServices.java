@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
+import pl.snowboard4humans.constants.ConstantsPL;
 import pl.snowboard4humans.constants.ConstantsUtils;
 import pl.snowboard4humans.model.Customer;
 import pl.snowboard4humans.model.Equipment;
 import pl.snowboard4humans.repository.CustomerRepo;
+import pl.snowboard4humans.service.SuperService;
 import pl.snowboard4humans.utils.Utils;
 
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class CustomerServices {
+public class CustomerServices extends SuperService {
     private CustomerRepo customerRepo;
 
     @Autowired
@@ -25,7 +27,7 @@ public class CustomerServices {
 
     public String loginFormCustomer(Model model) {
         return getRequestDispatcher(model,
-                ConstantsFrontendPL.NULL,
+                ConstantsPL.NULL,
                 ConstantsFrontendPL.LOGIN_CUSTOMER_OBJECT,
                 new Customer(),
                 ConstantsFrontendPL.LOGIN_FORM_PAGE);
@@ -47,7 +49,7 @@ public class CustomerServices {
                 // TODO - delete later
                 ArrayList<Equipment> equipmentShortList = new ArrayList<>();
                 Equipment equipment = new Equipment();
-                equipment.setEquipmentId(1);
+                equipment.setId(1);
                 equipment.setName("Test");
                 equipment.setPrice(5.50f);
                 equipmentShortList.add(equipment);
@@ -81,7 +83,7 @@ public class CustomerServices {
         // TODO - delete later
         ArrayList<Equipment> equipmentShortList = new ArrayList<>();
         Equipment equipment = new Equipment();
-        equipment.setEquipmentId(1);
+        equipment.setId(1);
         equipment.setName("Test");
         equipment.setPrice(5.50f);
         equipmentShortList.add(equipment);
@@ -95,7 +97,7 @@ public class CustomerServices {
 
     public String registerFormCustomer(Model model) {
         return getRequestDispatcher(model,
-                ConstantsFrontendPL.NULL,
+                ConstantsPL.NULL,
                 ConstantsFrontendPL.REGISTER_CUSTOMER_OBJECT,
                 new Customer(),
                 ConstantsFrontendPL.REGISTER_FORM_PAGE);
@@ -145,7 +147,7 @@ public class CustomerServices {
                                         Model model) {
         boolean isMoreCategoriesInDatabase = false;
 
-        Customer customerFoundById = customerRepo.getOne(customerUpdateData.getCustomerId());
+        Customer customerFoundById = customerRepo.getOne(customerUpdateData.getId());
 
         List<Customer> customers = customerRepo.findCustomersByEmail(customerUpdateData.getEmail());
         Customer customerFoundByEmail = null;
@@ -159,7 +161,7 @@ public class CustomerServices {
             String email = customerUpdateData.getEmail();
             String message = ConstantsFrontendPL.MY_ACCOUNT_CUSTOMER_WAS_NOT_UPDATED + email + ConstantsFrontendPL.MY_ACCOUNT_CUSTOMER_NAME_ALREADY_EXIST_IN_DB;
             myAccountViewCustomer(message, model);
-        } else if (customerFoundByEmail != null && !customerFoundByEmail.getCustomerId().equals(customerFoundById.getCustomerId())) {
+        } else if (customerFoundByEmail != null && !customerFoundByEmail.getId().equals(customerFoundById.getId())) {
             String email = customerUpdateData.getEmail();
             String message = ConstantsFrontendPL.MY_ACCOUNT_CUSTOMER_WAS_NOT_UPDATED + email + ConstantsFrontendPL.MY_ACCOUNT_CUSTOMER_NAME_ALREADY_EXIST_IN_DB;
             myAccountViewCustomer(message, model);
@@ -181,7 +183,7 @@ public class CustomerServices {
 
         Customer newCustomer = new Customer();
         if (isUpdate) {
-            newCustomer.setCustomerId(customerData.getCustomerId());
+            newCustomer.setId(customerData.getId());
         }
         newCustomer.setEmail(customerData.getEmail());
         if (isUpdate && customerData.getPassword().length() == 0) {
@@ -205,14 +207,4 @@ public class CustomerServices {
         return newCustomer;
     }
 
-    public String getRequestDispatcher(Model model,
-                                       String message,
-                                       String customerObject,
-                                       Object object,
-                                       String url) {
-        model.addAttribute(ConstantsFrontendPL.MESSAGE, message);
-        model.addAttribute(customerObject, object);
-
-        return url;
-    }
 }

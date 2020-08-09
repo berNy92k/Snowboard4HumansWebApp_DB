@@ -20,7 +20,7 @@ public class HomeController {
         // TODO - change for equipments from DB
         ArrayList<Equipment> equipmentShortList = new ArrayList<>();
         Equipment equipment = new Equipment();
-        equipment.setEquipmentId(1);
+        equipment.setId(1);
         equipment.setName("Test");
         equipment.setPrice(5.50f);
         equipmentShortList.add(equipment);
