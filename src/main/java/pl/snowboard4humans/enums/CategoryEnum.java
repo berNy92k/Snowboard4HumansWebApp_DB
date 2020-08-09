@@ -1,12 +1,12 @@
 package pl.snowboard4humans.enums;
 
 public enum CategoryEnum {
-    SKIS(1),
-    SKISHOES(2),
-    SKIPOLES(3),
-    SKIHELMETS(4),
-    SKIGOGGLES(5),
-    SKIGLOVES(6),
+    SNOWBOARDS(1),
+    SNOWBOARDSHOES(2),
+    SNOWBOARDBINDINGS(3),
+    SNOWBOARDGLOVES(4),
+    SNOWBOARDGOGGLES(5),
+    SNOWBOARDHELMETS(6),
     THERMOACTIVECLOTHING(7),
     ZERO(0);
 

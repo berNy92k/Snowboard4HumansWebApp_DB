@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        <form th:action="@{/homepage/login}" th:object="${newLoginCustomer}" method="post"
+        <form th:action="@{/homepage/login}" th:object="${newLoginCustomer}" th:method="post"
               onsubmit="return validateLoginForm()">
 
             <div class="form-group">

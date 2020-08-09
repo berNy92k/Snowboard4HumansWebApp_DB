@@ -59,7 +59,7 @@ public interface ConstantsAdminENG {
     String COULD_NOT_FIND_MANUFACTURER_BY_ID = "Could not find manufacturer with ID: ";
     String MANUFACTURER_WAS_DELETED = "Manufacturer was deleted";
     String DELETED_BY_ANOTHER_MANUFACTURER_ADMIN = ", or it might have been deleted by another admin.";
-
+    String LACK_OF_MANUFACTURER_IN_DB = "Lack of manufacturer in database";
 
     // -------------- ADMIN/EQUIPMENT --------------
     // URL

@@ -3,12 +3,14 @@ package pl.snowboard4humans.controller.frontend;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
 import pl.snowboard4humans.model.Equipment;
 
 import java.util.ArrayList;
 
 @Controller
+@RequestMapping(value = "")
 public class HomeController {
 
     @GetMapping

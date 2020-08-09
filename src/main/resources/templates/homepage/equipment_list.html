@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="width98Margin0auto">
+
+        <div th:align="center" class="marginTop15">
+            <h2 class="color2d0001" th:text="${equipmentCategoryName}+' - '+${equipmentSex}"></h2>
+        </div>
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+        </div>
+
+        <div class="width95margin0auto">
+            <div th:each="equipment: ${equipmentList}">
+                <div class="width250border07255006displayInlineBlockMargin14">
+                    <div class="width245">
+                        <a th:href="@{viewEquipment(id=${equipment.equipmentId})}">
+                            <img class="book-small"
+                                 th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
+                                 th:width="245px"
+                                 alt="Podgląd sprzętu"/>
+                        </a>
+                    </div>
+                    <div class="textAlignCenterVerticalAlignCenterMarginTop5">
+                        <div class="height90">
+                            <a th:href="@{viewEquipment(id=${equipment.equipmentId})}">
+                                <b th:text="${equipment.name}"></b>
+                            </a>
+                        </div>
+                        <div>
+                            <b><i th:text="${equipment.manufacturer.manufacturerName}"></i></b>
+                        </div>
+                        <div class="height80">
+                            <i th:text="${equipment.shortDescription}"></i>
+                        </div>
+                        <div>
+                            <b class="colorbf0004" th:text="${equipment.price}"> [zł]</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div th:replace="homepage/footer :: footer"/>
+        </div>
+    </div>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>

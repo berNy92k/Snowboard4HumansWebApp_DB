@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="width98Margin0auto">
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+        </div>
+
+        <div class="width95margin0auto">
+            <th:block th:each="manufacturer: ${manufacturerList}">
+                <div class="width250border07255006displayInlineBlockMargin14">
+                    <div class="width245">
+                        <img class="book-small"
+                             th:src="@{'data:image/jpg;base64,'+${manufacturer.base64Image}}"
+                             th:width="245px"
+                             th:alt="Podgląd_sprzętu"/>
+                    </div>
+                    <div class="textAlignCenterVerticalAlignCenterMarginTop25">
+                        <div>
+                            <b th:text="${manufacturer.manufacturerName}"></b>
+                        </div>
+                        <div>
+                            <i th:text="${manufacturer.description}"></i>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+
+        <footer class="footerFreeSpace30px">
+            <div th:replace="homepage/footer :: footer"/>
+        </footer>
+    </div>
+
+
+    <!--Scripts JS-->
+    <div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>
