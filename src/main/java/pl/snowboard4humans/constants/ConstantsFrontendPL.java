@@ -1,9 +1,6 @@
 package pl.snowboard4humans.constants;
 
 public interface ConstantsFrontendPL {
-    String NULL = null;
-
-    String MESSAGE = "message";
 
     // ---------- LOGIN / REGISTER ----------
     String LOGIN_FORM_PAGE = "/homepage/logIn";
@@ -30,6 +27,7 @@ public interface ConstantsFrontendPL {
     // ------------- MANUFACTURER -------------
     // URL
     String MANUFACTURER_LIST_URL = "/homepage/manufacturer_list.html";
+    String MANUFACTURER_LIST_OBJECT = "manufacturerList";
 
     // MESSAGES
     String LACK_OF_MANUFACTURER_IN_DB = "Brak informacji o producencie sprzętu - zapraszamy wkrótce";
