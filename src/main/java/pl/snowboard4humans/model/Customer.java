@@ -15,7 +15,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
-    private Integer customerId;
+    private Integer id;
     @NotNull
     @Column(name = "email")
     private String email;
@@ -95,7 +95,7 @@ public class Customer {
     public Customer(Integer customerId, String email, String password, String firstName,
                     String lastName, String street, String homeNumber, String city,
                     String zipCode, String country, String phone, Date registerDate) {
-        this.customerId = customerId;
+        this.id = customerId;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
@@ -109,12 +109,12 @@ public class Customer {
         this.registerDate = registerDate;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setId(Integer customerId) {
+        this.id = customerId;
     }
 
     public String getEmail() {
@@ -227,7 +227,7 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(customerId, customer.customerId) &&
+        return Objects.equals(id, customer.id) &&
                 Objects.equals(email, customer.email) &&
                 Objects.equals(password, customer.password) &&
                 Objects.equals(firstName, customer.firstName) &&
@@ -244,6 +244,6 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        return Objects.hash(customerId, email, password, firstName, lastName, street, homeNumber, city, zipCode, country, phone, registerDate, reviews);
+        return Objects.hash(id, email, password, firstName, lastName, street, homeNumber, city, zipCode, country, phone, registerDate, reviews);
     }
 }

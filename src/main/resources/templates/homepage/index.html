@@ -149,7 +149,7 @@
                     <div th:each="equipment: ${equipmentShortList}">
                         <div class=width250border07255006displayInlineBlockMargin14>
                             <div class="indexFirstMessage2aa">
-                                <a th:href="@{viewEquipment(id=${equipment.equipmentId})}">
+                                <a th:href="@{viewEquipment(id=${equipment.id})}">
                                     <img class="book-small"
                                          th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
                                          th:width="145px"

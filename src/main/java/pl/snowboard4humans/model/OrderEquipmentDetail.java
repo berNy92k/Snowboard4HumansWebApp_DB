@@ -12,7 +12,7 @@ public class OrderEquipmentDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_eq_detail_id")
-    private Integer orderEquipmentDetailId;
+    private Integer id;
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "equipment_id")
@@ -31,12 +31,12 @@ public class OrderEquipmentDetail {
     public OrderEquipmentDetail() {
     }
 
-    public Integer getOrderEquipmentDetailId() {
-        return orderEquipmentDetailId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setOrderEquipmentDetailId(Integer orderEquipmentDetailId) {
-        this.orderEquipmentDetailId = orderEquipmentDetailId;
+    public void setId(Integer orderEquipmentDetailId) {
+        this.id = orderEquipmentDetailId;
     }
 
     public Equipment getEquipment() {
@@ -78,12 +78,12 @@ public class OrderEquipmentDetail {
         OrderEquipmentDetail that = (OrderEquipmentDetail) o;
         return quantity == that.quantity &&
                 Float.compare(that.subtotal, subtotal) == 0 &&
-                Objects.equals(orderEquipmentDetailId, that.orderEquipmentDetailId) &&
+                Objects.equals(id, that.id) &&
                 Objects.equals(equipment, that.equipment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderEquipmentDetailId, equipment, quantity, subtotal);
+        return Objects.hash(id, equipment, quantity, subtotal);
     }
 }

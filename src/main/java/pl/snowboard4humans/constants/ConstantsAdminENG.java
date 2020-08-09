@@ -46,7 +46,7 @@ public interface ConstantsAdminENG {
     String MANUFACTURER_LIST_OBJECT = "manufacturerList";
     String MANUFACTURER_OBJECT = "manufacturer";
     String MANUFACTURER_LIST_URL = "/admin/manufacturer_list";
-    String MANUFACTURER_CREATE_OR_UPDATE_URL = "/admin/manufacturerCreateOrUpdate.html";
+    String MANUFACTURER_CREATE_OR_UPDATE_URL = "/admin/manufacturerCreateOrUpdate";
 
     // MESSAGES
     String UPDATE_MODE_CHANGE_FIELDS_MANUFACTURER_ADMIN = "Change values in the fields to edit the manufacturer.";

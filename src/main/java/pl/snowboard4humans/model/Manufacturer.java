@@ -1,11 +1,15 @@
 package pl.snowboard4humans.model;
 
 import com.sun.istack.internal.NotNull;
+import org.springframework.web.multipart.MultipartFile;
+import pl.snowboard4humans.constants.ConstantsPL;
 import pl.snowboard4humans.utils.Utils;
 
 import javax.persistence.*;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -15,7 +19,7 @@ public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "manufacturer_id")
-    private Integer manufacturerId;
+    private Integer id;
     @NotNull
     @Column(name = "manufacturer_name")
     private String manufacturerName;
@@ -35,6 +39,9 @@ public class Manufacturer {
     @Transient
     private String base64Image;
 
+    @Transient
+    private MultipartFile multipartFile;
+
     public Manufacturer() {
     }
 
@@ -45,18 +52,18 @@ public class Manufacturer {
     }
 
     public Manufacturer(Integer manufacturerId, String manufacturerName, String description, byte[] image) {
-        this.manufacturerId = manufacturerId;
+        this.id = manufacturerId;
         this.manufacturerName = manufacturerName;
         this.description = description;
         this.image = image;
     }
 
-    public Integer getManufacturerId() {
-        return manufacturerId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setManufacturerId(Integer manufacturerId) {
-        this.manufacturerId = manufacturerId;
+    public void setId(Integer manufacturerId) {
+        this.id = manufacturerId;
     }
 
     public String getManufacturerName() {
@@ -95,7 +102,40 @@ public class Manufacturer {
         return Utils.getBase64Image(this.image);
     }
 
-    public void setBase64Image(String base64Image) {
+    public void setBase64Image(String base64Image) throws IOException {
         this.base64Image = base64Image;
+        if (base64Image != null) {
+            this.image = Utils.getBytesBase64Image(base64Image);
+        }
+    }
+
+    public MultipartFile getMultipartFile() {
+        return multipartFile;
+    }
+
+    public void setMultipartFile(MultipartFile multipartFile) throws IOException {
+        if (multipartFile != null
+                && multipartFile.getOriginalFilename() != null
+                && !multipartFile.getOriginalFilename().equals(ConstantsPL.EMPTY_MESSAGE)) {
+
+            this.image = multipartFile.getBytes();
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Manufacturer that = (Manufacturer) o;
+        return Objects.equals(manufacturerName, that.manufacturerName) &&
+                Objects.equals(description, that.description) &&
+                Arrays.equals(image, that.image);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(manufacturerName, description);
+        result = 31 * result + Arrays.hashCode(image);
+        return result;
     }
 }

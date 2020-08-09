@@ -12,7 +12,7 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "review_id")
-    private Integer reviewId;
+    private Integer id;
     @NotNull
     @Column(name = "rating")
     private int rating;
@@ -50,7 +50,7 @@ public class Review {
 
     public Review(Integer reviewId, int rating, String headline, String comment,
                   Date reviewTime, Equipment equipment, Customer customer) {
-        this.reviewId = reviewId;
+        this.id = reviewId;
         this.rating = rating;
         this.headline = headline;
         this.comment = comment;
@@ -59,12 +59,12 @@ public class Review {
         this.customer = customer;
     }
 
-    public Integer getReviewId() {
-        return reviewId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setReviewId(Integer reviewId) {
-        this.reviewId = reviewId;
+    public void setId(Integer reviewId) {
+        this.id = reviewId;
     }
 
     public int getRating() {

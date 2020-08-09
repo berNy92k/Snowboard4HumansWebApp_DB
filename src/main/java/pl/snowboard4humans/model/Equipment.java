@@ -18,7 +18,7 @@ public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "equipment_id")
-    private Integer equipmentId;
+    private Integer id;
     @NotNull
     @Column(name = "name")
     private String name;
@@ -101,7 +101,7 @@ public class Equipment {
     public Equipment(Integer equipmentId, String name, Manufacturer manufacturer, String shortDescription,
                      String longDescription, String sex, byte[] image, float price, String lengthOrSize,
                      Category category, Date publishDate, Date lastUpdateTime) {
-        this.equipmentId = equipmentId;
+        this.id = equipmentId;
         this.name = name;
         this.manufacturer = manufacturer;
         this.shortDescription = shortDescription;
@@ -115,12 +115,12 @@ public class Equipment {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    public Integer getEquipmentId() {
-        return equipmentId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEquipmentId(Integer equipmentId) {
-        this.equipmentId = equipmentId;
+    public void setId(Integer equipmentId) {
+        this.id = equipmentId;
     }
 
     public String getName() {
@@ -215,6 +215,10 @@ public class Equipment {
         return Utils.getBase64Image(this.image);
     }
 
+    public void setBase64Image(String base64Image) {
+        this.base64Image = base64Image;
+    }
+
     public Set<Review> getReviews() {
         return reviews;
     }
@@ -223,20 +227,16 @@ public class Equipment {
         this.reviews = reviews;
     }
 
-    public void setBase64Image(String base64Image) {
-        this.base64Image = base64Image;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Equipment equipment = (Equipment) o;
-        return Objects.equals(equipmentId, equipment.equipmentId);
+        return Objects.equals(id, equipment.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(equipmentId);
+        return Objects.hash(id);
     }
 }

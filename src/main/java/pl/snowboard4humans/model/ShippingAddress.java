@@ -14,7 +14,7 @@ public class ShippingAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shipping_address_id")
-    private Integer shippingAddressId;
+    private Integer id;
     @NotNull
     @Column(name = "email")
     private String email;
@@ -50,12 +50,12 @@ public class ShippingAddress {
     public ShippingAddress() {
     }
 
-    public Integer getShippingAddressId() {
-        return shippingAddressId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setShippingAddressId(Integer shippingAddressId) {
-        this.shippingAddressId = shippingAddressId;
+    public void setId(Integer shippingAddressId) {
+        this.id = shippingAddressId;
     }
 
     public String getFirstName() {
@@ -143,7 +143,7 @@ public class ShippingAddress {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShippingAddress that = (ShippingAddress) o;
-        return Objects.equals(shippingAddressId, that.shippingAddressId) &&
+        return Objects.equals(id, that.id) &&
                 Objects.equals(email, that.email) &&
                 Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
@@ -157,6 +157,6 @@ public class ShippingAddress {
 
     @Override
     public int hashCode() {
-        return Objects.hash(shippingAddressId, email, firstName, lastName, streetName, houseOrApartmentNr, city, zipCode, country, phone);
+        return Objects.hash(id, email, firstName, lastName, streetName, houseOrApartmentNr, city, zipCode, country, phone);
     }
 }

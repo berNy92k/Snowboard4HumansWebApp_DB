@@ -13,7 +13,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private Integer categoryId;
+    private Integer id;
     @NotNull
     @Column(name = "name")
     private String name;
@@ -30,16 +30,16 @@ public class Category {
     }
 
     public Category(Integer categoryId, String name) {
-        this.categoryId = categoryId;
+        this.id = categoryId;
         this.name = name;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setId(Integer categoryId) {
+        this.id = categoryId;
     }
 
     public String getName() {

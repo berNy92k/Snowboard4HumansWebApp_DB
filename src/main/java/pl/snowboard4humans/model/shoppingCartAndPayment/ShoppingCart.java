@@ -28,7 +28,7 @@ public class ShoppingCart {
 
     public void removeEquipmentById(int id) {
         for (Map.Entry<Equipment, Integer> equipmentIntegerEntry : shoppingCart.entrySet()) {
-            if (equipmentIntegerEntry.getKey().getEquipmentId() == id) {
+            if (equipmentIntegerEntry.getKey().getId() == id) {
                 shoppingCart.remove(equipmentIntegerEntry.getKey());
                 break;
             }
@@ -54,7 +54,7 @@ public class ShoppingCart {
     public void updateShoppingCart(Map<Integer, Integer> eqIdAndQuantity) {
         for (Map.Entry<Integer, Integer> integerIntegerEntry : eqIdAndQuantity.entrySet()) {
             Equipment key = new Equipment();
-            key.setEquipmentId(integerIntegerEntry.getKey());
+            key.setId(integerIntegerEntry.getKey());
             Integer value = integerIntegerEntry.getValue();
 
             shoppingCart.put(key, value);

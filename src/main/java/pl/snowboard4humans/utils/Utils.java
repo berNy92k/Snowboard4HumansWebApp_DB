@@ -37,6 +37,27 @@ public class Utils {
     }
 
     /**
+     * Get base64Image.
+     * If base64image != null return as byte[]
+     * If base64image == null return "pictureError.jpg" to avoid empty space and show for
+     * administrator that picture is missing
+     *
+     * @param base64image -> String
+     * @return byte[]
+     * @throws IOException IOException
+     */
+    public static byte[] getBytesBase64Image(String base64image) throws IOException {
+        byte[] bytes;
+        if (base64image != null) {
+            bytes = Base64.getDecoder().decode(base64image);
+        } else {
+            String path = System.getProperty(ConstantsUtils.USER_DIR);
+            bytes = FileUtils.readFileToByteArray(new File(path + ConstantsUtils.PICTURE_ERROR));
+        }
+        return bytes;
+    }
+
+    /**
      * Get boolean with information if object is empty.
      * For String, Long, Collections
      *

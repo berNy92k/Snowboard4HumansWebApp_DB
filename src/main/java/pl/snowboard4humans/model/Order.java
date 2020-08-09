@@ -17,7 +17,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private Integer orderId;
+    private Integer id;
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
@@ -56,12 +56,12 @@ public class Order {
         return quantity;
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setId(Integer orderId) {
+        this.id = orderId;
     }
 
     public Customer getCustomer() {
@@ -126,7 +126,7 @@ public class Order {
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
         return Float.compare(order.total, total) == 0 &&
-                Objects.equals(orderId, order.orderId) &&
+                Objects.equals(id, order.id) &&
                 Objects.equals(customer, order.customer) &&
                 Objects.equals(shippingAddress, order.shippingAddress) &&
                 Objects.equals(paymentMethod, order.paymentMethod) &&
@@ -136,6 +136,6 @@ public class Order {
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, customer, shippingAddress, paymentMethod, total, status, orderDate);
+        return Objects.hash(id, customer, shippingAddress, paymentMethod, total, status, orderDate);
     }
 }
