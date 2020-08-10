@@ -7,8 +7,8 @@
             <div class="col-3">
                 <h7>ZAPISZ SIĘ DO NEWSLETTERA</h7>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" th:href="@{/}">
-                        <form action="index.html">
+                    <li><a class="text-muted">
+                        <form action="#" th:action="@{/}" th:method="post">
                             <input type="text" name="nazwa" placeholder="Twój adres email*" size="30"
                                    class="borderRadius5MinHeight30MaxHeight35BorderColor109163207099">
                             <input type="submit" value="Wyślij"
@@ -57,9 +57,11 @@
             </div>
             <div class="col">
                 <ul class="list-unstyled text-small">
-                    <li class="text-muted"><a th:href="@{/}">
-                        <img class="mb-2" th:src="@{/images/logos/logo.png}" width="170"
-                             height="24" alt="snowboard4humans"></a>
+                    <li class="text-muted">
+                        <a th:href="@{/}">
+                            <img class="mb-2" th:src="@{/images/logos/logo.png}" width="170"
+                                 height="24" alt="snowboard4humans">
+                        </a>
                     </li>
                     <br>
                     <li class="text-muted">

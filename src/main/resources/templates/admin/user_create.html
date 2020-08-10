@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width500pxMargin0auto">
+
+        <div th:align="center">
+            &nbsp;
+            <h5 class="color950002" th:text="${message}"></h5>
+            &nbsp;
+        </div>
+
+        <div>
+            <form th:action="@{/admin/user}"
+                  th:object="${user}"
+                  th:method="post"
+                  enctype="multipart/form-data">
+                <!-- TODO - validate-->
+
+                <input type="hidden" id="userId" name="userId" th:field="*{id}">
+
+                <div class="form-group">
+                    <label>Adres email</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Wpisz adres email"
+                           th:field="*{email}">
+                    <small id="emailHelp" class="form-text text-muted">
+                        Nigdy nikomu nie udostępnimy Twojego adresu email.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>Nazwa użytkownika</label>
+                    <input type="text" class="form-control" placeholder="Wpisz nazwę użytkownika"
+                           th:field="*{fullName}">
+                </div>
+
+                <div class="form-group">
+                    <label>Hasło</label>
+                    <input type="password" class="form-control" placeholder="Wpisz hasło"
+                           th:field="*{password}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                <button type="button" class="btn btn-primary" id="cancel" onclick="javascript:history.go(-1);">
+                    Anuluj
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script type="text/javascript">
+
+    <!-- TODO - validate-->
+    // function validateCreateUserForm() {
+    //     var email = document.getElementById("email");
+    //     var fullName = document.getElementById("fullName");
+    //     var password = document.getElementById("password");
+    //
+    //     if (email.value.length == 0) {
+    //         alert("Email sie wymagany");
+    //         email.focus();
+    //         return false;
+    //     }
+    //     if (fullName.value.length == 0) {
+    //         alert("Nazwa użytkownika wymagana");
+    //         fullName.focus();
+    //         return false;
+    //     }
+    //     if (password.value.length == 0) {
+    //         alert("Hasło jest wymagane");
+    //         password.focus();
+    //         return false;
+    //     }
+    //
+    //     return true;
+    // }
+</script>
+</html>

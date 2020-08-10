@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width80Margin0auto">
+        <div th:align="center">
+            &nbsp;
+            <h3>
+                <a th:href="@{/admin/user/user_create}">
+                    <p class="color2b57b4">DODAJ NOWEGO UŻYTKOWNIKA DO BAZY</p>
+                </a>
+            </h3>
+            &nbsp;
+        </div>
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+            &nbsp;
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nazwa użytkownika</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="user : ${userList}">
+                    <tr>
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.fullName}"></td>
+                        <td>
+                            <a th:href="@{/admin/user/editUser(id=${user.id})}">EDYCJA</a> &nbsp
+                            <a href="javascript:deleteUser(${user.userId})">USUŃ</a>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script>
+    // function deleteUser(userId) {
+    //     if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz użytkownik z '" + userId + "' id zostanie usunięty")) {
+    //         window.location = '../admin/deleteUser?id=' + userId;
+    //     }
+    // }
+</script>
+</html>

@@ -39,9 +39,22 @@ public interface ConstantsFrontendPL {
 
     // MESSAGES
     String LACK_OF_EQUIPMENT_IN_DB = "Brak sprzętu w bazie - zapraszamy wkrótce";
+    String FILL_ALL_FIELDS_TO_EDIT_EQUIPMENT = "Uzupełnij wszytkie pola w celu wykonania edycji.";
+    String FILL_ALL_FIELDS_TO_CREATE_EQUIPMENT = "Uzupełnij wszytkie pola w celu dodania nowego sprzętu.";
 
     // OBJECT NAMES
     String EQUIPMENT_SHORT_LIST = "equipmentShortList";
+
+
+    // -------------- USER --------------
+    // URL
+    String USER_LIST_URL = "/homepage/equipment_list";
+    String USER_VIEW_URL = "/homepage/equipment_view";
+
+    // MESSAGES
+    String LACK_OF_USERS_IN_DB = "Brak sprzętu w bazie - zapraszamy wkrótce";
+    String FILL_ALL_FIELDS_TO_EDIT_USER = "Uzupełnij wszytkie pola w celu wykonania edycji.";
+    String FILL_ALL_FIELDS_TO_CREATE_USER = "Uzupełnij wszytkie pola w celu dodania nowego sprzętu.";
 
 
     // --------------- REVIEW ---------------

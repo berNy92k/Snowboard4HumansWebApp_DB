@@ -4,17 +4,20 @@ public interface ConstantsAdminENG {
 
     // -------------- ADMIN/USER --------------
     // URL
-    String USER_LIST_URL = "/admin/user_list.html";
-    String USER_CREATE_URL = "/admin/user_create.html";
+    String USER_LIST_OBJECT = "userList";
+    String USER_OBJECT = "user";
+    String USER_LIST_URL = "/admin/user_list";
+    String USER_CREATE_URL = "/admin/user_create";
     String ADMIN_URL = "/admin/";
     String ADMIN_LOGIN_URL = "/admin/login";
-    String ADMIN_LOGIN_URL_JSP = "/admin/login.html";
-    String ADMIN_HOMEPAGE_URL_JSP = "/admin/index.html";
+    String ADMIN_LOGIN_URL_JSP = "/admin/login";
+    String ADMIN_HOMEPAGE_URL_JSP = "/admin/index";
 
     // MESSAGES
     String NEW_USER_WAS_CREATED = "New user was created";
+    String NEW_USER_WAS_NOT_CREATED = "New user was not created";
     String USER_WAS_UPDATED = "User was updated";
-    String USER_WAS_NOT_UPDATED = "User was NOT updated. ";
+    String USER_WAS_NOT_UPDATED = "User was NOT updated.";
     String USER_EMAIL_ALREADY_EXIST_IN_DB = " --> Email already exist in database";
     String COULD_NOT_FIND_USER_BY_ID = "Could not find user with ID: ";
     String USER_WAS_DELETED = "User was deleted";
@@ -22,7 +25,10 @@ public interface ConstantsAdminENG {
     String USER_LOGIN_FAILED = "Login failed";
     String USER_ADMIN_CAN_NOT_BE_DELETED_SQL_ADMIN = "The default admin user account with id = 1 cannot be deleted (It can be update only by SQL Administrator)";
     String USER_ADMIN_CAN_NOT_BE_UPDATED_SQL_ADMIN = "User can not be updated. User with id = 1 is impossible to update (It can be update only by SQL Administrator)";
-
+    String LACK_OF_USERS_IN_DB = "Lack of users in database.";
+    String UPDATE_MODE_CHANGE_FIELDS_USER_ADMIN = "Change values in the fields to edit the user.";
+    String CREATE_MODE_FILL_FIELDS_USER_ADMIN = "Add values for each field to create a new user.";
+    String LIST_OF_USERS_ADMIN = "List of users.";
 
     // -------------- ADMIN/CATEGORY --------------
     // URL
@@ -63,10 +69,10 @@ public interface ConstantsAdminENG {
 
     // -------------- ADMIN/EQUIPMENT --------------
     // URL
-    String EQUIPMENT_LIST_URL = "/admin/equipment_list.html";
-    String EQUIPMENT_CREATE_URL = "/admin/equipment_create.html";
-    String EQUIPMENT_VIEW_URL = "/admin/equipment_view.html";
-    String EQUIPMENT_IS_CREATED_URL = "/admin/equipment_isCreated.html";
+    String EQUIPMENT_LIST_URL = "/admin/equipment_list";
+    String EQUIPMENT_CREATE_URL = "/admin/equipment_create";
+    String EQUIPMENT_VIEW_URL = "/admin/equipment_view";
+    String EQUIPMENT_IS_CREATED_URL = "/admin/equipment_isCreated";
 
     // MESSAGES
     String NEW_EQUIPMENT_WAS_CREATED = "New equipment was created";

@@ -1,6 +1,8 @@
 package pl.snowboard4humans.model;
 
 import com.sun.istack.internal.NotNull;
+import org.springframework.web.multipart.MultipartFile;
+import pl.snowboard4humans.constants.ConstantsPL;
 import pl.snowboard4humans.utils.Utils;
 
 import javax.persistence.*;
@@ -65,6 +67,9 @@ public class Equipment {
 
     @Transient
     private String base64Image;
+
+    @Transient
+    private MultipartFile multipartFile;
 
     public Equipment() {
     }
@@ -211,20 +216,35 @@ public class Equipment {
         this.lastUpdateTime = lastUpdateTime;
     }
 
-    public String getBase64Image() throws IOException {
-        return Utils.getBase64Image(this.image);
-    }
-
-    public void setBase64Image(String base64Image) {
-        this.base64Image = base64Image;
-    }
-
     public Set<Review> getReviews() {
         return reviews;
     }
 
     public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public String getBase64Image() throws IOException {
+        return Utils.getBase64Image(this.image);
+    }
+
+    public void setBase64Image(String base64Image) throws IOException {
+        this.base64Image = base64Image;
+        if (base64Image != null) {
+            this.image = Utils.getBytesBase64Image(base64Image);
+        }
+    }
+    public MultipartFile getMultipartFile() {
+        return multipartFile;
+    }
+
+    public void setMultipartFile(MultipartFile multipartFile) throws IOException {
+        if (multipartFile != null
+                && multipartFile.getOriginalFilename() != null
+                && !multipartFile.getOriginalFilename().equals(ConstantsPL.EMPTY_MESSAGE)) {
+
+            this.image = multipartFile.getBytes();
+        }
     }
 
     @Override
@@ -239,4 +259,5 @@ public class Equipment {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

@@ -5,6 +5,9 @@ public interface ConstantsPL {
     String MESSAGE = "message";
     String EMPTY_MESSAGE = "";
 
+    //
+
+
     // --------------- URL for controllers (all others) ---------------
     // URL - onas
     String O_NAS = "/onas/o-nas";
