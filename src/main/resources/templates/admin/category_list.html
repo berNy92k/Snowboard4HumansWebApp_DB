@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width80Margin0auto">
+        <div th:align="center">
+            &nbsp;
+            <h3>
+                <a th:href="@{/admin/category/category_create}">
+                    <p class="color2b57b4">DODAJ NOWĄ KATEGORIE DO BAZY</p>
+                </a>
+            </h3>
+            &nbsp;
+        </div>
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+            &nbsp;
+        </div>
+
+            <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="category : ${categoryList}">
+                    <tr>
+                        <td th:text="${category.id}"></td>
+                        <td th:text="${category.name}"></td>
+                        <td>
+                            <a th:href="@{/admin/category/editCategory(id=${category.id})}">EDYCJA</a> &nbsp
+                            <!--TODO-->
+                            <a href="javascript:deleteCategory(${category.categoryId})">USUŃ</a>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script>
+    <!--TODO-->
+    function deleteCategory(categoryId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz kategoria z '" + categoryId + "' id zostanie usunięte")) {
+            window.location = '../admin/deleteCategory?id=' + categoryId;
+        }
+    }
+</script>
+</html>

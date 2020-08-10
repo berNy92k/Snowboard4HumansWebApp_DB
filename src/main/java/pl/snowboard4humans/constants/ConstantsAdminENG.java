@@ -32,20 +32,26 @@ public interface ConstantsAdminENG {
 
     // -------------- ADMIN/CATEGORY --------------
     // URL
-    String CATEGORY_LIST_URL = "/admin/category_list.html";
-    String CATEGORY_CREATE_URL = "/admin/category_create.html";
+    String CATEGORY_LIST_OBJECT = "categoryList";
+    String CATEGORY_OBJECT = "category";
+    String CATEGORY_LIST_URL = "/admin/category_list";
+    String CATEGORY_CREATE_OR_UPDATE_URL = "/admin/categoryCreateOrUpdate";
 
     // MESSAGES
     String NEW_CATEGORY_WAS_CREATED = "New category was created";
+    String NEW_CATEGORY_WAS_NOT_CREATED = "New category was not created";
     String CATEGORY_WAS_UPDATED = "Category was updated";
-    String CATEGORY_WAS_NOT_UPDATED = "Category was NOT updated. ";
+    String CATEGORY_WAS_NOT_UPDATED = "Category was NOT updated.";
     String COULD_NOT_FIND_CATEGORY_BY_ID = "Could not find category with ID: ";
     String CATEGORY_NAME_ALREADY_EXIST_IN_DB = " --> Name of category already exist in database";
     String DELETED_BY_ANOTHER_CATEGORY_ADMIN = ", or it might have been deleted by another admin.";
     String CATEGORY_WAS_DELETED = "Category was deleted";
     String CATEGORY_CAN_NOT_BE_DELETED_SQL_ADMIN = "Category can not be delete. Categories with id 1,2,3,4,5,6,7 are impossible to delete (It can be delete only by SQL Administrator)";
     String CATEGORY_CAN_NOT_BE_UPDATED_SQL_ADMIN = "Category can not be updated. Categories with id 1,2,3,4,5,6,7 are impossible to update (It can be update only by SQL Administrator)";
-
+    String LIST_OF_CATEGORY_ADMIN = "List of categories.";
+    String LACK_OF_CATEGORY_IN_DB = "Lack of categories in database.";
+    String UPDATE_MODE_CHANGE_FIELDS_CATEGORY_ADMIN = "Change values in the fields to edit the category.";
+    String CREATE_MODE_FILL_FIELDS_CATEGORY_ADMIN = "Add values for each field to create a new category.";
 
     // -------------- ADMIN/MANUFACTURER --------------
     // URL
@@ -55,8 +61,6 @@ public interface ConstantsAdminENG {
     String MANUFACTURER_CREATE_OR_UPDATE_URL = "/admin/manufacturerCreateOrUpdate";
 
     // MESSAGES
-    String UPDATE_MODE_CHANGE_FIELDS_MANUFACTURER_ADMIN = "Change values in the fields to edit the manufacturer.";
-    String CREATE_MODE_FILL_FIELDS_MANUFACTURER_ADMIN = "Add values for each field to create a new manufacturer.";
     String NEW_MANUFACTURER_WAS_CREATED = "New manufacturer was created";
     String NEW_MANUFACTURER_WAS_NOT_CREATED = "New manufacturer was not created";
     String MANUFACTURER_WAS_UPDATED = "Manufacturer was updated";
@@ -65,8 +69,10 @@ public interface ConstantsAdminENG {
     String COULD_NOT_FIND_MANUFACTURER_BY_ID = "Could not find manufacturer with ID: ";
     String MANUFACTURER_WAS_DELETED = "Manufacturer was deleted";
     String DELETED_BY_ANOTHER_MANUFACTURER_ADMIN = ", or it might have been deleted by another admin.";
+    String LIST_OF_MANUFACTURER_ADMIN = "List of manufacturers.";
     String LACK_OF_MANUFACTURER_IN_DB = "Lack of manufacturer in database";
-
+    String UPDATE_MODE_CHANGE_FIELDS_MANUFACTURER_ADMIN = "Change values in the fields to edit the manufacturer.";
+    String CREATE_MODE_FILL_FIELDS_MANUFACTURER_ADMIN = "Add values for each field to create a new manufacturer.";
     // -------------- ADMIN/EQUIPMENT --------------
     // URL
     String EQUIPMENT_LIST_URL = "/admin/equipment_list";
@@ -88,9 +94,9 @@ public interface ConstantsAdminENG {
 
     // -------------- ADMIN/CUSTOMER --------------
     // URL
-    String CUSTOMER_LIST_URL = "/admin/customer_list.html";
-    String CUSTOMER_CREATE_URL = "/admin/customer_create.html";
-    String CUSTOMER_VIEW_URL = "/admin/customer_view.html";
+    String CUSTOMER_LIST_URL = "/admin/customer_list";
+    String CUSTOMER_CREATE_URL = "/admin/customer_create";
+    String CUSTOMER_VIEW_URL = "/admin/customer_view";
 
     // MESSAGES
     String NEW_CUSTOMER_WAS_CREATED = "New customer was created";
@@ -104,9 +110,9 @@ public interface ConstantsAdminENG {
 
     // -------------- ADMIN/REVIEW --------------
     // URL
-    String REVIEW_LIST_URL = "/admin/review_list.html";
-    String REVIEW_CREATE_URL = "/admin/review_create.html";
-    String REVIEW_VIEW_URL = "/admin/review_view.html";
+    String REVIEW_LIST_URL = "/admin/review_list";
+    String REVIEW_CREATE_URL = "/admin/review_create";
+    String REVIEW_VIEW_URL = "/admin/review_view";
 
     // MESSAGES
     String NEW_REVIEW_WAS_CREATED = "New review was created";
@@ -117,8 +123,8 @@ public interface ConstantsAdminENG {
     String DELETED_BY_ANOTHER_REVIEW_ADMIN = ", or it might have been deleted by another admin.";
 
     // -------------- ADMIN/ORDER --------------
-    String ORDER_LIST_URL = "/admin/order_list.html";
-    String ORDER_VIEW_URL = "/admin/order_view.html";
+    String ORDER_LIST_URL = "/admin/order_list";
+    String ORDER_VIEW_URL = "/admin/order_view";
 
     // MESSAGES
     String NEW_ORDER_WAS_CREATED = "New order was created";

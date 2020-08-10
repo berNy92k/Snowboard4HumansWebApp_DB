@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width500pxMargin0auto">
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+            &nbsp;
+        </div>
+
+        <div>
+            <form th:action="@{/admin/category}"
+                  th:object="${category}"
+                  th:method="post">
+                <!--TODO add fields validation-->
+                <!--onsubmit="return validateCreateCategoryForm()">-->
+
+                <input type="hidden" id="categoryId" name="categoryId" th:field="*{id}">
+
+                <div class="form-group">
+                    <label>Nazwa kategorii</label>
+                    <input type="text" class="form-control" aria-describedby="nameCategory"
+                           placeholder="Wpisz nazwę kategorii"
+                           th:field="*{name}">
+                </div>
+                <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                <button type="button" class="btn btn-primary" id="cancel" onclick="javascript:history.go(-1);">
+                    Anuluj
+                </button>
+            </form>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script type="text/javascript">
+    function validateCreateCategoryForm() {
+        var name = document.getElementById("name");
+
+        if (name.value.length == 0) {
+            alert("Nazwa kategorii jest wymagana");
+            name.focus();
+            return false;
+        }
+
+        return true;
+    }
+</script>
+</html>
