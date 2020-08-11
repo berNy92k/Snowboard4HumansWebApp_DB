@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width98Margin30auto0">
+        <div class="backgroundColord7e6f3Padding15151540MarginBottom50">
+            <h2 class="color0d0e48"
+                th:text="'#'+${customer.id}+' '+${customer.firstName}+' '+${customer.lastName}">
+            </h2>
+        </div>
+        <div class="displayFlex">
+            <div class="marginRight15Width500">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'ID:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.id}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Data rejestracji:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.registerDate}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Email:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.email}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Imię:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.firstName}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Nazwisko:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.lastName}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Ulica:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.street}"></h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="width50"></div>
+            <div class="marginRight15Width500">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Numer domu:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.homeNumber}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Miasto:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.city}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Kod pocztowy:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.zipCode}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Kraj:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.country}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Numer telefonu:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${customer.phone}"></h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="marginLeft20Width100">
+                <div>
+                    <h5>Akcje:</h5>
+                </div>
+                <div>
+                    <a th:href="@{/admin/customer/editCustomer(id=${customer.id})}">EDYCJA</a>
+                    <!-- TODO -->
+                    <a href="javascript:deleteCustomer(${customer.customerId})">USUŃ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script>
+    function deleteCustomer(customerId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz klient z '" + customerId + "' id zostanie usunięty")) {
+            window.location = '../admin/deleteCustomer?id=' + customerId;
+        }
+    }
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width98Margin0auto">
+        <div th:align="center">
+            &nbsp;
+            <h3>
+                <a th:href="@{/admin/customer/customer_create}">
+                    <p class="color2b57b4">DODAJ NOWEGO KLIENTA DO BAZY</p>
+                </a>
+            </h3>
+            &nbsp;
+        </div>
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+            &nbsp;
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Imię</th>
+                    <th scope="col">Nazwisko</th>
+                    <th scope="col">Data rejestracji</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="customer : ${customerList}">
+                    <tr>
+                        <td th:text="${customer.id}"></td>
+                        <td th:text="${customer.email}"></td>
+                        <td th:text="${customer.firstName}"></td>
+                        <td th:text="${customer.lastName}"></td>
+                        <td th:text="${customer.registerDate}"></td>
+                        <td class="width220">
+                            <a th:href="@{/admin/customer/editCustomer(id=${customer.id})}">EDYCJA</a> |
+                            <!-- TODO -->
+                            <a href="javascript:deleteCustomer(${customer.customerId})">USUŃ</a> |
+                            <a th:href="@{/admin/customer/viewCustomer(id=${customer.id})}">PODGLĄD</a>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script>
+    <!-- TODO -->
+    function deleteCustomer(customerId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz klient z '" + customerId + "' id zostanie usunięty")) {
+            window.location = '../admin/deleteCustomer?id=' + customerId;
+        }
+    }
+</script>
+</html>

@@ -73,6 +73,7 @@ public interface ConstantsAdminENG {
     String LACK_OF_MANUFACTURER_IN_DB = "Lack of manufacturer in database";
     String UPDATE_MODE_CHANGE_FIELDS_MANUFACTURER_ADMIN = "Change values in the fields to edit the manufacturer.";
     String CREATE_MODE_FILL_FIELDS_MANUFACTURER_ADMIN = "Add values for each field to create a new manufacturer.";
+
     // -------------- ADMIN/EQUIPMENT --------------
     // URL
     String EQUIPMENT_LIST_URL = "/admin/equipment_list";
@@ -94,19 +95,25 @@ public interface ConstantsAdminENG {
 
     // -------------- ADMIN/CUSTOMER --------------
     // URL
+    String CUSTOMER_LIST_OBJECT = "customerList";
+    String CUSTOMER_OBJECT = "customer";
     String CUSTOMER_LIST_URL = "/admin/customer_list";
-    String CUSTOMER_CREATE_URL = "/admin/customer_create";
+    String CUSTOMER_CREATE_OR_UPDATE_URL = "/admin/customerCreateOrUpdate";
     String CUSTOMER_VIEW_URL = "/admin/customer_view";
 
     // MESSAGES
-    String NEW_CUSTOMER_WAS_CREATED = "New customer was created";
+    String NEW_CUSTOMER_WAS_CREATED = "New customer was created.";
+    String NEW_CUSTOMER_WAS_NOT_CREATED = "New customer was not created. ";
     String CUSTOMER_WAS_UPDATED = "Customer was updated";
     String CUSTOMER_WAS_NOT_UPDATED = "Customer was NOT updated. ";
     String COULD_NOT_FIND_CUSTOMER_BY_ID = "Could not find customer with ID: ";
     String CUSTOMER_NAME_ALREADY_EXIST_IN_DB = " --> Email of customer already exist in database";
     String DELETED_BY_ANOTHER_CUSTOMER_ADMIN = ", or it might have been deleted by another admin.";
     String CUSTOMER_WAS_DELETED = "Customer was deleted";
-
+    String LIST_OF_CUSTOMER_ADMIN = "List of customers.";
+    String LACK_OF_CUSTOMER_IN_DB = "Lack of customers in database.";
+    String UPDATE_MODE_CHANGE_FIELDS_CUSTOMER_ADMIN = "Change values in the fields to edit the customer.";
+    String CREATE_MODE_FILL_FIELDS_CUSTOMER_ADMIN = "Add values for each field to create a new customer.";
 
     // -------------- ADMIN/REVIEW --------------
     // URL
