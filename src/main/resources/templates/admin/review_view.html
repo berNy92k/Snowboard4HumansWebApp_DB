@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width98Margin30auto0">
+        <div class="backgroundColord7e6f3Padding15151540MarginBottom50">
+            <h2 class="color0d0e48" th:text="'#'+${review.id}+' - '+${review.headline}"></h2>
+        </div>
+        <div class="displayFlex">
+            <div class="marginRight15Width500">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'ID:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.id}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Ocena:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.rating}"></h3>
+                        <h3 class="color0d0e48">${review.rating}</h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Tytuł:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.headline}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Komentarz:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.comment}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Data wpisu:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.reviewTime}"></h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="width50"></div>
+            <div class="marginRight15Width500">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'ID sprzętu:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.equipment.id}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Nazwa sprzętu:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.equipment.name}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'ID klienta:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.customer.id}"></h3>
+                    </li>
+                    <li class="list-group-item">
+                        <h4 class="colorb60001" th:text="'Email klienta:'"></h4> &nbsp;
+                        <h3 class="color0d0e48" th:text="${review.customer.email}"></h3>
+                    </li>
+                </ul>
+            </div>
+            <div class="marginLeft20Width100">
+                <div>
+                    <h5>Akcje:</h5>
+                </div>
+                <div>
+                    <a th:href="@{/admin/review/editReview(id=${customer.id})}">EDYCJA</a>
+                    <!--TODO - delete-->
+                    <p><a href="javascript:deleteReview(${review.reviewId})">USUŃ</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script>
+    function deleteReview(reviewId) {
+        if (confirm("Czy jestes pewny? Jeżeli się zgodzisz recenzja z '" + reviewId + "' id zostanie usunięta")) {
+            window.location = '../admin/deleteReview?id=' + reviewId;
+        }
+    }
+</script>
+</html>

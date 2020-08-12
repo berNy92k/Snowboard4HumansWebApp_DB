@@ -8,10 +8,6 @@ public interface ConstantsAdminENG {
     String USER_OBJECT = "user";
     String USER_LIST_URL = "/admin/user_list";
     String USER_CREATE_URL = "/admin/user_create";
-    String ADMIN_URL = "/admin/";
-    String ADMIN_LOGIN_URL = "/admin/login";
-    String ADMIN_LOGIN_URL_JSP = "/admin/login";
-    String ADMIN_HOMEPAGE_URL_JSP = "/admin/index";
 
     // MESSAGES
     String NEW_USER_WAS_CREATED = "New user was created";
@@ -117,17 +113,24 @@ public interface ConstantsAdminENG {
 
     // -------------- ADMIN/REVIEW --------------
     // URL
+    String REVIEW_LIST_OBJECT = "reviewList";
+    String REVIEW_OBJECT = "review";
     String REVIEW_LIST_URL = "/admin/review_list";
-    String REVIEW_CREATE_URL = "/admin/review_create";
+    String REVIEW_CREATE_URL = "/admin/reviewCreateOrUpdate";
     String REVIEW_VIEW_URL = "/admin/review_view";
 
     // MESSAGES
     String NEW_REVIEW_WAS_CREATED = "New review was created";
+    String NEW_REVIEW_WAS_NOT_CREATED = "New review was not created";
     String REVIEW_WAS_UPDATED = "Review was updated";
     String REVIEW_WAS_NOT_UPDATED = "Review was NOT updated. ";
     String COULD_NOT_FIND_REVIEW_BY_ID = "Could not find review with ID: ";
     String REVIEW_WAS_DELETED = "Review was deleted";
     String DELETED_BY_ANOTHER_REVIEW_ADMIN = ", or it might have been deleted by another admin.";
+    String LACK_OF_REVIEW_IN_DB = "Lack of reviews in database.";
+    String UPDATE_MODE_CHANGE_FIELDS_REVIEW_ADMIN = "Change values in the fields to edit the review.";
+    String CREATE_MODE_FILL_FIELDS_REVIEW_ADMIN = "Add values for each field to create a new review.";
+    String LIST_OF_REVIEW_ADMIN = "List of reviews.";
 
     // -------------- ADMIN/ORDER --------------
     String ORDER_LIST_URL = "/admin/order_list";
@@ -140,4 +143,9 @@ public interface ConstantsAdminENG {
     String COULD_NOT_FIND_ORDER_BY_ID = "Could not find order with ID: ";
     String ORDER_WAS_DELETED = "Order was deleted";
     String DELETED_BY_ANOTHER_ORDER_ADMIN = ", or it might have been deleted by another admin.";
+    String LACK_OF_ORDER_IN_DB = "Lack of order in database.";
+    String UPDATE_MODE_CHANGE_FIELDS_ORDER_ADMIN = "Change values in the fields to edit the order.";
+    String CREATE_MODE_FILL_FIELDS_ORDER_ADMIN = "Add values for each field to create a new order.";
+    String LIST_OF_ORDER_ADMIN = "List of order.";
+
 }

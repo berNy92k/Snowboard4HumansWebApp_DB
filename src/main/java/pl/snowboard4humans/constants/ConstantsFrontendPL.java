@@ -59,7 +59,7 @@ public interface ConstantsFrontendPL {
 
     // --------------- REVIEW ---------------
     // URL
-    String REVIEW_HOMEPAGE_CREATE_URL = "/homepage/review_create.html";
+    String REVIEW_HOMEPAGE_CREATE_URL = "/homepage/reviewCreateOrUpdate.html";
 
     // MESSAGES
 

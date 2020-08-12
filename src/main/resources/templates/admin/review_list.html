@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width98Margin0auto">
+        <div th:align="center">
+            &nbsp;
+            <h3>
+                <a th:href="@{/admin/review/review_create}">
+                    <p class="color2b57b4">DODAJ NOWĄ RECENCJĘ DO BAZY</p>
+                </a>
+            </h3>
+            &nbsp;
+        </div>
+
+        <div th:align="center">
+            <h5 class="color950002" th:text="${message}"></h5>
+            &nbsp;
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Ocena</th>
+                    <th scope="col">Tytuł</th>
+                    <th scope="col">ID sprzętu</th>
+                    <th scope="col">ID klienta</th>
+                    <th scope="col">Data wpisu</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="review : ${reviewList}">
+                    <tr>
+                        <td th:text="${review.id}"></td>
+                        <td th:text="${review.rating}"></td>
+                        <td th:text="${review.headline}"></td>
+                        <td th:text="${review.equipment.equipmentId}"></td>
+                        <td th:text="${review.customer.customerId}"></td>
+                        <td th:text="${review.reviewTime}"></td>
+                        <td class="width220">
+                            <a th:href="@{/admin/review/editReview(id=${review.id})}">EDYCJA</a> |
+                            <!--TODO - delete-->
+                            <a href="javascript:deleteReview(${review.reviewId})">USUŃ</a> |
+                            <a th:href="@{/admin/review/viewReview(id=${review.id})}">PODGLĄD</a>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script>
+    function deleteReview(reviewId) {
+        if (confirm("Czy jestes pewny? Jeżeli się zgodzisz recenzja z '" + reviewId + "' id zostanie usunięta")) {
+            window.location = '../admin/deleteReview?id=' + reviewId;
+        }
+    }
+</script>
+</html>
