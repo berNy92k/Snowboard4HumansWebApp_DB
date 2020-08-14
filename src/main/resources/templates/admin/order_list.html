@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width98Margin0auto">
+
+        <div th:align="center">
+            &nbsp;
+            <h5 class="color950002" th:text="${message}"></h5>
+            &nbsp;
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col" th:text="'ID'"></th>
+                    <th scope="col" th:text="'CustomerID'"></th>
+                    <th scope="col" th:text="'ShippingAddressID'"></th>
+                    <th scope="col" th:text="'Metoda płatności'"></th>
+                    <th scope="col" th:text="'Kwota [zł]'"></th>
+                    <th scope="col" th:text="'Status zamówienia'"></th>
+                    <th scope="col" th:text="'Data zamówienia'"></th>
+                    <th scope="col" th:text="'Akcje'"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="order : ${orderList}">
+                    <tr>
+                        <td th:text="${order.id}"></td>
+                        <td th:text="${order.customer.id}"></td>
+                        <td th:text="${order.shippingAddress.id}"></td>
+                        <td th:text="${order.paymentMethod}"></td>
+                        <td th:text="${order.total}"></td>
+                        <td th:text="${order.status}"></td>
+                        <td th:text="${order.orderDate}"></td>
+                        <td>
+                            <!--TODO - delete-->
+                            <p><a href="javascript:deleteOrder(${order.orderId})">USUŃ</a></p>
+                            <p><a th:href="@{/admin/order/viewOrder(id=${order.id})}">PODGLĄD</a></p>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script>
+    function deleteOrder(orderId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz zamówienie z '" + orderId + "' id oraz powiązane z " +
+            "nim informację zostaną usunięte")) {
+
+            window.location = '../admin/deleteOrder?id=' + orderId;
+        }
+    }
+</script>
+</html>

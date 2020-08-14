@@ -133,11 +133,15 @@ public interface ConstantsAdminENG {
     String LIST_OF_REVIEW_ADMIN = "List of reviews.";
 
     // -------------- ADMIN/ORDER --------------
+    String ORDER_LIST_OBJECT = "orderList";
+    String ORDER_OBJECT = "order";
+    String ORDER_CREATE_OR_UPDATE_URL = "/admin/orderCreateOrUpdate";
     String ORDER_LIST_URL = "/admin/order_list";
     String ORDER_VIEW_URL = "/admin/order_view";
 
     // MESSAGES
     String NEW_ORDER_WAS_CREATED = "New order was created";
+    String NEW_ORDER_WAS_NOT_CREATED = "New order was not created";
     String ORDER_WAS_UPDATED = "Order was updated";
     String ORDER_WAS_NOT_UPDATED = "Order was NOT updated. ";
     String COULD_NOT_FIND_ORDER_BY_ID = "Could not find order with ID: ";

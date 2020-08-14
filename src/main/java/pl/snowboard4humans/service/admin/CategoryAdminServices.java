@@ -53,7 +53,7 @@ public class CategoryAdminServices extends SuperService {
         Integer categoryId = category.getId();
         Category categorySaved = categoryRepo.save(category);
 
-        List<Category> userList = categoryRepo.findAll();
+        List<Category> categoryList = categoryRepo.findAll();
         if (categoryId == null && categorySaved != null && categorySaved.getId() != null) {
             message = ConstantsAdminENG.NEW_CATEGORY_WAS_CREATED;
         } else if (categoryId != null && categorySaved != null && categorySaved.getId() != null) {
@@ -67,14 +67,14 @@ public class CategoryAdminServices extends SuperService {
         return getRequestDispatcher(model,
                 message,
                 ConstantsAdminENG.CATEGORY_LIST_OBJECT,
-                userList,
+                categoryList,
                 ConstantsAdminENG.CATEGORY_LIST_URL);
     }
 
     public String getEditCategoryScreen(Model model,
                                         int categoryId) {
-        Optional<Category> userOptional = categoryRepo.findById(categoryId);
-        Category category = userOptional.orElseGet(Category::new);
+        Optional<Category> categoryOptional = categoryRepo.findById(categoryId);
+        Category category = categoryOptional.orElseGet(Category::new);
 
         return getRequestDispatcher(model,
                 ConstantsAdminENG.UPDATE_MODE_CHANGE_FIELDS_CATEGORY_ADMIN,

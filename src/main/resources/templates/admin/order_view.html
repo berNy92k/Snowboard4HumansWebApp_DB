@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width98Margin30auto0 displayFlex">
+        <div class="marginRight10 width94percentage">
+            <div>
+                <h4 class="colorb60001" th:text="'Dane klienta:'"></h4>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col" th:text="'ID'"></th>
+                        <th scope="col" th:text="'Email'"></th>
+                        <th scope="col" th:text="'Imie'"></th>
+                        <th scope="col" th:text="'Nazwisko'"></th>
+                        <th scope="col" th:text="'Telefon'"></th>
+                        <th scope="col" th:text="'Akcje'"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:text="${order.customer.id}"></td>
+                        <td th:text="${order.customer.email}"></td>
+                        <td th:text="${order.customer.firstName}"></td>
+                        <td th:text="${order.customer.lastName}"></td>
+                        <td th:text="${order.customer.phone}"></td>
+                        <td>
+                            <a th:href="@{/admin/customer/viewCustomer(id=${order.customer.id})}">PODGLĄD</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h4 class="colorb60001" th:text="'Dane do wysyłki: '"></h4>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col" th:text="'ID'"></th>
+                        <th scope="col" th:text="'Email'"></th>
+                        <th scope="col" th:text="'Imie'"></th>
+                        <th scope="col" th:text="'Nazwisko'"></th>
+                        <th scope="col" th:text="'Miasto i kod pocztowy'"></th>
+                        <th scope="col" th:text="'Adres'"></th>
+                        <th scope="col" th:text="'Państwo'"></th>
+                        <th scope="col" th:text="'Telefon'"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:text="${order.shippingAddress.id}"></td>
+                        <td th:text="${order.shippingAddress.email}"></td>
+                        <td th:text="${order.shippingAddress.firstName}"></td>
+                        <td th:text="${order.shippingAddress.lastName}"></td>
+                        <td th:text="${order.shippingAddress.city}+' '+${order.shippingAddress.zipCode}"></td>
+                        <td th:text="${order.shippingAddress.streetName}+' '+${order.shippingAddress.houseOrApartmentNr}"></td>
+                        <td th:text="${order.shippingAddress.country}"></td>
+                        <td th:text="${order.shippingAddress.phone}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <h4 class="colorb60001">Zamówiony sprzęt: </h4>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col" th:text="'ID'"></th>
+                        <th scope="col" th:text="'Nazwa'"></th>
+                        <th scope="col" th:text="'Nazwa producenta'"></th>
+                        <th scope="col" th:text="'Sztuk'"></th>
+                        <th scope="col" th:text="'Kwota [zł]'"></th>
+                        <th scope="col" th:text="'Zdjęcie'"></th>
+                        <th scope="col" th:text="'Akcje'"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:each="singleEq: ${order.orderEquipmentDetails}">
+                        <tr>
+                            <td th:text="${singleEq.equipment.id}"></td>
+                            <td th:text="${singleEq.equipment.name}"></td>
+                            <td th:text="${singleEq.equipment.manufacturer.manufacturerName}"></td>
+                            <td th:text="${singleEq.quantity}"></td>
+                            <td th:text="${singleEq.subtotal}"></td>
+                            <td>
+                                <img th:src="@{'data:image/jpg;base64,'+${singleEq.equipment.base64Image}}"
+                                     th:width="80px"/>
+                            </td>
+                            <td>
+                                <p>
+                                    <a th:href="@{/admin/equipment/viewEquipment(id=${singleEq.equipment.id})}">PODGLĄD</a>
+                                </p>
+                            </td>
+                        </tr>
+                    </th:block>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td th:text="${order.totalOfOrder}"></td>
+                        <td th:text="${order.total}"></td>
+                        <td></td>
+                        <td>SUMA</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="width100">
+            <div>
+                <h5>Akcje:</h5>
+            </div>
+            <div>
+                <!--TODO - delete-->
+                <p><a href="javascript:deleteOrder(${order.orderId})">USUŃ</a></p>
+            </div>
+        </div>
+    </div>
+    &nbsp;
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+<script>
+    function deleteOrder(orderId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz zamówienie z '" + orderId + "' id oraz powiązane z " +
+            "nim informację zostaną usunięte")) {
+
+            window.location = '../admin/deleteOrder?id=' + orderId;
+        }
+    }
+</script>
+</html>
