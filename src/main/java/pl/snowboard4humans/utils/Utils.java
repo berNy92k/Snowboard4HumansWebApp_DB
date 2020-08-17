@@ -136,19 +136,19 @@ public class Utils {
      */
     public static int choiceCategory(String equipmentCategory) {
         switch (equipmentCategory) {
-            case ConstantsUtils.SNOWBOARDS:
+            case ConstantsUtils.ADMIN_SNOWBOARDS:
                 return CategoryEnum.SNOWBOARDS.getCategory();
-            case ConstantsUtils.SNOWBOARD_SHOES:
+            case ConstantsUtils.ADMIN_SNOWBOARD_SHOES:
                 return CategoryEnum.SNOWBOARDSHOES.getCategory();
-            case ConstantsUtils.SNOWBOARD_BINDINGS:
+            case ConstantsUtils.ADMIN_SNOWBOARD_BINDINGS:
                 return CategoryEnum.SNOWBOARDBINDINGS.getCategory();
-            case ConstantsUtils.SNOWBOARD_GLOVES:
+            case ConstantsUtils.ADMIN_SNOWBOARD_GLOVES:
                 return CategoryEnum.SNOWBOARDGLOVES.getCategory();
-            case ConstantsUtils.SNOWBOARD_GOGGLES:
+            case ConstantsUtils.ADMIN_SNOWBOARD_GOGGLES:
                 return CategoryEnum.SNOWBOARDGOGGLES.getCategory();
-            case ConstantsUtils.SNOWBOARD_HELMETS:
+            case ConstantsUtils.ADMIN_SNOWBOARD_HELMETS:
                 return CategoryEnum.SNOWBOARDHELMETS.getCategory();
-            case ConstantsUtils.THERMOACTIVE_CLOTHING:
+            case ConstantsUtils.ADMIN_THERMOACTIVE_CLOTHING:
                 return CategoryEnum.THERMOACTIVECLOTHING.getCategory();
             default:
                 return CategoryEnum.ZERO.getCategory();
@@ -163,22 +163,49 @@ public class Utils {
      */
     public static String plVersionOfCategory(String equipmentCategory) {
         switch (equipmentCategory) {
-            case ConstantsUtils.SNOWBOARDS:
+            case ConstantsUtils.ADMIN_SNOWBOARDS:
                 return CategoryPLEnum.SNOWBOARDS.getCategory();
-            case ConstantsUtils.SNOWBOARD_SHOES:
+            case ConstantsUtils.ADMIN_SNOWBOARD_SHOES:
                 return CategoryPLEnum.SNOWBOARDSHOES.getCategory();
-            case ConstantsUtils.SNOWBOARD_BINDINGS:
+            case ConstantsUtils.ADMIN_SNOWBOARD_BINDINGS:
                 return CategoryPLEnum.SNOWBOARDBINDINGS.getCategory();
-            case ConstantsUtils.SNOWBOARD_GLOVES:
+            case ConstantsUtils.ADMIN_SNOWBOARD_GLOVES:
                 return CategoryPLEnum.SNOWBOARDGLOVES.getCategory();
-            case ConstantsUtils.SNOWBOARD_GOGGLES:
+            case ConstantsUtils.ADMIN_SNOWBOARD_GOGGLES:
                 return CategoryPLEnum.SNOWBOARDGOGGLES.getCategory();
-            case ConstantsUtils.SNOWBOARD_HELMETS:
+            case ConstantsUtils.ADMIN_SNOWBOARD_HELMETS:
                 return CategoryPLEnum.SNOWBOARDHELMETS.getCategory();
-            case ConstantsUtils.THERMOACTIVE_CLOTHING:
+            case ConstantsUtils.ADMIN_THERMOACTIVE_CLOTHING:
                 return CategoryPLEnum.THERMOACTIVECLOTHING.getCategory();
             default:
                 return CategoryPLEnum.ZERO.getCategory();
+        }
+    }
+
+    /**
+     * get html depends on the category type
+     *
+     * @param type
+     * @return String
+     */
+    public static String getHtmlDependsOnCategoryTypeAdmin(String type) {
+        switch (type) {
+            case ConstantsUtils.ADMIN_SNOWBOARDS:
+                return ConstantsUtils.ADMIN_SNOWBOARDS_HTML;
+            case ConstantsUtils.ADMIN_SNOWBOARD_SHOES:
+                return ConstantsUtils.ADMIN_SNOWBOARD_SHOES_HTML;
+            case ConstantsUtils.ADMIN_SNOWBOARD_BINDINGS:
+                return ConstantsUtils.ADMIN_SNOWBOARD_BINDINGS_HTML;
+            case ConstantsUtils.ADMIN_SNOWBOARD_GLOVES:
+                return ConstantsUtils.ADMIN_SNOWBOARD_GLOVES_HTML;
+            case ConstantsUtils.ADMIN_SNOWBOARD_GOGGLES:
+                return ConstantsUtils.ADMIN_SNOWBOARD_GOGGLES_HTML;
+            case ConstantsUtils.ADMIN_SNOWBOARD_HELMETS:
+                return ConstantsUtils.ADMIN_SNOWBOARD_HELMETS_HTML;
+            case ConstantsUtils.ADMIN_THERMOACTIVE_CLOTHING:
+                return ConstantsUtils.ADMIN_THERMOACTIVE_CLOTHING_HTML;
+            default:
+                return ConstantsUtils.ADMIN_INDEX_HTML;
         }
     }
 }

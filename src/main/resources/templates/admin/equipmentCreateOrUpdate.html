@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width1200pxMargin0auto">
+
+        <div th:align="center">
+            &nbsp;
+            <h5 class="color950002" th:text="${message}"></h5>
+            &nbsp;
+        </div>
+
+        <div>
+            <form th:action="@{/admin/equipment/details}"
+                  th:method="post"
+                  th:object="${equipment}"
+                  enctype="multipart/form-data">
+                <!--TODO add fields validation-->
+                <!--onsubmit="return validateCreateEquipmentForm()">-->
+
+                <input type="hidden" id="equipmentId" name="equipmentId" th:field="*{id}">
+
+                <div class="displayFlex">
+                    <div class="width550">
+                        <div class="form-group">
+                            <label>Nazwa sprzętu</label>
+                            <input type="text" class="form-control" aria-describedby="nameEquipment"
+                                   placeholder="Wpisz nazwę sprzętu" th:field="*{name}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nazwa producenta</label>
+                            <br>
+                            <select class="form-control" th:field="*{manufacturer.id}">
+                                <th:block th:each="manufacturer : ${manufacturers}">
+                                    <!--<th:block th:if="${manufacturer.id eq equipment.manufacturer.id}">-->
+                                    <!--<option th:field="${manufacturer.id}" th:text="${manufacturer.id}" selected>-->
+                                    <!--</th:block>-->
+                                    <!--<th:block th:if="${manufacturer.id ne equipment.manufacturer.id}">-->
+                                    <option th:text="${manufacturer.manufacturerName}" th:value="${manufacturer.id}"></option>
+                                    <!--</th:block>-->
+                                </th:block>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Cena sprzętu [zł]</label>
+                            <input type="number" class="form-control" aria-describedby="priceEquipment"
+                                   placeholder="Podaj cenę za sprzęt" th:field="*{price}">
+                        </div>
+                    </div>
+
+                    <div class="marginLeft50 width550">
+                        <div class="form-group">
+                            <label>Długość sprzętu lub jego rozmiar</label>
+                            <input type="text" class="form-control" aria-describedby="lengthOrSizeEquipment"
+                                   placeholder="Podaj długość lub rozmiar (w zależności od sprzętu)"
+                                   th:field="*{lengthOrSize}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Płeć</label>
+                            <select class="form-control" th:field="*{sex}">
+                                <option th:value="MAN" th:text="MAN"></option>
+                                <option th:value="WOMAN" th:text="WOMAN"></option>
+                                <option th:value="CHILD" th:text="CHILD"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kategoria</label>
+                            <br>
+                            <select class="form-control" th:field="*{category.id}">
+                                <th:block th:each="category : ${categories}">
+                                    <!--<th:block th:if="${category.categoryId eq equipment.category.categoryId}">-->
+                                    <!--<option value="${category.categoryId}" selected>-->
+                                    <!--</th:block>-->
+                                    <!--<th:block th:if="${category.categoryId ne equipment.category.categoryId}">-->
+                                    <option th:text="${category.name}" th:value="${category.id}"></option>
+                                    <!--</th:block>-->
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="width1150">
+                    <div class="form-group">
+                        <label>Krótki opis sprzętu</label>
+                        <input type="text" class="form-control" aria-describedby="shortDescription"
+                               placeholder="Wpisz krótki opis sprzętu"
+                               th:field="*{shortDescription}">
+                    </div>
+                </div>
+
+                <div class="displayFlex marginTop30">
+                    <div class="width550">
+                        <div class="form-group">
+                            <label>Długi opis sprzętu</label>
+                            <textarea class="form-control" rows="30" placeholder="Wpisz długi opis sprzętu"
+                                      th:field="*{longDescription}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="marginLeft50 width550">
+                        <div class="form-group">
+                            <label>Zdjęcie sprzętu</label>
+                            <input type="file" class="form-control" th:field="*{multipartFile}" multiple="multiple">
+                            <img id="smallPic" class="width300 marginTop5" alt="Podgląd zdjęcia" src="#"
+                                 th:src="@{'data:image/jpg;base64,'+*{base64Image}}"/>
+
+                            <input type="hidden" th:field="*{base64Image}">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                <button type="button" class="btn btn-primary" id="cancel" onclick="javascript:history.go(-1);">
+                    Anuluj
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+
+</body>
+
+<script type="text/javascript">
+    // function validateCreateEquipmentForm() {
+    //     var name = document.getElementById("name");
+    //     var manufacturerName = document.getElementById("manufacturerName");
+    //     var price = document.getElementById("price");
+    //     var lengthOrSize = document.getElementById("lengthOrSize");
+    //     var sex = document.getElementById("sex");
+    //     var categoryName = document.getElementById("categoryName");
+    //     var shortDescription = document.getElementById("shortDescription");
+    //     var longDescription = document.getElementById("longDescription");
+    //     var equipmentImage = document.getElementById("equipmentImage");
+    //
+    //     if (name.value.length == 0) {
+    //         alert("Nazwa sprzętu jest wymagana");
+    //         name.focus();
+    //         return false;
+    //     }
+    //     if (manufacturerName.value.length == 0) {
+    //         alert("Producent jest wymagany");
+    //         manufacturerName.focus();
+    //         return false;
+    //     }
+    //     if (price.value.length == 0) {
+    //         alert("Cena za produkt jest wymagana");
+    //         price.focus();
+    //         return false;
+    //     }
+    //     if (lengthOrSize.value.length == 0) {
+    //         alert("Długość lub rozmiar jest wymagany");
+    //         lengthOrSize.focus();
+    //         return false;
+    //     }
+    //     if (sex.value.length == 0) {
+    //         alert("Płeć jest wymagana");
+    //         sex.focus();
+    //         return false;
+    //     }
+    //     if (categoryName.value.length == 0) {
+    //         alert("Nazwa kategorii jest wymagana");
+    //         categoryName.focus();
+    //         return false;
+    //     }
+    //     if (shortDescription.value.length == 0) {
+    //         alert("Krótki opis jest wymagany");
+    //         shortDescription.focus();
+    //         return false;
+    //     }
+    //     if (longDescription.value.length == 0) {
+    //         alert("Długi opis jest wymagany");
+    //         longDescription.focus();
+    //         return false;
+    //     }
+    //     // <th:block th:if="${equipment == null}">
+    //     if (equipmentImage.value.length == 0) {
+    //         alert("Zdjęcie jest wymagane");
+    //         equipmentImage.focus();
+    //         return false;
+    //     }
+    //     // </th:block>
+    //
+    //     return true;
+    // }
+    //
+    // $(document).ready(function () {
+    //     $('#equipmentImage').change(function () {
+    //         showPreviewImage(this);
+    //     })
+    // });
+    //
+    // function showPreviewImage(fileInput) {
+    //     var file = fileInput.files[0];
+    //     var reader = new FileReader();
+    //
+    //     reader.onload = function (ev) {
+    //         $('#smallEquipmentImage').attr('src', ev.target.result)
+    //     };
+    //
+    //     reader.readAsDataURL(file);
+    // }
+</script>
+</html>

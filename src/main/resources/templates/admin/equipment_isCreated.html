@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width1200pxMargin30auto0">
+        <div th:align="center">
+            <h5>
+                <p class="color950002" th:text="${message}"></p>
+            </h5>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+
+</html>

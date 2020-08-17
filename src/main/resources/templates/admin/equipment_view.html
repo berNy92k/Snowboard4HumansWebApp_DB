@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width98Margin30auto0">
+        <div class="displayFlex">
+            <div class="marginRight15Width610Border0d0e48">
+                <img th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
+                     th:width="600px">
+            </div>
+            <div class="width50"></div>
+            <div class="width400">
+                <div class="marginBottom40px">
+                    <h3 class="color0d0e48" th:text="${equipment.name}"></h3>
+                </div>
+                <div class="marginBottom40displayFlex">
+                    <h4 class="colorb60001" th:text="'Cena:'"></h4> &nbsp;
+                    <h2 class="colorb60001" th:text="${equipment.price}+' zł'"></h2>
+                </div>
+                <div class="marginBottom40px">
+                    <h5 th:text="'Długość (cm) / Rozmiar (EU)'"></h5>
+                    <h3 th:text="${equipment.lengthOrSize}"></h3>
+                </div>
+                <div class="marginBottom40displayFlex">
+                    <div>
+                        <div>
+                            <h5 th:text="'Producent:'"></h5>
+                        </div>
+                        <div>
+                            <h3 th:text="${equipment.manufacturer.manufacturerName}"></h3>
+                        </div>
+                    </div>
+                    <div class="marginLeft50">
+                        <img th:src="@{'data:image/jpg;base64,'+${equipment.manufacturer.base64Image}}"
+                             th:width="100px">
+                    </div>
+                </div>
+                <div class="marginBottom20px">
+                    <table class="margin0autoTableLayoutFixedWhiteSpaceNormalImportantWordWrapBreakWordWidth400">
+                        <thead>
+                        <tr class="backgroundColorRgba084140059">
+                            <th>
+                                <h5 th:text="'Krótki opis produktu: '"></h5>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <h4 th:text="${equipment.shortDescription}"></h4>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="width40 marginLeft20">
+                <div>
+                    <h5 th:text="'Akcje:'"></h5>
+                </div>
+                <div>
+                    <p><a th:href="@{/admin/equipment/editEquipment(id=${equipment.id})}">EDYCJA</a></p>
+                    <p><a href="javascript:deleteEquipment(${equipment.equipmentId})">USUŃ</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="clearBothMarginTop40">
+            <table class="margin0autoTableLayoutFixedWhiteSpaceNormalImportantWordWrapBreakWordWidth1200">
+                <thead>
+                <tr class="backgroundColorRgba084140059">
+                    <th>
+                        <h2 th:text="'Opis produktu: '"></h2>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <h3 th:text="${equipment.longDescription}"></h3>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+
+<script>
+    function deleteEquipment(equipmentId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz sprzęt z '" + equipmentId + "' id zostanie usunięty")) {
+            window.location = '../admin/deleteEquipment?id=' + equipmentId;
+        }
+    }
+</script>
+</html>

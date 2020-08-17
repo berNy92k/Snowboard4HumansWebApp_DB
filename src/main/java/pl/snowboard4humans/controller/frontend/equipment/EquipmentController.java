@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.snowboard4humans.service.frontend.EquipmentServices;
 
 @Controller
-@RequestMapping(value = "/homepage")
+@RequestMapping(value = "/homepage/equipment")
 public class EquipmentController {
 
     private EquipmentServices equipmentServices;
@@ -20,18 +20,10 @@ public class EquipmentController {
         this.equipmentServices = equipmentServices;
     }
 
-    @GetMapping(value = "/equipment")
+    @GetMapping
     public String getEquipment(Model model,
                                @RequestParam String eqm,
                                @RequestParam String sex) {
-
-        return equipmentServices.equipmentList(model, eqm, sex);
-    }
-
-    @PostMapping(value = "/equipment")
-    public String postEquipment(Model model,
-                                @RequestParam String eqm,
-                                @RequestParam String sex) {
 
         return equipmentServices.equipmentList(model, eqm, sex);
     }

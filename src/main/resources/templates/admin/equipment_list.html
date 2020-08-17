@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <div th:replace="admin/header :: header"/>
+    </header>
+
+    <div class="width98Margin0auto">
+
+        <div th:align="center" class="marginTop15">
+            <h2>
+                <a class="color2d0001" th:text="${equipmentCategoryName}"></a>
+                <a class="color2d0001"> - </a>
+                <a class="color2d0001" th:text="${equipmentSex}"></a></h2>
+        </div>
+
+        <div th:align="center">
+            <h3>
+                &nbsp;
+                <a th:href="@{/admin/equipment/precreateNewEquipment(eqm=${eqCat},sex=${sex})}">
+                    <p class="color2b57b4">DODAJ NOWY SPRZĘT DO BAZY</p>
+                </a>
+                &nbsp;
+            </h3>
+        </div>
+
+        <div th:align="center">
+            <h5>
+                <p class="color950002" th:text="${message}"></p>
+            </h5>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col" th:text="'ID'"></th>
+                    <th scope="col" th:text="'Nazwa'"></th>
+                    <th scope="col" th:text="'Nazwa producenta'"></th>
+                    <th scope="col" th:text="'Krótki opis'"></th>
+                    <th scope="col" th:text="'Kwota [zł]'"></th>
+                    <th scope="col" th:text="'Zdjęcie'"></th>
+                    <th scope="col" th:text="'Akcje'"></th>
+                </tr>
+                </thead>
+                <div th:if="${messageEmpty == false}">
+                    <tbody>
+                    <th:block th:each="equipment : ${equipmentList}">
+                        <tr>
+                            <td th:text="${equipment.id}"></td>
+                            <td th:text="${equipment.name}"></td>
+                            <td th:text="${equipment.manufacturer.manufacturerName}"></td>
+                            <td th:text="${equipment.shortDescription}"></td>
+                            <td th:text="${equipment.price}"></td>
+                            <td>
+                                <img th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
+                                     th:width="80px">
+                            </td>
+                            <td>
+                                <p><a th:href="@{/admin/equipment/editEquipment(id=${equipment.id})}">EDYCJA</a></p>
+                                <!--TODO - delete-->
+                                <p><a href="javascript:deleteEquipment(${equipment.equipmentId})">USUŃ</a></p>
+                                <p><a th:href="@{/admin/equipment/details/viewEquipment(id=${equipment.id})}">PODGLĄD</a></p>
+                            </td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </div>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="admin/footer :: footer"/>
+</div>
+
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+
+<script>
+    function deleteEquipment(equipmentId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz sprzęt z '" + equipmentId + "' id zostanie usunięty")) {
+            window.location = '../admin/deleteEquipment?id=' + equipmentId;
+        }
+    }
+</script>
+</html>

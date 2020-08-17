@@ -73,7 +73,7 @@ public interface ConstantsAdminENG {
     // -------------- ADMIN/EQUIPMENT --------------
     // URL
     String EQUIPMENT_LIST_URL = "/admin/equipment_list";
-    String EQUIPMENT_CREATE_URL = "/admin/equipment_create";
+    String EQUIPMENT_CREATE_URL = "/admin/equipmentCreateOrUpdate";
     String EQUIPMENT_VIEW_URL = "/admin/equipment_view";
     String EQUIPMENT_IS_CREATED_URL = "/admin/equipment_isCreated";
 

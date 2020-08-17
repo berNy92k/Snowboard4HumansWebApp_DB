@@ -21,12 +21,21 @@ public interface ConstantsUtils {
     String CHILD = "child";
 
     // category
-    String SNOWBOARDS = "snowboards";
-    String SNOWBOARD_SHOES = "snowboardShoes";
-    String SNOWBOARD_BINDINGS = "snowboardBindings";
-    String SNOWBOARD_GLOVES = "snowboardGloves";
-    String SNOWBOARD_GOGGLES = "snowboardGoggles";
-    String SNOWBOARD_HELMETS = "snowboardHelmets";
-    String THERMOACTIVE_CLOTHING = "thermoactiveClothing";
+    String ADMIN_SNOWBOARDS = "snowboards";
+    String ADMIN_SNOWBOARD_SHOES = "snowboardShoes";
+    String ADMIN_SNOWBOARD_BINDINGS = "snowboardBindings";
+    String ADMIN_SNOWBOARD_GLOVES = "snowboardGloves";
+    String ADMIN_SNOWBOARD_GOGGLES = "snowboardGoggles";
+    String ADMIN_SNOWBOARD_HELMETS = "snowboardHelmets";
+    String ADMIN_THERMOACTIVE_CLOTHING = "thermoactiveClothing";
 
+    // html pages
+    String ADMIN_SNOWBOARDS_HTML = "admin/snowboards";
+    String ADMIN_SNOWBOARD_SHOES_HTML = "admin/snowboardShoes";
+    String ADMIN_SNOWBOARD_BINDINGS_HTML = "admin/snowboardBindings";
+    String ADMIN_SNOWBOARD_GLOVES_HTML = "admin/snowboardGloves";
+    String ADMIN_SNOWBOARD_GOGGLES_HTML = "admin/snowboardGoggles";
+    String ADMIN_SNOWBOARD_HELMETS_HTML = "admin/snowboardHelmets";
+    String ADMIN_THERMOACTIVE_CLOTHING_HTML = "admin/thermoactiveClothing";
+    String ADMIN_INDEX_HTML = "admin/index";
 }
