@@ -32,7 +32,7 @@ public class ManufacturerAdminServices extends SuperService {
             message = ConstantsAdminENG.LACK_OF_MANUFACTURER_IN_DB;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.MANUFACTURER_LIST_OBJECT,
                 manufacturerList,
@@ -57,7 +57,7 @@ public class ManufacturerAdminServices extends SuperService {
             message = ConstantsAdminENG.MANUFACTURER_WAS_NOT_UPDATED;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.MANUFACTURER_LIST_OBJECT,
                 manufacturerList,
@@ -69,7 +69,7 @@ public class ManufacturerAdminServices extends SuperService {
         Optional<Manufacturer> manufacturerOptional = manufacturerRepo.findById(manufacturerId);
         Manufacturer manufacturer = manufacturerOptional.orElseGet(Manufacturer::new);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.UPDATE_MODE_CHANGE_FIELDS_MANUFACTURER_ADMIN,
                 ConstantsAdminENG.MANUFACTURER_OBJECT,
                 manufacturer,
@@ -77,7 +77,7 @@ public class ManufacturerAdminServices extends SuperService {
     }
 
     public String getAddNewManufacturerScreen(Model model) {
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_MANUFACTURER_ADMIN,
                 ConstantsAdminENG.MANUFACTURER_OBJECT,
                 new Manufacturer(),

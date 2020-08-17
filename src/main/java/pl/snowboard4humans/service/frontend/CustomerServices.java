@@ -26,7 +26,7 @@ public class CustomerServices extends SuperService {
     }
 
     public String loginFormCustomer(Model model) {
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsPL.NULL,
                 ConstantsFrontendPL.LOGIN_CUSTOMER_OBJECT,
                 new Customer(),
@@ -54,20 +54,20 @@ public class CustomerServices extends SuperService {
                 equipment.setPrice(5.50f);
                 equipmentShortList.add(equipment);
 
-                return getRequestDispatcher(model,
+                return getRequestDispatcherWithDefaultMessage(model,
                         ConstantsFrontendPL.LOGIN_SUCCESS,
                         ConstantsFrontendPL.EQUIPMENT_SHORT_LIST,
                         equipmentShortList,
                         ConstantsFrontendPL.HOMEPAGE_URL);
             } else {
-                return getRequestDispatcher(model,
+                return getRequestDispatcherWithDefaultMessage(model,
                         ConstantsFrontendPL.LOGIN_FAILED,
                         ConstantsFrontendPL.LOGIN_CUSTOMER_OBJECT,
                         new Customer(),
                         ConstantsFrontendPL.LOGIN_FORM_PAGE);
             }
         } else {
-            return getRequestDispatcher(model,
+            return getRequestDispatcherWithDefaultMessage(model,
                     ConstantsFrontendPL.LOGIN_FAILED,
                     ConstantsFrontendPL.LOGIN_CUSTOMER_OBJECT,
                     new Customer(),
@@ -88,7 +88,7 @@ public class CustomerServices extends SuperService {
         equipment.setPrice(5.50f);
         equipmentShortList.add(equipment);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsFrontendPL.LOGIN_SUCCESS,
                 ConstantsFrontendPL.EQUIPMENT_SHORT_LIST,
                 equipmentShortList,
@@ -96,7 +96,7 @@ public class CustomerServices extends SuperService {
     }
 
     public String registerFormCustomer(Model model) {
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsPL.NULL,
                 ConstantsFrontendPL.REGISTER_CUSTOMER_OBJECT,
                 new Customer(),
@@ -107,7 +107,7 @@ public class CustomerServices extends SuperService {
                                    Model model) {
         List<Customer> customersFoundByEmail = customerRepo.findCustomersByEmail(customerRegisterData.getEmail());
         if (!Utils.isEmpty(customersFoundByEmail)) {
-            return getRequestDispatcher(model,
+            return getRequestDispatcherWithDefaultMessage(model,
                     ConstantsFrontendPL.REGISTER_FAILED,
                     ConstantsFrontendPL.REGISTER_CUSTOMER_OBJECT,
                     new Customer(),
@@ -116,7 +116,7 @@ public class CustomerServices extends SuperService {
             Customer newCustomer = getNewCustomer(customerRegisterData, ConstantsUtils.FALSE, null);
             customerRepo.save(newCustomer);
 
-            return getRequestDispatcher(model,
+            return getRequestDispatcherWithDefaultMessage(model,
                     ConstantsFrontendPL.REGISTER_SUCCESS,
                     ConstantsFrontendPL.LOGIN_CUSTOMER_OBJECT,
                     new Customer(),
@@ -132,7 +132,7 @@ public class CustomerServices extends SuperService {
                                         Model model) {
         //TODO dodac zamowienia
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsFrontendPL.LOGIN_CUSTOMER_OBJECT,
                 new Customer(),

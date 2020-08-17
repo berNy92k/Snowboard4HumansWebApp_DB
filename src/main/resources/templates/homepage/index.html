@@ -146,23 +146,21 @@
                 <div class="lineUnderMessage"></div>
                 <p class="pTitle">PRZYKŁADOWE NASZE PRODUKTY</p>
                 <div class="width95margin0auto">
-                    <div th:each="equipment: ${equipmentShortList}">
-                        <div class=width250border07255006displayInlineBlockMargin14>
-                            <div class="indexFirstMessage2aa">
-                                <a th:href="@{viewEquipment(id=${equipment.id})}">
-                                    <img class="book-small"
-                                         th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
-                                         th:width="145px"
-                                         alt="Podgląd sprzętu"/>
-                                </a>
+                    <div th:each="equipment: ${equipmentShortList}" class=width250border07255006displayInlineBlockMargin14>
+                        <div class="indexFirstMessage2aa">
+                            <a th:href="@{viewEquipment(id=${equipment.id})}">
+                                <img class="book-small"
+                                     th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
+                                     th:width="145px"
+                                     alt="Podgląd sprzętu"/>
+                            </a>
+                        </div>
+                        <div class="textAlignCenterVerticalAlignCenterMarginTop5">
+                            <div class="indexFirstMessage2aba">
+                                <b class="fontSize10" th:text="${equipment.name}"></b>
                             </div>
-                            <div class="textAlignCenterVerticalAlignCenterMarginTop5">
-                                <div class="indexFirstMessage2aba">
-                                    <b class="fontSize10" th:text="${equipment.name}"></b>
-                                </div>
-                                <div>
-                                    <b class="indexFirstMessage2abc" th:text="${equipment.price}"> [zł]</b>
-                                </div>
+                            <div>
+                                <b class="indexFirstMessage2abc" th:text="${equipment.price}"> [zł]</b>
                             </div>
                         </div>
                     </div>

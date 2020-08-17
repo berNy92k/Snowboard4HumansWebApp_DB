@@ -43,7 +43,7 @@ public class ReviewAdminServices extends SuperService {
             message = ConstantsAdminENG.LACK_OF_REVIEW_IN_DB;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.REVIEW_LIST_OBJECT,
                 reviewList,
@@ -57,7 +57,7 @@ public class ReviewAdminServices extends SuperService {
         model.addAttribute("equipmentList", equipmentList);
         model.addAttribute("customerList", customerList);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_REVIEW_ADMIN,
                 ConstantsAdminENG.REVIEW_OBJECT,
                 new Review(),
@@ -90,7 +90,7 @@ public class ReviewAdminServices extends SuperService {
             message = ConstantsAdminENG.REVIEW_WAS_NOT_UPDATED;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.REVIEW_LIST_OBJECT,
                 userList,
@@ -102,7 +102,7 @@ public class ReviewAdminServices extends SuperService {
         Optional<Review> reviewOptional = reviewRepo.findById(userId);
         Review review = reviewOptional.orElseGet(Review::new);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.UPDATE_MODE_CHANGE_FIELDS_REVIEW_ADMIN,
                 ConstantsAdminENG.REVIEW_OBJECT,
                 review,
@@ -114,7 +114,7 @@ public class ReviewAdminServices extends SuperService {
         Optional<Review> customerOptional = reviewRepo.findById(reviewId);
         Review review = customerOptional.orElseGet(Review::new);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsPL.EMPTY_MESSAGE,
                 ConstantsAdminENG.REVIEW_OBJECT,
                 review,

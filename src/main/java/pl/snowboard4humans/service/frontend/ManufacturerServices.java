@@ -31,7 +31,7 @@ public class ManufacturerServices extends SuperService {
             message = ConstantsFrontendPL.LACK_OF_MANUFACTURER_IN_DB;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsFrontendPL.MANUFACTURER_LIST_OBJECT,
                 manufacturers,

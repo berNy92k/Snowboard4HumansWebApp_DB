@@ -31,7 +31,7 @@ public class OrderAdminServices extends SuperService {
             message = ConstantsAdminENG.LACK_OF_ORDER_IN_DB;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.ORDER_LIST_OBJECT,
                 orderList,
@@ -39,7 +39,7 @@ public class OrderAdminServices extends SuperService {
     }
 
     public String getAddNewOrderScreen(Model model) {
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_ORDER_ADMIN,
                 ConstantsAdminENG.ORDER_OBJECT,
                 new Order(),

@@ -30,7 +30,9 @@ Below you will be able to see short description with images for:
 ### 4.1 Homepage - for users
 Screens with homepage view for clients/ users.
 
-TODO
+![GitHub Logo](src/main/resources/static/images/websiteScreens/homepage1.PNG)
+![GitHub Logo](src/main/resources/static/images/websiteScreens/homepage2.PNG)
+![GitHub Logo](src/main/resources/static/images/websiteScreens/homepage3.PNG)
 
 ### 4.2 Homepage - for admins
 Screens with homepage view for admins

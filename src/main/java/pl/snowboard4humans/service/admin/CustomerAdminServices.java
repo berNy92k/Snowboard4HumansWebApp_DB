@@ -33,7 +33,7 @@ public class CustomerAdminServices extends SuperService {
             message = ConstantsAdminENG.LACK_OF_CUSTOMER_IN_DB;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.CUSTOMER_LIST_OBJECT,
                 customerList,
@@ -41,7 +41,7 @@ public class CustomerAdminServices extends SuperService {
     }
 
     public String getAddNewCustomerScreen(Model model) {
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_CUSTOMER_ADMIN,
                 ConstantsAdminENG.CUSTOMER_OBJECT,
                 new Customer(),
@@ -98,7 +98,7 @@ public class CustomerAdminServices extends SuperService {
             message = ConstantsAdminENG.CUSTOMER_WAS_NOT_UPDATED;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.CUSTOMER_LIST_OBJECT,
                 customerList,
@@ -111,7 +111,7 @@ public class CustomerAdminServices extends SuperService {
                                                    Customer customerById) {
         if (customerByEmail != null && !customerByEmail.getId().equals(customerById.getId())) {
             List<Customer> customerList = customerRepo.findAll();
-            return getRequestDispatcher(model,
+            return getRequestDispatcherWithDefaultMessage(model,
                     message,
                     ConstantsAdminENG.CUSTOMER_LIST_OBJECT,
                     customerList,
@@ -125,7 +125,7 @@ public class CustomerAdminServices extends SuperService {
                                                       String message) {
         if (customersByEmail.size() > 0) {
             List<Customer> customerList = customerRepo.findAll();
-            return getRequestDispatcher(model,
+            return getRequestDispatcherWithDefaultMessage(model,
                     message,
                     ConstantsAdminENG.CUSTOMER_LIST_OBJECT,
                     customerList,
@@ -139,7 +139,7 @@ public class CustomerAdminServices extends SuperService {
         Optional<Customer> customerOptional = customerRepo.findById(customerId);
         Customer customer = customerOptional.orElseGet(Customer::new);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsPL.EMPTY_MESSAGE,
                 ConstantsAdminENG.CUSTOMER_OBJECT,
                 customer,
@@ -151,7 +151,7 @@ public class CustomerAdminServices extends SuperService {
         Optional<Customer> customerOptional = customerRepo.findById(customerId);
         Customer customer = customerOptional.orElseGet(Customer::new);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsPL.EMPTY_MESSAGE,
                 ConstantsAdminENG.CUSTOMER_OBJECT,
                 customer,

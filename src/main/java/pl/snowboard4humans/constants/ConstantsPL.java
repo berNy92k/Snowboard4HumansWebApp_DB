@@ -3,6 +3,7 @@ package pl.snowboard4humans.constants;
 public interface ConstantsPL {
     String NULL = null;
     String MESSAGE = "message";
+    String MESSAGE_EMPTY = "messageEmpty";
     String EMPTY_MESSAGE = "";
 
     //

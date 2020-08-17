@@ -29,7 +29,7 @@ public interface ConstantsUtils {
     String ADMIN_SNOWBOARD_HELMETS = "snowboardHelmets";
     String ADMIN_THERMOACTIVE_CLOTHING = "thermoactiveClothing";
 
-    // html pages
+    // html pages - admin
     String ADMIN_SNOWBOARDS_HTML = "admin/snowboards";
     String ADMIN_SNOWBOARD_SHOES_HTML = "admin/snowboardShoes";
     String ADMIN_SNOWBOARD_BINDINGS_HTML = "admin/snowboardBindings";
@@ -38,4 +38,7 @@ public interface ConstantsUtils {
     String ADMIN_SNOWBOARD_HELMETS_HTML = "admin/snowboardHelmets";
     String ADMIN_THERMOACTIVE_CLOTHING_HTML = "admin/thermoactiveClothing";
     String ADMIN_INDEX_HTML = "admin/index";
+
+    // html pages - homepage
+    String INDEX_HTML = "homepage/index";
 }

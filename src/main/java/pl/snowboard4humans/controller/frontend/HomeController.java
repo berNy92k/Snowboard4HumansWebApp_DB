@@ -1,31 +1,29 @@
 package pl.snowboard4humans.controller.frontend;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
 import pl.snowboard4humans.model.Equipment;
+import pl.snowboard4humans.service.frontend.HomeServices;
 
 import java.util.ArrayList;
 
 @Controller
 @RequestMapping(value = "")
 public class HomeController {
+    private HomeServices homeServices;
+
+    @Autowired
+    public HomeController(HomeServices homeServices) {
+        this.homeServices = homeServices;
+    }
 
     @GetMapping
     public String getHomePage(Model model) {
-        model.addAttribute("messageEmpty", false);
-
-        // TODO - change for equipments from DB
-        ArrayList<Equipment> equipmentShortList = new ArrayList<>();
-        Equipment equipment = new Equipment();
-        equipment.setId(1);
-        equipment.setName("Test");
-        equipment.setPrice(5.50f);
-        equipmentShortList.add(equipment);
-        model.addAttribute(ConstantsFrontendPL.EQUIPMENT_SHORT_LIST, equipmentShortList);
-        return "homepage/index";
+        return homeServices.getShortListOdEquipments(model);
     }
 
     // onas - start

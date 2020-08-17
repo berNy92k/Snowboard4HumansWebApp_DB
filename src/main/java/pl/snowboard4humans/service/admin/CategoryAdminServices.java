@@ -31,7 +31,7 @@ public class CategoryAdminServices extends SuperService {
             message = ConstantsAdminENG.LACK_OF_CATEGORY_IN_DB;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.CATEGORY_LIST_OBJECT,
                 categoryList,
@@ -39,7 +39,7 @@ public class CategoryAdminServices extends SuperService {
     }
 
     public String getAddNewCategoryScreen(Model model) {
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_CATEGORY_ADMIN,
                 ConstantsAdminENG.CATEGORY_OBJECT,
                 new Category(),
@@ -64,7 +64,7 @@ public class CategoryAdminServices extends SuperService {
             message = ConstantsAdminENG.CATEGORY_WAS_NOT_UPDATED;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.CATEGORY_LIST_OBJECT,
                 categoryList,
@@ -76,7 +76,7 @@ public class CategoryAdminServices extends SuperService {
         Optional<Category> categoryOptional = categoryRepo.findById(categoryId);
         Category category = categoryOptional.orElseGet(Category::new);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.UPDATE_MODE_CHANGE_FIELDS_CATEGORY_ADMIN,
                 ConstantsAdminENG.CATEGORY_OBJECT,
                 category,

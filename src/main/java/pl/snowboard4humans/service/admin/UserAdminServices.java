@@ -32,7 +32,7 @@ public class UserAdminServices extends SuperService {
             message = ConstantsAdminENG.LACK_OF_USERS_IN_DB;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.USER_LIST_OBJECT,
                 userList,
@@ -40,7 +40,7 @@ public class UserAdminServices extends SuperService {
     }
 
     public String getAddNewUserScreen(Model model) {
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_USER_ADMIN,
                 ConstantsAdminENG.USER_OBJECT,
                 new User(),
@@ -76,7 +76,7 @@ public class UserAdminServices extends SuperService {
             message = ConstantsAdminENG.USER_WAS_NOT_UPDATED;
         }
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 message,
                 ConstantsAdminENG.USER_LIST_OBJECT,
                 userList,
@@ -88,7 +88,7 @@ public class UserAdminServices extends SuperService {
         Optional<User> userOptional = userRepo.findById(userId);
         User user = userOptional.orElseGet(User::new);
 
-        return getRequestDispatcher(model,
+        return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsAdminENG.UPDATE_MODE_CHANGE_FIELDS_USER_ADMIN,
                 ConstantsAdminENG.USER_OBJECT,
                 user,
