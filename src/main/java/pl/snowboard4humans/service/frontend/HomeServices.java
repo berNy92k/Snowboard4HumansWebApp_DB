@@ -10,7 +10,6 @@ import pl.snowboard4humans.model.Equipment;
 import pl.snowboard4humans.repository.EquipmentRepo;
 import pl.snowboard4humans.service.SuperService;
 
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -23,17 +22,7 @@ public class HomeServices extends SuperService {
     }
 
     public String getShortListOdEquipments(Model model) {
-        List<Equipment> allEquipments = equipmentRepo.findAll();
-
-        List<Equipment> top4equipments = new LinkedList<>();
-        if (allEquipments.size() <= 4) {
-            top4equipments = allEquipments;
-        } else {
-            setRandomEquipmentsToList(allEquipments, top4equipments, true);
-            if (top4equipments.size() < 4) {
-                setRandomEquipmentsToList(allEquipments, top4equipments, false);
-            }
-        }
+        List<Equipment> top4equipments = getTop4Equipments(equipmentRepo.findAll());
 
         return getRequestDispatcherWithOutDefaultMessageAsBoolean(model,
                 ConstantsPL.MESSAGE_EMPTY,
@@ -43,27 +32,4 @@ public class HomeServices extends SuperService {
                 ConstantsUtils.INDEX_HTML);
     }
 
-    private List<Equipment> setRandomEquipmentsToList(List<Equipment> allEquipments,
-                                                      List<Equipment> top4equipments,
-                                                      boolean getEvenNumbers) {
-        int counter = 1;
-        for (Equipment equipment : allEquipments) {
-            if (getEvenNumbers) {
-                if (counter % 2 == 0) {
-                    top4equipments.add(equipment);
-                }
-            } else {
-                if (counter % 2 != 0) {
-                    top4equipments.add(equipment);
-                }
-            }
-
-            counter++;
-            if (top4equipments.size() >= 4) {
-                break;
-            }
-        }
-
-        return top4equipments;
-    }
 }

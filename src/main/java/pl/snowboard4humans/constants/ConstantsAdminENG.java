@@ -66,7 +66,7 @@ public interface ConstantsAdminENG {
     String MANUFACTURER_WAS_DELETED = "Manufacturer was deleted";
     String DELETED_BY_ANOTHER_MANUFACTURER_ADMIN = ", or it might have been deleted by another admin.";
     String LIST_OF_MANUFACTURER_ADMIN = "List of manufacturers.";
-    String LACK_OF_MANUFACTURER_IN_DB = "Lack of manufacturer in database";
+    String LACK_OF_MANUFACTURER_IN_DB = "Lack of manufacturer in database. ";
     String UPDATE_MODE_CHANGE_FIELDS_MANUFACTURER_ADMIN = "Change values in the fields to edit the manufacturer.";
     String CREATE_MODE_FILL_FIELDS_MANUFACTURER_ADMIN = "Add values for each field to create a new manufacturer.";
 

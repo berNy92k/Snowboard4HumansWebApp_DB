@@ -3,7 +3,7 @@ package pl.snowboard4humans.constants;
 public interface ConstantsFrontendPL {
 
     // ---------- LOGIN / REGISTER ----------
-    String LOGIN_FORM_PAGE = "/homepage/logIn";
+    String LOGIN_FORM_PAGE = "/homepage/login";
     String LOGIN_CUSTOMER_OBJECT = "newLoginCustomer";
 
     String REGISTER_FORM_PAGE = "/homepage/register";

@@ -21,9 +21,8 @@
             <form th:action="@{/admin/manufacturer}"
                   th:object="${manufacturer}"
                   th:method="post"
-                  enctype="multipart/form-data">
-                <!--TODO add fields validation-->
-                <!--onsubmit="return validateCreateManufacturerForm()">-->
+                  enctype="multipart/form-data"
+                  onsubmit="return validateCreateManufacturerForm()">
 
                 <input type="hidden" id="manufacturerId" name="manufacturerId" th:field="*{id}">
 
@@ -66,45 +65,45 @@
 
 <script type="text/javascript">
 
-    // function validateCreateManufacturerForm() {
-    //     var manufacturerName = document.getElementById("manufacturerName");
-    //     var description = document.getElementById("description");
-    //     var manufacturerImage = document.getElementById("manufacturerImage");
-    //
-    //     if (manufacturerName.value.length == 0) {
-    //         alert("Nazwa producenta jest wymagana");
-    //         manufacturerName.focus();
-    //         return false;
-    //     }
-    //     if (description.value.length == 0) {
-    //         alert("Opis jest wymagany");
-    //         description.focus();
-    //         return false;
-    //     }
-    //     if (manufacturerImage.value.length == 0) {
-    //         alert("Zdjęcie jest wymagane");
-    //         manufacturerImage.focus();
-    //         return false;
-    //     }
-    //     return true;
-    // }
-    //
-    // $(document).ready(function () {
-    //     $('#manufacturerImage').change(function () {
-    //         showSmallImage(this);
-    //     });
-    // });
-    //
-    // function showSmallImage(fileInput) {
-    //     var file = fileInput.files[0];
-    //
-    //     var reader = new FileReader();
-    //
-    //     reader.onload = function (ev) {
-    //         $('#smallPic').attr('src', ev.target.result)
-    //     };
-    //
-    //     reader.readAsDataURL(file);
-    // }
+    function validateCreateManufacturerForm() {
+        var manufacturerName = document.getElementById("manufacturerName");
+        var description = document.getElementById("description");
+        var multipartFile = document.getElementById("multipartFile");
+
+        if (manufacturerName.value.length == 0) {
+            alert("Nazwa producenta jest wymagana");
+            manufacturerName.focus();
+            return false;
+        }
+        if (description.value.length == 0) {
+            alert("Opis jest wymagany");
+            description.focus();
+            return false;
+        }
+        if (multipartFile.value.length == 0) {
+            alert("Zdjęcie jest wymagane");
+            multipartFile.focus();
+            return false;
+        }
+        return true;
+    }
+
+    $(document).ready(function () {
+        $('#multipartFile').change(function () {
+            showSmallImage(this);
+        });
+    });
+
+    function showSmallImage(fileInput) {
+        var file = fileInput.files[0];
+
+        var reader = new FileReader();
+
+        reader.onload = function (ev) {
+            $('#smallPic').attr('src', ev.target.result)
+        };
+
+        reader.readAsDataURL(file);
+    }
 </script>
 </html>

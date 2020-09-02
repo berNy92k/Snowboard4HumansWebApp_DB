@@ -50,8 +50,7 @@
                         </td>
                         <td>
                             <a th:href="@{/admin/manufacturer/edit(id=${manufacturer.id})}">EDYCJA</a> &nbsp
-                            <!--TODO-->
-                            <a href="javascript:deleteManufacturer(${manufacturer.manufacturerId})">USUŃ</a>
+                            <a th:href="'javascript:deleteManufacturer(\''+${manufacturer.id}+'\')'">USUŃ</a>
                         </td>
                     </tr>
                 </th:block>
@@ -72,7 +71,7 @@
 <script>
     function deleteManufacturer(userId) {
         if (confirm("Are you sure ? If you agree manufacturer with '" + userId + "' id will be deleted")) {
-            window.location = '../admin/deleteManufacturer?id=' + userId;
+            window.location = '../admin/manufacturer/deleteManufacturer?id=' + userId;
         }
     }
 </script>

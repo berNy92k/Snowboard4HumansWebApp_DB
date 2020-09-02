@@ -6,11 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
 import pl.snowboard4humans.model.Customer;
 import pl.snowboard4humans.service.frontend.CustomerServices;
 
 @Controller
+@RequestMapping(value = "")
 public class LoginController {
 
     private CustomerServices customerServices;

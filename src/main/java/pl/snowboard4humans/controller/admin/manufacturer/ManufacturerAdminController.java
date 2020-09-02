@@ -41,4 +41,10 @@ public class ManufacturerAdminController {
         return manufacturerAdminServices.getAddNewManufacturerScreen(model);
     }
 
+    @GetMapping(value = "deleteManufacturer")
+    public String deleteManufacturer(@RequestParam(name = "id") int manufacturerId,
+                                     Model model) {
+        return manufacturerAdminServices.deleteManufacturer(model,manufacturerId);
+    }
+
 }

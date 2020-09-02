@@ -84,4 +84,28 @@ public class ManufacturerAdminServices extends SuperService {
                 ConstantsAdminENG.MANUFACTURER_CREATE_OR_UPDATE_URL);
     }
 
+    public String deleteManufacturer(Model model,
+                                     int manufacturerId) {
+        String message;
+        Optional<Manufacturer> manufacturerOptional = manufacturerRepo.findById(manufacturerId);
+        if (manufacturerOptional.isPresent()) {
+            manufacturerRepo.deleteById(manufacturerId);
+            message = ConstantsAdminENG.MANUFACTURER_WAS_DELETED;
+        } else {
+            message = ConstantsAdminENG.COULD_NOT_FIND_MANUFACTURER_BY_ID + ConstantsAdminENG.DELETED_BY_ANOTHER_MANUFACTURER_ADMIN;
+        }
+
+        List<Manufacturer> manufacturerList = manufacturerRepo.findAll();
+
+        // if manufacturers list is empty then message change
+        if (Utils.isEmpty(manufacturerList)) {
+            message = ConstantsAdminENG.LACK_OF_MANUFACTURER_IN_DB + message;
+        }
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                message,
+                ConstantsAdminENG.MANUFACTURER_LIST_OBJECT,
+                manufacturerList,
+                ConstantsAdminENG.MANUFACTURER_LIST_URL);
+    }
 }

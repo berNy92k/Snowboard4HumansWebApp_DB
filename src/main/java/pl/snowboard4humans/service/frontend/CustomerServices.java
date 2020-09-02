@@ -9,20 +9,25 @@ import pl.snowboard4humans.constants.ConstantsUtils;
 import pl.snowboard4humans.model.Customer;
 import pl.snowboard4humans.model.Equipment;
 import pl.snowboard4humans.repository.CustomerRepo;
+import pl.snowboard4humans.repository.EquipmentRepo;
 import pl.snowboard4humans.service.SuperService;
 import pl.snowboard4humans.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
 public class CustomerServices extends SuperService {
     private CustomerRepo customerRepo;
+    private EquipmentRepo equipmentRepo;
 
     @Autowired
-    public CustomerServices(CustomerRepo customerRepo) {
+    public CustomerServices(CustomerRepo customerRepo,
+                            EquipmentRepo equipmentRepo) {
         this.customerRepo = customerRepo;
+        this.equipmentRepo = equipmentRepo;
     }
 
     public String loginFormCustomer(Model model) {
@@ -46,19 +51,13 @@ public class CustomerServices extends SuperService {
 //                HttpSession session = request.getSession();
 //                session.setAttribute(ConstantsFrontendPL.LOGGED_CUSTOMER, customer);
 
-                // TODO - delete later
-                ArrayList<Equipment> equipmentShortList = new ArrayList<>();
-                Equipment equipment = new Equipment();
-                equipment.setId(1);
-                equipment.setName("Test");
-                equipment.setPrice(5.50f);
-                equipmentShortList.add(equipment);
+                List<Equipment> top4equipments = getTop4Equipments(equipmentRepo.findAll());
 
                 return getRequestDispatcherWithDefaultMessage(model,
                         ConstantsFrontendPL.LOGIN_SUCCESS,
                         ConstantsFrontendPL.EQUIPMENT_SHORT_LIST,
-                        equipmentShortList,
-                        ConstantsFrontendPL.HOMEPAGE_URL);
+                        top4equipments,
+                        ConstantsUtils.INDEX_HTML);
             } else {
                 return getRequestDispatcherWithDefaultMessage(model,
                         ConstantsFrontendPL.LOGIN_FAILED,
@@ -80,18 +79,12 @@ public class CustomerServices extends SuperService {
 //        HttpSession session = request.getSession();
 //        session.removeAttribute(ConstantsFrontendPL.LOGGED_CUSTOMER);
 
-        // TODO - delete later
-        ArrayList<Equipment> equipmentShortList = new ArrayList<>();
-        Equipment equipment = new Equipment();
-        equipment.setId(1);
-        equipment.setName("Test");
-        equipment.setPrice(5.50f);
-        equipmentShortList.add(equipment);
+        List<Equipment> top4equipments = getTop4Equipments(equipmentRepo.findAll());
 
         return getRequestDispatcherWithDefaultMessage(model,
                 ConstantsFrontendPL.LOGIN_SUCCESS,
                 ConstantsFrontendPL.EQUIPMENT_SHORT_LIST,
-                equipmentShortList,
+                top4equipments,
                 ConstantsFrontendPL.HOMEPAGE_URL);
     }
 
