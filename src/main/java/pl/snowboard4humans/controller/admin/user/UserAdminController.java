@@ -40,4 +40,10 @@ public class UserAdminController {
         return userAdminServices.getEditUserScreen(model, userId);
     }
 
+    @GetMapping(value = "deleteUser")
+    public String deleteUser(@RequestParam(name = "id") int userId,
+                             Model model) {
+        return userAdminServices.deleteUser(model, userId);
+    }
+
 }

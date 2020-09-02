@@ -24,14 +24,15 @@
             <form th:action="@{/admin/user}"
                   th:object="${user}"
                   th:method="post"
-                  enctype="multipart/form-data">
-                <!-- TODO - validate-->
+                  enctype="multipart/form-data"
+                  onsubmit="return validateCreateUserForm()">
 
                 <input type="hidden" id="userId" name="userId" th:field="*{id}">
 
                 <div class="form-group">
                     <label>Adres email</label>
-                    <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Wpisz adres email"
+                    <input type="email" class="form-control" aria-describedby="emailHelp"
+                           placeholder="Wpisz adres email"
                            th:field="*{email}">
                     <small id="emailHelp" class="form-text text-muted">
                         Nigdy nikomu nie udostępnimy Twojego adresu email.
@@ -67,30 +68,28 @@
 
 </body>
 <script type="text/javascript">
+    function validateCreateUserForm() {
+        var email = document.getElementById("email");
+        var fullName = document.getElementById("fullName");
+        var password = document.getElementById("password");
 
-    <!-- TODO - validate-->
-    // function validateCreateUserForm() {
-    //     var email = document.getElementById("email");
-    //     var fullName = document.getElementById("fullName");
-    //     var password = document.getElementById("password");
-    //
-    //     if (email.value.length == 0) {
-    //         alert("Email sie wymagany");
-    //         email.focus();
-    //         return false;
-    //     }
-    //     if (fullName.value.length == 0) {
-    //         alert("Nazwa użytkownika wymagana");
-    //         fullName.focus();
-    //         return false;
-    //     }
-    //     if (password.value.length == 0) {
-    //         alert("Hasło jest wymagane");
-    //         password.focus();
-    //         return false;
-    //     }
-    //
-    //     return true;
-    // }
+        if (email.value.length == 0) {
+            alert("Email sie wymagany");
+            email.focus();
+            return false;
+        }
+        if (fullName.value.length == 0) {
+            alert("Nazwa użytkownika wymagana");
+            fullName.focus();
+            return false;
+        }
+        if (password.value.length == 0) {
+            alert("Hasło jest wymagane");
+            password.focus();
+            return false;
+        }
+
+        return true;
+    }
 </script>
 </html>

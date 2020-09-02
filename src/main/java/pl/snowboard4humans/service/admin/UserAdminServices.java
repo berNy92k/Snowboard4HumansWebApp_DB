@@ -94,4 +94,29 @@ public class UserAdminServices extends SuperService {
                 user,
                 ConstantsAdminENG.USER_CREATE_URL);
     }
+
+    public String deleteUser(Model model,
+                             int userId) {
+        String message;
+        Optional<User> userOptional = userRepo.findById(userId);
+        if (userOptional.isPresent()) {
+            userRepo.deleteById(userId);
+            message = ConstantsAdminENG.USER_WAS_DELETED;
+        } else {
+            message = ConstantsAdminENG.COULD_NOT_FIND_USER_BY_ID + ConstantsAdminENG.DELETED_BY_ANOTHER_USER_ADMIN;
+        }
+
+        List<User> userList = userRepo.findAll();
+
+        // if manufacturers list is empty then message change
+        if (Utils.isEmpty(userList)) {
+            message = ConstantsAdminENG.LACK_OF_USERS_IN_DB;
+        }
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                message,
+                ConstantsAdminENG.USER_LIST_OBJECT,
+                userList,
+                ConstantsAdminENG.USER_LIST_URL);
+    }
 }

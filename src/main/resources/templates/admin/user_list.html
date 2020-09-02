@@ -46,7 +46,7 @@
                         <td th:text="${user.fullName}"></td>
                         <td>
                             <a th:href="@{/admin/user/editUser(id=${user.id})}">EDYCJA</a> &nbsp
-                            <a href="javascript:deleteUser(${user.userId})">USUŃ</a>
+                            <a th:href="'javascript:deleteUser(\''+${user.id}+'\')'">USUŃ</a>
                         </td>
                     </tr>
                 </th:block>
@@ -64,10 +64,10 @@
 
 </body>
 <script>
-    // function deleteUser(userId) {
-    //     if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz użytkownik z '" + userId + "' id zostanie usunięty")) {
-    //         window.location = '../admin/deleteUser?id=' + userId;
-    //     }
-    // }
+    function deleteUser(userId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz użytkownik z '" + userId + "' id zostanie usunięty")) {
+            window.location = '../admin/user/deleteUser?id=' + userId;
+        }
+    }
 </script>
 </html>
