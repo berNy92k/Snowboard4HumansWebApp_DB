@@ -44,8 +44,7 @@
                         <td th:text="${category.name}"></td>
                         <td>
                             <a th:href="@{/admin/category/editCategory(id=${category.id})}">EDYCJA</a> &nbsp
-                            <!--TODO-->
-                            <a href="javascript:deleteCategory(${category.categoryId})">USUŃ</a>
+                            <a th:href="'javascript:deleteCategory(\''+${category.id}+'\')'">USUŃ</a>
                         </td>
                     </tr>
                 </th:block>
@@ -63,10 +62,9 @@
 
 </body>
 <script>
-    <!-- TODO -->
     function deleteCategory(categoryId) {
         if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz kategoria z '" + categoryId + "' id zostanie usunięte")) {
-            window.location = '../admin/deleteCategory?id=' + categoryId;
+            window.location = '../admin/category/deleteCategory?id=' + categoryId;
         }
     }
 </script>

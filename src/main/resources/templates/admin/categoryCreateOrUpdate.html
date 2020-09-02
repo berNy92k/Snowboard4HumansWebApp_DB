@@ -22,9 +22,8 @@
         <div>
             <form th:action="@{/admin/category}"
                   th:object="${category}"
-                  th:method="post">
-                <!--TODO add fields validation-->
-                <!--onsubmit="return validateCreateCategoryForm()">-->
+                  th:method="post"
+                  onsubmit="return validateCreateCategoryForm()">
 
                 <input type="hidden" id="categoryId" name="categoryId" th:field="*{id}">
 
@@ -32,7 +31,7 @@
                     <label>Nazwa kategorii</label>
                     <input type="text" class="form-control" aria-describedby="nameCategory"
                            placeholder="Wpisz nazwę kategorii"
-                           th:field="*{name}">
+                           th:field="*{name}" id="name" name="name">
                 </div>
                 <button type="submit" class="btn btn-primary">Zatwierdź</button>
                 <button type="button" class="btn btn-primary" id="cancel" onclick="javascript:history.go(-1);">

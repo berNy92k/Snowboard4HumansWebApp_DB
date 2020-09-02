@@ -29,6 +29,12 @@ public class CategoryAdminController {
         return categoryAdminServices.addOrUpdateCategory(model, category);
     }
 
+    @GetMapping(value = "deleteCategory")
+    public String deleteCategory(@RequestParam(name = "id") int categoryId,
+                                 Model model) {
+        return categoryAdminServices.deleteCategory(model, categoryId);
+    }
+
     @GetMapping(value = "category_create")
     public String addNewCategoryScreen(Model model) {
         return categoryAdminServices.getAddNewCategoryScreen(model);

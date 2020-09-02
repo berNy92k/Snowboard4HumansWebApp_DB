@@ -82,4 +82,29 @@ public class CategoryAdminServices extends SuperService {
                 category,
                 ConstantsAdminENG.CATEGORY_CREATE_OR_UPDATE_URL);
     }
+
+    public String deleteCategory(Model model,
+                                 int categoryId) {
+        String message;
+        Optional<Category> categoryOptional = categoryRepo.findById(categoryId);
+        if (categoryOptional.isPresent()) {
+            categoryRepo.deleteById(categoryId);
+            message = ConstantsAdminENG.CATEGORY_WAS_DELETED;
+        } else {
+            message = ConstantsAdminENG.COULD_NOT_FIND_CATEGORY_BY_ID + ConstantsAdminENG.DELETED_BY_ANOTHER_CATEGORY_ADMIN;
+        }
+
+        List<Category> categoryList = categoryRepo.findAll();
+
+        // if categories list is empty then message change
+        if (Utils.isEmpty(categoryList)) {
+            message = ConstantsAdminENG.LACK_OF_CATEGORY_IN_DB + message;
+        }
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                message,
+                ConstantsAdminENG.CATEGORY_LIST_OBJECT,
+                categoryList,
+                ConstantsAdminENG.CATEGORY_LIST_URL);
+    }
 }
