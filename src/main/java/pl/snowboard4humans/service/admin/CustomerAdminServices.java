@@ -157,4 +157,30 @@ public class CustomerAdminServices extends SuperService {
                 customer,
                 ConstantsAdminENG.CUSTOMER_VIEW_URL);
     }
+
+    public String deleteCustomer(Model model,
+                                 int customerId) {
+        String message;
+        Optional<Customer> customerOptional = customerRepo.findById(customerId);
+        if (customerOptional.isPresent()) {
+            customerRepo.deleteById(customerId);
+            message = ConstantsAdminENG.CUSTOMER_WAS_DELETED;
+        } else {
+            message = ConstantsAdminENG.COULD_NOT_FIND_CUSTOMER_BY_ID + ConstantsAdminENG.DELETED_BY_ANOTHER_CUSTOMER_ADMIN;
+        }
+
+        List<Customer> customerList = customerRepo.findAll();
+
+        // if customer list is empty then message change
+        if (Utils.isEmpty(customerList)) {
+            message = ConstantsAdminENG.LACK_OF_CUSTOMER_IN_DB + message;
+        }
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                message,
+                ConstantsAdminENG.CUSTOMER_LIST_OBJECT,
+                customerList,
+                ConstantsAdminENG.CUSTOMER_LIST_URL);
+    }
+
 }

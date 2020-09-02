@@ -46,5 +46,10 @@ public class CustomerAdminController {
         return customerAdminServices.getViewCustomerScreen(model, customerId);
     }
 
+    @GetMapping(value = "deleteCustomer")
+    public String deleteCustomer(@RequestParam(name = "id") int customerId,
+                                 Model model) {
+        return customerAdminServices.deleteCustomer(model, customerId);
+    }
 
 }

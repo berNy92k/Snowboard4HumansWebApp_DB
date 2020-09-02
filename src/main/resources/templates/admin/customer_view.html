@@ -78,8 +78,7 @@
                 </div>
                 <div>
                     <a th:href="@{/admin/customer/editCustomer(id=${customer.id})}">EDYCJA</a>
-                    <!-- TODO -->
-                    <a href="javascript:deleteCustomer(${customer.customerId})">USUŃ</a>
+                    <a th:href="'javascript:deleteCustomer(\''+${customer.id}+'\')'">USUŃ</a>
                 </div>
             </div>
         </div>
@@ -96,7 +95,7 @@
 <script>
     function deleteCustomer(customerId) {
         if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz klient z '" + customerId + "' id zostanie usunięty")) {
-            window.location = '../admin/deleteCustomer?id=' + customerId;
+            window.location = '../admin/customer/deleteCustomer?id=' + customerId;
         }
     }
 </script>

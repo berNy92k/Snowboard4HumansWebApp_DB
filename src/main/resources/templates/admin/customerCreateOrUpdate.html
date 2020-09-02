@@ -23,9 +23,8 @@
         <div>
             <form th:action="@{/admin/customer}"
                   th:object="${customer}"
-                  th:method="post">
-                <!--TODO add fields validation-->
-                <!--onsubmit="return validateCreateCustomerForm()">-->
+                  th:method="post"
+                  onsubmit="return validateCreateCustomerForm()">
 
                 <input type="hidden" id="customerId" name="customerId" th:field="*{id}">
 
@@ -98,73 +97,74 @@
 
 </body>
 <script type="text/javascript">
-    // function validateCreateCustomerForm() {
-    //     var email = document.getElementById("email");
-    //     var password = document.getElementById("password");
-    //     var firstName = document.getElementById("firstName");
-    //     var lastName = document.getElementById("lastName");
-    //     var street = document.getElementById("street");
-    //     var homeNumber = document.getElementById("homeNumber");
-    //     var city = document.getElementById("city");
-    //     var zipCode = document.getElementById("zipCode");
-    //     var country = document.getElementById("country");
-    //     var phone = document.getElementById("phone");
-    //
-    //     if (email.value.length == 0) {
-    //         alert("Email jest wymagany");
-    //         email.focus();
-    //         return false;
-    //     }
-    //
-    //     <c:if test="${customer == null}">
-    //     if (password.value.length == 0) {
-    //         alert("Hasło jest wymagane");
-    //         password.focus();
-    //         return false;
-    //     }
-    //     </c:if>
-    //
-    //     if (firstName.value.length == 0) {
-    //         alert("Imię jest wymagane");
-    //         firstName.focus();
-    //         return false;
-    //     }
-    //     if (lastName.value.length == 0) {
-    //         alert("Nazwisko jest wymagane");
-    //         lastName.focus();
-    //         return false;
-    //     }
-    //     if (street.value.length == 0) {
-    //         alert("Nazwa ulicy jest wymagana");
-    //         street.focus();
-    //         return false;
-    //     }
-    //     if (homeNumber.value.length == 0) {
-    //         alert("Numer domu jest wymagany");
-    //         homeNumber.focus();
-    //         return false;
-    //     }
-    //     if (city.value.length == 0) {
-    //         alert("Miasto jest wymagane");
-    //         city.focus();
-    //         return false;
-    //     }
-    //     if (zipCode.value.length == 0) {
-    //         alert("Kod pocztowy jest wymagany");
-    //         zipCode.focus();
-    //         return false;
-    //     }
-    //     if (country.value.length == 0) {
-    //         alert("Kraj jest wymagany");
-    //         country.focus();
-    //         return false;
-    //     }
-    //     if (phone.value.length == 0) {
-    //         alert("Numer telefonu jest wymagany");
-    //         phone.focus();
-    //         return false;
-    //     }
-    //     return true;
-    // }
+    function validateCreateCustomerForm() {
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var firstName = document.getElementById("firstName");
+        var lastName = document.getElementById("lastName");
+        var street = document.getElementById("street");
+        var homeNumber = document.getElementById("homeNumber");
+        var city = document.getElementById("city");
+        var zipCode = document.getElementById("zipCode");
+        var country = document.getElementById("country");
+        var phone = document.getElementById("phone");
+
+        if (email.value.length == 0) {
+            alert("Email jest wymagany");
+            email.focus();
+            return false;
+        }
+
+        // TODO
+        // <c:if test="${customer == null}">
+        if (password.value.length == 0) {
+            alert("Hasło jest wymagane");
+            password.focus();
+            return false;
+        }
+        // </c:if>
+
+        if (firstName.value.length == 0) {
+            alert("Imię jest wymagane");
+            firstName.focus();
+            return false;
+        }
+        if (lastName.value.length == 0) {
+            alert("Nazwisko jest wymagane");
+            lastName.focus();
+            return false;
+        }
+        if (street.value.length == 0) {
+            alert("Nazwa ulicy jest wymagana");
+            street.focus();
+            return false;
+        }
+        if (homeNumber.value.length == 0) {
+            alert("Numer domu jest wymagany");
+            homeNumber.focus();
+            return false;
+        }
+        if (city.value.length == 0) {
+            alert("Miasto jest wymagane");
+            city.focus();
+            return false;
+        }
+        if (zipCode.value.length == 0) {
+            alert("Kod pocztowy jest wymagany");
+            zipCode.focus();
+            return false;
+        }
+        if (country.value.length == 0) {
+            alert("Kraj jest wymagany");
+            country.focus();
+            return false;
+        }
+        if (phone.value.length == 0) {
+            alert("Numer telefonu jest wymagany");
+            phone.focus();
+            return false;
+        }
+        return true;
+    }
 </script>
 </html>
