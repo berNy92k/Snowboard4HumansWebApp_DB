@@ -151,7 +151,7 @@ public class Utils {
             case ConstantsUtils.ADMIN_THERMOACTIVE_CLOTHING:
                 return CategoryEnum.THERMOACTIVECLOTHING.getCategory();
             default:
-                return CategoryEnum.ZERO.getCategory();
+                return CategoryEnum.SNOWBOARDS.getCategory();
         }
     }
 
@@ -206,6 +206,33 @@ public class Utils {
                 return ConstantsUtils.ADMIN_THERMOACTIVE_CLOTHING_HTML;
             default:
                 return ConstantsUtils.ADMIN_INDEX_HTML;
+        }
+    }
+
+    /**
+     * get category number by equipmentCategoryByParam
+     *
+     * @param equipmentCategoryByParam String
+     * @return int
+     */
+    public static int choiceCategoryByParam(String equipmentCategoryByParam) {
+        switch (equipmentCategoryByParam) {
+            case ConstantsUtils.ADMIN_SNOWBOARDS_PARAM:
+                return CategoryEnum.SNOWBOARDS.getCategory();
+            case ConstantsUtils.ADMIN_SNOWBOARD_SHOES_PARAM:
+                return CategoryEnum.SNOWBOARDSHOES.getCategory();
+            case ConstantsUtils.ADMIN_SNOWBOARD_BINDINGS_PARAM:
+                return CategoryEnum.SNOWBOARDBINDINGS.getCategory();
+            case ConstantsUtils.ADMIN_SNOWBOARD_GLOVES_PARAM:
+                return CategoryEnum.SNOWBOARDGLOVES.getCategory();
+            case ConstantsUtils.ADMIN_SNOWBOARD_GOGGLES_PARAM:
+                return CategoryEnum.SNOWBOARDGOGGLES.getCategory();
+            case ConstantsUtils.ADMIN_SNOWBOARD_HELMETS_PARAM:
+                return CategoryEnum.SNOWBOARDHELMETS.getCategory();
+            case ConstantsUtils.ADMIN_THERMOACTIVE_CLOTHING_PARAM:
+                return CategoryEnum.THERMOACTIVECLOTHING.getCategory();
+            default:
+                return CategoryEnum.SNOWBOARDS.getCategory();
         }
     }
 }

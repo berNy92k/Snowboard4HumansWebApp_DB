@@ -71,9 +71,14 @@
                         <div class="form-group">
                             <label>Płeć</label>
                             <select class="form-control" th:field="*{sex}">
-                                <option th:value="MAN" th:text="MAN"></option>
-                                <option th:value="WOMAN" th:text="WOMAN"></option>
-                                <option th:value="CHILD" th:text="CHILD"></option>
+                                <th:block th:if="*{sex == null}">
+                                    <option th:value="MAN" th:text="MAN"></option>
+                                    <option th:value="WOMAN" th:text="WOMAN"></option>
+                                    <option th:value="CHILD" th:text="CHILD"></option>
+                                </th:block>
+                                <th:block th:if="*{sex != null}">
+                                    <option th:value="*{sex}" th:text="*{sex}"></option>
+                                </th:block>
                             </select>
                         </div>
 
@@ -82,12 +87,7 @@
                             <br>
                             <select class="form-control" th:field="*{category.id}">
                                 <th:block th:each="category : ${categories}">
-                                    <!--<th:block th:if="${category.categoryId eq equipment.category.categoryId}">-->
-                                    <!--<option value="${category.categoryId}" selected>-->
-                                    <!--</th:block>-->
-                                    <!--<th:block th:if="${category.categoryId ne equipment.category.categoryId}">-->
                                     <option th:text="${category.name}" th:value="${category.id}"></option>
-                                    <!--</th:block>-->
                                 </th:block>
                             </select>
                         </div>

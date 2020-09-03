@@ -91,8 +91,10 @@ public class EquipmentAdminServices extends SuperService {
         List<Category> categories = categoryRepo.findAll();
 
         Equipment equipment = new Equipment();
-//        equipment.setSex(sex);
-//        equipment.setCategory(eqm);
+        equipment.setSex(sex.toUpperCase());
+        Category category = new Category();
+        category.setId(Utils.choiceCategoryByParam(eqm));
+        equipment.setCategory(category);
 
         model.addAttribute(ConstantsPL.MESSAGE, ConstantsFrontendPL.FILL_ALL_FIELDS_TO_CREATE_EQUIPMENT);
         model.addAttribute("equipment", equipment);
@@ -102,7 +104,6 @@ public class EquipmentAdminServices extends SuperService {
         return ConstantsAdminENG.EQUIPMENT_CREATE_URL;
     }
 
-    // TODO - add update
     public String addOrUpdateEquipment(Model model, Equipment equipment) {
         List<Equipment> equipments = equipmentRepo.findAllByName(equipment.getName());
 
