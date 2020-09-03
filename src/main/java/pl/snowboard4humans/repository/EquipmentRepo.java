@@ -14,7 +14,7 @@ public interface EquipmentRepo extends JpaRepository<Equipment, Integer> {
     List<Equipment> findEquipmentByCategoryIdAndSex(Integer category,
                                                     String sex);
 
-    List<Equipment> findEquipmentByNameOrLongDescriptionOrShortDescription(String name,
-                                                                           String longDescription,
-                                                                           String shortDescription);
+    List<Equipment> findEquipmentByNameLikeOrLongDescriptionLikeOrShortDescriptionLike(String name,
+                                                                                       String longDescription,
+                                                                                       String shortDescription);
 }

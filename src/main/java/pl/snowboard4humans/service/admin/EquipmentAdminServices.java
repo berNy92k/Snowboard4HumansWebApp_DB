@@ -209,4 +209,30 @@ public class EquipmentAdminServices extends SuperService {
     public String equipmentTypeUrl(String type) {
         return Utils.getHtmlDependsOnCategoryTypeAdmin(type);
     }
+
+
+
+    public String searchEquipmentList(Model model,
+                                      String searchBy) {
+
+        List<Equipment> equipments = null;
+        if (searchBy != null && searchBy.length() > 0) {
+            String searchByForQuery = "%" + searchBy + "%";
+            equipments = equipmentRepo.findEquipmentByNameLikeOrLongDescriptionLikeOrShortDescriptionLike(searchByForQuery, searchByForQuery, searchByForQuery);
+        } else {
+            return ConstantsUtils.ADMIN_INDEX_HTML;
+        }
+
+        model.addAttribute("equipmentList", equipments);
+        model.addAttribute("equipmentCategoryName", ConstantsFrontendPL.SEARCH_BY_WORD);
+        if (searchBy != null) {
+            model.addAttribute("equipmentSex", searchBy);
+        }
+        if (equipments != null && equipments.size() == 0) {
+            model.addAttribute(ConstantsPL.MESSAGE, ConstantsFrontendPL.LACK_OF_EQUIPMENT_IN_DB);
+        }
+
+        return ConstantsAdminENG.EQUIPMENT_LIST_URL;
+    }
+
 }

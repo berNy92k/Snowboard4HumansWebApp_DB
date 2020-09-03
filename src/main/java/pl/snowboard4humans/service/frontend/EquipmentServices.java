@@ -119,21 +119,23 @@ public class EquipmentServices extends SuperService {
     }
 
     public String searchEquipmentList(Model model,
-                                      String search) {
+                                      String searchBy) {
 
         List<Equipment> equipments = null;
-        if (search != null && search.length() == 0) {
-            equipmentShortList(model);
-        } else if (search == null) {
-            equipmentShortList(model);
+        if (searchBy != null && searchBy.length() == 0) {
+            return equipmentShortList(model);
+        } else if (searchBy == null) {
+            return equipmentShortList(model);
         } else {
-            equipments = equipmentRepo.findEquipmentByNameOrLongDescriptionOrShortDescription(search, search, search);
+            String searchByForQuery = "%" + searchBy + "%";
+            equipments = equipmentRepo.findEquipmentByNameLikeOrLongDescriptionLikeOrShortDescriptionLike(searchByForQuery, searchByForQuery, searchByForQuery);
         }
 
         model.addAttribute("equipmentList", equipments);
         model.addAttribute("equipmentCategoryName", ConstantsFrontendPL.SEARCH_BY_WORD);
-        if (search != null) {
-            model.addAttribute("equipmentSex", search);
+        model.addAttribute("equipmentSex", searchBy);
+        if (equipments != null && equipments.size() == 0) {
+            model.addAttribute(ConstantsPL.MESSAGE, ConstantsFrontendPL.LACK_OF_EQUIPMENT_IN_DB);
         }
 
         return ConstantsFrontendPL.EQUIPMENT_LIST_URL;
