@@ -50,29 +50,28 @@
                     <th scope="col" th:text="'Akcje'"></th>
                 </tr>
                 </thead>
-                <div th:if="${messageEmpty == false}">
-                    <tbody>
-                    <th:block th:each="equipment : ${equipmentList}">
-                        <tr>
-                            <td th:text="${equipment.id}"></td>
-                            <td th:text="${equipment.name}"></td>
-                            <td th:text="${equipment.manufacturer.manufacturerName}"></td>
-                            <td th:text="${equipment.shortDescription}"></td>
-                            <td th:text="${equipment.price}"></td>
-                            <td>
-                                <img th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
-                                     th:width="80px">
-                            </td>
-                            <td>
-                                <p><a th:href="@{/admin/equipment/editEquipment(id=${equipment.id})}">EDYCJA</a></p>
-                                <!--TODO - delete-->
-                                <p><a href="javascript:deleteEquipment(${equipment.equipmentId})">USUŃ</a></p>
-                                <p><a th:href="@{/admin/equipment/details/viewEquipment(id=${equipment.id})}">PODGLĄD</a></p>
-                            </td>
-                        </tr>
-                    </th:block>
-                    </tbody>
-                </div>
+                <tbody>
+                <th:block th:each="equipment : ${equipmentList}">
+                    <tr>
+                        <td th:text="${equipment.id}"></td>
+                        <td th:text="${equipment.name}"></td>
+                        <td th:text="${equipment.manufacturer.manufacturerName}"></td>
+                        <td th:text="${equipment.shortDescription}"></td>
+                        <td th:text="${equipment.price}"></td>
+                        <td>
+                            <img th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
+                                 th:width="80px">
+                        </td>
+                        <td>
+                            <p><a th:href="@{/admin/equipment/editEquipment(id=${equipment.id})}">EDYCJA</a></p>
+                            <!--TODO - delete-->
+                            <p><a th:href="'javascript:deleteEquipment(\''+${equipment.id}+'\')'">USUŃ</a></p>
+                            <p><a th:href="@{/admin/equipment/details/viewEquipment(id=${equipment.id})}">PODGLĄD</a>
+                            </p>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
             </table>
         </div>
     </div>
@@ -89,7 +88,7 @@
 <script>
     function deleteEquipment(equipmentId) {
         if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz sprzęt z '" + equipmentId + "' id zostanie usunięty")) {
-            window.location = '../admin/deleteEquipment?id=' + equipmentId;
+            window.location = '/admin/equipment/deleteEquipment?id=' + equipmentId;
         }
     }
 </script>

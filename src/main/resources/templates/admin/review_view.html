@@ -26,7 +26,6 @@
                     <li class="list-group-item">
                         <h4 class="colorb60001" th:text="'Ocena:'"></h4> &nbsp;
                         <h3 class="color0d0e48" th:text="${review.rating}"></h3>
-                        <h3 class="color0d0e48">${review.rating}</h3>
                     </li>
                     <li class="list-group-item">
                         <h4 class="colorb60001" th:text="'Tytuł:'"></h4> &nbsp;
@@ -68,9 +67,8 @@
                     <h5>Akcje:</h5>
                 </div>
                 <div>
-                    <a th:href="@{/admin/review/editReview(id=${customer.id})}">EDYCJA</a>
-                    <!--TODO - delete-->
-                    <p><a href="javascript:deleteReview(${review.reviewId})">USUŃ</a></p>
+                    <a th:href="@{/admin/review/editReview(id=${review.id})}">EDYCJA</a>
+                    <a th:href="'javascript:deleteReview(\''+${review.id}+'\')'">USUŃ</a>
                 </div>
             </div>
         </div>
@@ -87,7 +85,7 @@
 <script>
     function deleteReview(reviewId) {
         if (confirm("Czy jestes pewny? Jeżeli się zgodzisz recenzja z '" + reviewId + "' id zostanie usunięta")) {
-            window.location = '../admin/deleteReview?id=' + reviewId;
+            window.location = '/admin/review/deleteReview?id=' + reviewId;
         }
     }
 </script>

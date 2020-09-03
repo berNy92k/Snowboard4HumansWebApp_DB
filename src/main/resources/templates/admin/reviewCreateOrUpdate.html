@@ -22,9 +22,8 @@
         <div>
             <form th:action="@{/admin/review}"
                   th:object="${review}"
-                  th:method="post">
-                <!--TODO add fields validation-->
-                <!--onsubmit="return validateCreateReviewForm()">-->
+                  th:method="post"
+                  onsubmit="return validateCreateReviewForm()">
 
                 <input type="hidden" id="reviewId" name="reviewId" th:field="*{id}">
 
@@ -50,14 +49,9 @@
                 <div class="form-group">
                     <label>Nazwa producenta</label>
                     <br>
-                    <select class="form-control" th:field="*{equipment}">
+                    <select class="form-control" th:field="*{equipment.id}">
                         <th:block th:each="equipment : ${equipmentList}">
-                            <!--<th:block th:if="${equipment.id eq review.equipment.id}">-->
-                            <!--<option th:field="${equipment.id}" th:text="${equipment.id}" selected>-->
-                            <!--</th:block>-->
-                            <!--<th:block th:if="${equipment.id ne review.equipment.id}">-->
-                            <option th:text="${equipment.name}" th:value="${equipment}"></option>
-                            <!--</th:block>-->
+                            <option th:text="${equipment.name}" th:value="${equipment.id}"></option>
                         </th:block>
                     </select>
                 </div>
@@ -65,14 +59,9 @@
                 <div class="form-group">
                     <label>Nazwa klienta</label>
                     <br>
-                    <select class="form-control" th:field="*{customer}">
+                    <select class="form-control" th:field="*{customer.id}">
                         <th:block th:each="customer : ${customerList}">
-                            <!--<th:block th:if="${customer.id eq review.customer.id}">-->
-                            <!--<option th:field="${customer.id}" th:text="${customer.id}" selected>-->
-                            <!--</th:block>-->
-                            <!--<th:block th:if="${customer.id ne review.customer.id}">-->
-                            <option th:text="${customer.email}" th:value="${customer}"></option>
-                            <!--</th:block>-->
+                            <option th:text="${customer.email}" th:value="${customer.id}"></option>
                         </th:block>
                     </select>
                 </div>
@@ -94,74 +83,74 @@
 
 </body>
 <script type="text/javascript">
-    <!--TODO-->
-    // function validateCreateReviewForm() {
-    //     var email = document.getElementById("email");
-    //     var password = document.getElementById("password");
-    //     var firstName = document.getElementById("firstName");
-    //     var lastName = document.getElementById("lastName");
-    //     var street = document.getElementById("street");
-    //     var homeNumber = document.getElementById("homeNumber");
-    //     var city = document.getElementById("city");
-    //     var zipCode = document.getElementById("zipCode");
-    //     var country = document.getElementById("country");
-    //     var phone = document.getElementById("phone");
-    //
-    //     if (email.value.length == 0) {
-    //         alert("Email jest wymagany");
-    //         email.focus();
-    //         return false;
-    //     }
-    //
-    //     <c:if test="${customer == null}">
-    //     if (password.value.length == 0) {
-    //         alert("Hasło jest wymagane");
-    //         password.focus();
-    //         return false;
-    //     }
-    //     </c:if>
-    //
-    //     if (firstName.value.length == 0) {
-    //         alert("Imię jest wymagane");
-    //         firstName.focus();
-    //         return false;
-    //     }
-    //     if (lastName.value.length == 0) {
-    //         alert("Nazwisko jest wymagane");
-    //         lastName.focus();
-    //         return false;
-    //     }
-    //     if (street.value.length == 0) {
-    //         alert("Nazwa ulicy jest wymagana");
-    //         street.focus();
-    //         return false;
-    //     }
-    //     if (homeNumber.value.length == 0) {
-    //         alert("Numer domu jest wymagany");
-    //         homeNumber.focus();
-    //         return false;
-    //     }
-    //     if (city.value.length == 0) {
-    //         alert("Miasto jest wymagane");
-    //         city.focus();
-    //         return false;
-    //     }
-    //     if (zipCode.value.length == 0) {
-    //         alert("Kod pocztowy jest wymagany");
-    //         zipCode.focus();
-    //         return false;
-    //     }
-    //     if (country.value.length == 0) {
-    //         alert("Kraj jest wymagany");
-    //         country.focus();
-    //         return false;
-    //     }
-    //     if (phone.value.length == 0) {
-    //         alert("Numer telefonu jest wymagany");
-    //         phone.focus();
-    //         return false;
-    //     }
-    //     return true;
-    // }
+    function validateCreateReviewForm() {
+        var email = document.getElementById("email");
+        var password = document.getElementById("password");
+        var firstName = document.getElementById("firstName");
+        var lastName = document.getElementById("lastName");
+        var street = document.getElementById("street");
+        var homeNumber = document.getElementById("homeNumber");
+        var city = document.getElementById("city");
+        var zipCode = document.getElementById("zipCode");
+        var country = document.getElementById("country");
+        var phone = document.getElementById("phone");
+
+        if (email.value.length == 0) {
+            alert("Email jest wymagany");
+            email.focus();
+            return false;
+        }
+
+        // TODO
+        // <c:if test="${customer == null}">
+        if (password.value.length == 0) {
+            alert("Hasło jest wymagane");
+            password.focus();
+            return false;
+        }
+        // </c:if>
+
+        if (firstName.value.length == 0) {
+            alert("Imię jest wymagane");
+            firstName.focus();
+            return false;
+        }
+        if (lastName.value.length == 0) {
+            alert("Nazwisko jest wymagane");
+            lastName.focus();
+            return false;
+        }
+        if (street.value.length == 0) {
+            alert("Nazwa ulicy jest wymagana");
+            street.focus();
+            return false;
+        }
+        if (homeNumber.value.length == 0) {
+            alert("Numer domu jest wymagany");
+            homeNumber.focus();
+            return false;
+        }
+        if (city.value.length == 0) {
+            alert("Miasto jest wymagane");
+            city.focus();
+            return false;
+        }
+        if (zipCode.value.length == 0) {
+            alert("Kod pocztowy jest wymagany");
+            zipCode.focus();
+            return false;
+        }
+        if (country.value.length == 0) {
+            alert("Kraj jest wymagany");
+            country.focus();
+            return false;
+        }
+        if (phone.value.length == 0) {
+            alert("Numer telefonu jest wymagany");
+            phone.focus();
+            return false;
+        }
+        return true;
+    }
 </script>
 </html>

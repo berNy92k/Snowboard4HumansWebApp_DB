@@ -47,13 +47,12 @@
                         <td th:text="${review.id}"></td>
                         <td th:text="${review.rating}"></td>
                         <td th:text="${review.headline}"></td>
-                        <td th:text="${review.equipment.equipmentId}"></td>
-                        <td th:text="${review.customer.customerId}"></td>
+                        <td th:text="${review.equipment.id}"></td>
+                        <td th:text="${review.customer.id}"></td>
                         <td th:text="${review.reviewTime}"></td>
                         <td class="width220">
                             <a th:href="@{/admin/review/editReview(id=${review.id})}">EDYCJA</a> |
-                            <!--TODO - delete-->
-                            <a href="javascript:deleteReview(${review.reviewId})">USUŃ</a> |
+                            <a th:href="'javascript:deleteReview(\''+${review.id}+'\')'">USUŃ</a> |
                             <a th:href="@{/admin/review/viewReview(id=${review.id})}">PODGLĄD</a>
                         </td>
                     </tr>
@@ -74,7 +73,7 @@
 <script>
     function deleteReview(reviewId) {
         if (confirm("Czy jestes pewny? Jeżeli się zgodzisz recenzja z '" + reviewId + "' id zostanie usunięta")) {
-            window.location = '../admin/deleteReview?id=' + reviewId;
+            window.location = '/admin/review/deleteReview?id=' + reviewId;
         }
     }
 </script>

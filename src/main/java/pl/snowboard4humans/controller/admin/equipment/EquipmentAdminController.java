@@ -55,6 +55,12 @@ public class EquipmentAdminController {
         return equipmentAdminServices.editEquipment(model, equipmentId);
     }
 
+    @GetMapping(value = "deleteEquipment")
+    public String deleteEquipment(@RequestParam(name = "id") int equipmentId,
+                                 Model model) {
+        return equipmentAdminServices.deleteEquipment(model, equipmentId);
+    }
+
     @GetMapping(value = "details/viewEquipment")
     public String viewEquipment(Model model,
                                 @RequestParam int id) {

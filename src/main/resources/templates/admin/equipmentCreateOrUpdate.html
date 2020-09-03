@@ -24,9 +24,8 @@
             <form th:action="@{/admin/equipment/details}"
                   th:method="post"
                   th:object="${equipment}"
-                  enctype="multipart/form-data">
-                <!--TODO add fields validation-->
-                <!--onsubmit="return validateCreateEquipmentForm()">-->
+                  enctype="multipart/form-data"
+                  onsubmit="return validateCreateEquipmentForm()">
 
                 <input type="hidden" id="equipmentId" name="equipmentId" th:field="*{id}">
 
@@ -47,7 +46,8 @@
                                     <!--<option th:field="${manufacturer.id}" th:text="${manufacturer.id}" selected>-->
                                     <!--</th:block>-->
                                     <!--<th:block th:if="${manufacturer.id ne equipment.manufacturer.id}">-->
-                                    <option th:text="${manufacturer.manufacturerName}" th:value="${manufacturer.id}"></option>
+                                    <option th:text="${manufacturer.manufacturerName}"
+                                            th:value="${manufacturer.id}"></option>
                                     <!--</th:block>-->
                                 </th:block>
                             </select>
@@ -142,83 +142,83 @@
 </body>
 
 <script type="text/javascript">
-    // function validateCreateEquipmentForm() {
-    //     var name = document.getElementById("name");
-    //     var manufacturerName = document.getElementById("manufacturerName");
-    //     var price = document.getElementById("price");
-    //     var lengthOrSize = document.getElementById("lengthOrSize");
-    //     var sex = document.getElementById("sex");
-    //     var categoryName = document.getElementById("categoryName");
-    //     var shortDescription = document.getElementById("shortDescription");
-    //     var longDescription = document.getElementById("longDescription");
-    //     var equipmentImage = document.getElementById("equipmentImage");
-    //
-    //     if (name.value.length == 0) {
-    //         alert("Nazwa sprzętu jest wymagana");
-    //         name.focus();
-    //         return false;
-    //     }
-    //     if (manufacturerName.value.length == 0) {
-    //         alert("Producent jest wymagany");
-    //         manufacturerName.focus();
-    //         return false;
-    //     }
-    //     if (price.value.length == 0) {
-    //         alert("Cena za produkt jest wymagana");
-    //         price.focus();
-    //         return false;
-    //     }
-    //     if (lengthOrSize.value.length == 0) {
-    //         alert("Długość lub rozmiar jest wymagany");
-    //         lengthOrSize.focus();
-    //         return false;
-    //     }
-    //     if (sex.value.length == 0) {
-    //         alert("Płeć jest wymagana");
-    //         sex.focus();
-    //         return false;
-    //     }
-    //     if (categoryName.value.length == 0) {
-    //         alert("Nazwa kategorii jest wymagana");
-    //         categoryName.focus();
-    //         return false;
-    //     }
-    //     if (shortDescription.value.length == 0) {
-    //         alert("Krótki opis jest wymagany");
-    //         shortDescription.focus();
-    //         return false;
-    //     }
-    //     if (longDescription.value.length == 0) {
-    //         alert("Długi opis jest wymagany");
-    //         longDescription.focus();
-    //         return false;
-    //     }
-    //     // <th:block th:if="${equipment == null}">
-    //     if (equipmentImage.value.length == 0) {
-    //         alert("Zdjęcie jest wymagane");
-    //         equipmentImage.focus();
-    //         return false;
-    //     }
-    //     // </th:block>
-    //
-    //     return true;
-    // }
-    //
-    // $(document).ready(function () {
-    //     $('#equipmentImage').change(function () {
-    //         showPreviewImage(this);
-    //     })
-    // });
-    //
-    // function showPreviewImage(fileInput) {
-    //     var file = fileInput.files[0];
-    //     var reader = new FileReader();
-    //
-    //     reader.onload = function (ev) {
-    //         $('#smallEquipmentImage').attr('src', ev.target.result)
-    //     };
-    //
-    //     reader.readAsDataURL(file);
-    // }
+    function validateCreateEquipmentForm() {
+        var name = document.getElementById("name");
+        var manufacturerName = document.getElementById("manufacturerName");
+        var price = document.getElementById("price");
+        var lengthOrSize = document.getElementById("lengthOrSize");
+        var sex = document.getElementById("sex");
+        var categoryName = document.getElementById("categoryName");
+        var shortDescription = document.getElementById("shortDescription");
+        var longDescription = document.getElementById("longDescription");
+        var equipmentImage = document.getElementById("equipmentImage");
+
+        if (name.value.length == 0) {
+            alert("Nazwa sprzętu jest wymagana");
+            name.focus();
+            return false;
+        }
+        if (manufacturerName.value.length == 0) {
+            alert("Producent jest wymagany");
+            manufacturerName.focus();
+            return false;
+        }
+        if (price.value.length == 0) {
+            alert("Cena za produkt jest wymagana");
+            price.focus();
+            return false;
+        }
+        if (lengthOrSize.value.length == 0) {
+            alert("Długość lub rozmiar jest wymagany");
+            lengthOrSize.focus();
+            return false;
+        }
+        if (sex.value.length == 0) {
+            alert("Płeć jest wymagana");
+            sex.focus();
+            return false;
+        }
+        if (categoryName.value.length == 0) {
+            alert("Nazwa kategorii jest wymagana");
+            categoryName.focus();
+            return false;
+        }
+        if (shortDescription.value.length == 0) {
+            alert("Krótki opis jest wymagany");
+            shortDescription.focus();
+            return false;
+        }
+        if (longDescription.value.length == 0) {
+            alert("Długi opis jest wymagany");
+            longDescription.focus();
+            return false;
+        }
+        // <th:block th:if="${equipment == null}">
+        if (equipmentImage.value.length == 0) {
+            alert("Zdjęcie jest wymagane");
+            equipmentImage.focus();
+            return false;
+        }
+        // </th:block>
+
+        return true;
+    }
+
+    $(document).ready(function () {
+        $('#multipartFile').change(function () {
+            showPreviewImage(this);
+        })
+    });
+
+    function showPreviewImage(fileInput) {
+        var file = fileInput.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function (ev) {
+            $('#smallPic').attr('src', ev.target.result)
+        };
+
+        reader.readAsDataURL(file);
+    }
 </script>
 </html>

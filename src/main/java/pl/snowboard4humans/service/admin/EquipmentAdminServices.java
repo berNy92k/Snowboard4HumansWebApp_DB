@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import pl.snowboard4humans.constants.ConstantsAdminENG;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
 import pl.snowboard4humans.constants.ConstantsPL;
+import pl.snowboard4humans.constants.ConstantsUtils;
 import pl.snowboard4humans.enums.SexEnum;
 import pl.snowboard4humans.model.Category;
 import pl.snowboard4humans.model.Equipment;
@@ -78,11 +79,6 @@ public class EquipmentAdminServices extends SuperService {
             model.addAttribute(ConstantsPL.MESSAGE, message);
         } else if (equipments != null && equipments.size() == 0) {
             model.addAttribute(ConstantsPL.MESSAGE, ConstantsFrontendPL.LACK_OF_EQUIPMENT_IN_DB);
-            model.addAttribute("messageEmpty", true);
-        } else {
-            if (equipments != null) {
-                model.addAttribute("messageEmpty", false);
-            }
         }
 
         return ConstantsAdminENG.EQUIPMENT_LIST_URL;
@@ -194,18 +190,18 @@ public class EquipmentAdminServices extends SuperService {
         }
     }
 
-    public void deleteEquipment(Model model,
-                                int equipmentId) {
+    public String deleteEquipment(Model model,
+                                  int equipmentId) {
         Equipment equipment = equipmentRepo.getOne(equipmentId);
 
         if (equipment != null) {
             equipmentRepo.deleteById(equipmentId);
 
             String message = ConstantsAdminENG.EQUIPMENT_WAS_DELETED;
-            equipmentList(model, null, null, message);
+            return equipmentList(model, ConstantsUtils.ADMIN_SNOWBOARDS, ConstantsUtils.ALL, message);
         } else {
             String message = ConstantsAdminENG.COULD_NOT_FIND_EQUIPMENT_BY_ID + equipmentId + ConstantsAdminENG.DELETED_BY_ANOTHER_EQUIPMENT_ADMIN;
-            equipmentList(model, null, null, message);
+            return equipmentList(model, ConstantsUtils.ADMIN_SNOWBOARDS, ConstantsUtils.ALL, message);
         }
     }
 

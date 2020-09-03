@@ -70,7 +70,7 @@
                 </div>
                 <div>
                     <p><a th:href="@{/admin/equipment/editEquipment(id=${equipment.id})}">EDYCJA</a></p>
-                    <p><a href="javascript:deleteEquipment(${equipment.equipmentId})">USUŃ</a></p>
+                    <p><a th:href="'javascript:deleteEquipment(\''+${equipment.id}+'\')'">USUŃ</a></p>
                 </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
 <script>
     function deleteEquipment(equipmentId) {
         if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz sprzęt z '" + equipmentId + "' id zostanie usunięty")) {
-            window.location = '../admin/deleteEquipment?id=' + equipmentId;
+            window.location = '/admin/equipment/deleteEquipment?id=' + equipmentId;
         }
     }
 </script>

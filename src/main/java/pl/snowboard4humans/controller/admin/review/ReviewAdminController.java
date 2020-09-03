@@ -43,7 +43,13 @@ public class ReviewAdminController {
     @GetMapping(value = "viewReview")
     public String editViewScreen(Model model,
                                  @RequestParam(value = "id") int reviewId) {
-        return reviewAdminServices.getViewCustomerScreen(model, reviewId);
+        return reviewAdminServices.getViewReviewScreen(model, reviewId);
+    }
+
+    @GetMapping(value = "deleteReview")
+    public String deleteReview(@RequestParam(name = "id") int reviewId,
+                               Model model) {
+        return reviewAdminServices.deleteReview(model, reviewId);
     }
 
 }

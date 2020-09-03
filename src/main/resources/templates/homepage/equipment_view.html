@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="width98Margin30auto40">
+        <div class="displayFlex">
+            <div class="marginRight15Width610Border0d0e48">
+                <img th:src="@{'data:image/jpg;base64,'+${equipment.base64Image}}"
+                     th:width="600px"
+                     alt="Podgląd sprzętu"/>
+            </div>
+            <div class="width50"></div>
+            <div class="width500">
+                <div class="marginBottom40px">
+                    <h3 class="color0d0e48"><b th:text="${equipment.name}"></b></h3>
+                </div>
+                <div class="marginBottom40displayFlex">
+                    <h6 class="colorb60001">Cena:</h6> &nbsp;
+                    <h2 class="colorb60001"><b th:text="${equipment.price}"></b> zł</h2>
+                </div>
+                <div class="marginBottom40px">
+                    <h6>Długość (cm) / Rozmiar (EU)</h6>
+                    <h3 th:text="${equipment.lengthOrSize}"></h3>
+                </div>
+                <div class="marginBottom40displayFlex">
+                    <div>
+                        <div>
+                            <h5>Producent:</h5>
+                        </div>
+                        <div>
+                            <h3 th:text="${equipment.manufacturer.manufacturerName}"></h3>
+                        </div>
+                    </div>
+                    <div class="marginLeft50">
+                        <img th:src="@{'data:image/jpg;base64,'+${equipment.manufacturer.base64Image}}"
+                             th:width="250px"
+                             alt="Podgląd loga producenta"/>
+                    </div>
+                </div>
+                <div class="marginBottom40displayFlex">
+                    <div>
+                        <div>
+                            <h5>Ocena:</h5>
+                            <th:block th:if="${reviewsAverageFull != null}">
+                                <span th:each="i : ${#numbers.sequence(1,6)}">
+                                    <span th:if="${i <= reviewsAverageFull}">
+                                        <img th:src="@{/images/stars/fullStar.png}"
+                                             th:alt="fullStar"
+                                             th:width="25px">
+                                    </span>
+                                    <span th:if="${i > reviewsAverageFull}">
+                                        <span th:if="(${reviewsAverageHalf == 1 && i == reviewsAverageFull + 1})">
+                                            <img th:src="@{/images/stars/halfStar.png}"
+                                                 th:alt="fullStar"
+                                                 th:width="25px">
+                                        </span>
+                                        <span th:if="(${reviewsAverageHalf != 1 || i > reviewsAverageFull + 1})">
+                                            <img th:src="@{/images/stars/emptyStar.png}"
+                                                 th:alt="fullStar"
+                                                 th:width="25px">
+                                        </span>
+                                        </c:if>
+                                    </span>
+                                </span>
+                            </th:block>
+                            <th:block th:if="${reviewsAverageFull == null}">
+                                Brak oceny
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+                <div class="marginBottom40TextAlignCenter">
+                    <a th:href="@{addToShoppingCart(eqm=${equipment.id})}">
+                        <button type="button" class="btn btn-primary" id="cancel">
+                            DODAJ DO KOSZYKA
+                        </button>
+                    </a>
+                </div>
+                <div class="marginBottom20px">
+                    <table class="margin0autoTableLayoutFixedWhiteSpaceNormalImportantWordWrapBreakWord">
+                        <thead>
+                        <tr class="backgroundColorRgba0117255023">
+                            <th>
+                                <h7>Krótki opis produktu:</h7>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <h5 th:text="${equipment.shortDescription}"></h5>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clearBothMarginTop40">
+            <table class="margin0autoTableLayoutFixedWhiteSpaceNormalImportantWordWrapBreakWordWidth1200">
+                <thead>
+                <tr class="backgroundColorRgba0117255023">
+                    <th>
+                        <h5>Opis produktu: </h5>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <h4 th:text="${equipment.longDescription}"></h4>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="clearBothMarginTop50">
+        <table class="table table-striped margin0autoTableLayoutFixedWhiteSpaceNormalImportantWordWrapBreakWordWidth1200">
+            <thead>
+            <tr>
+                <th scope="col">
+                    <div>
+                        <div class="displayFlex">
+                            <div class="width900">
+                                <h5>Recenzja: </h5>
+                            </div>
+                            <!--<c:if test="${sessionScope.customerLogged != null}">-->
+                            <div>
+                                <a th:href="@{/homepage/reviews/preCreateReview(eqId=${equipment.id})}">
+                                    <h7>Dodaj nową recenzję</h7>
+                                </a>
+                            </div>
+                            <!--</c:if>-->
+                        </div>
+                        <div class="displayFlex fontSize10">
+                            <div class="width295">Data wpisu:</div>
+                            <div class="marginLeft5MarginRight5">|</div>
+                            <div class="width790">Tytuł:</div>
+                            <div class="marginLeft5MarginRight5">|</div>
+                            <div class="width195">Autor:</div>
+                        </div>
+                    </div>
+
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:if="${reviews == null}">
+                <tr>
+                    <td>
+                        <div>
+                            Brak komentarzy.
+                        </div>
+                    </td>
+                </tr>
+            </th:block>
+            <th:block th:if="${reviews != null}">
+                <div th:each="review: ${reviews}">
+                    <tr>
+                        <td>
+                            <div>
+                                <div class="displayFlex">
+                                    <div class="width295" th:text="${review.reviewTime}"></div>
+                                    <div class="marginLeft5MarginRight5">|</div>
+                                    <div class="width790" th:text="${review.headline}"></div>
+                                    <div class="marginLeft5MarginRight5">|</div>
+                                    <div class="width195"
+                                         th:text="${review.customer.firstName}+' '+${review.customer.lastName.substring(0,1)}+'.'">
+                                    </div>
+                                </div>
+                                <div class="clearBothDisplayFlexMarginTop10">
+                                    <div class="width1090" th:text="${review.comment}"></div>
+                                    <div class="marginLeft5MarginRight5">|</div>
+                                    <div class="width195">
+                                        Ocena:
+                                        <span th:each="i : ${#numbers.sequence( 1, 6)}">
+                                            <span th:if="${i <= review.rating}">
+                                                <img th:src="@{/images/stars/fullStar.png}"
+                                                     th:alt="fullStar"
+                                                     th:width="12px">
+                                            </span>
+                                            <span th:if="${i > review.rating}">
+                                                <img th:src="@{/images/stars/emptyStar.png}"
+                                                     th:alt="emptyStar"
+                                                     th:width="12px">
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </div>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+</html>
