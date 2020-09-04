@@ -113,7 +113,7 @@ Example how search button is working.
  
 ![GitHub Logo](src/main/resources/static/images/websiteScreens/homepage_login_screen.PNG)
  
--
+-TODO
  
  ##### 4.1.7 Homepage - Register page
  Example of register page. Necessary to login and finish order in the shop.
@@ -121,21 +121,21 @@ Example how search button is working.
 ![GitHub Logo](src/main/resources/static/images/websiteScreens/homepage_register_screen.PNG)
  
  ##### 4.1.8 Homepage - Shopping cart
--
+-TODO
  
  ##### 4.1.9 Homepage - Shopping cart empty
--
+-TODO
  
  ##### 4.1.10 Homepage - Shopping cart - continue order without logging
--
+-TODO
  
  ##### 4.1.11 Homepage - Equipment View
  Example of equipment view page. Below you can see also reviews/ comments by other clients.
  To add any reviews/ comments it is necessary to login.
  
--
+-TODO
  
--
+-TODO
  
  ##### 4.1.12 Homepage - Shopping cart - continue order when logged - part 1
  After press 'Zakup' in Shopping Cart user will see next page.
@@ -143,19 +143,19 @@ Example how search button is working.
  User is asked to fill fields with information about shipping address (fields are filled automatically from 
  client account but it can be change during order - shipping address is not always the same like client address)
  
--
+-TODO
  
  ##### 4.1.13 Homepage - Shopping cart - continue order when logged - part 2
  Summary of shopping cart and shipping address.
  
  Client should check if all data are correct and press 'Przejdź dalej'.
  
--
+-TODO
  
  ##### 4.1.14 Homepage - Shopping cart - continue order when logged - part 3
  Order is finished. Message with this information is display on the screen.
  
--
+-TODO
  
 ### 4.2 Homepage - for admins
 Screens with homepage view for admins
@@ -163,7 +163,7 @@ Screens with homepage view for admins
 ##### 4.2.1 Homepage - login page
 Before admin will be able to do anything it is necessary to login.
 
--
+-TODO
 
 ##### 4.2.2 Homepage - Navigation Bar - part 1
 User can choose the type of equipment/gender and other information important for administrators.
@@ -188,7 +188,7 @@ User can choose the type of equipment/gender and other information important for
  - For Women
  - For Childen
  
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_homepage.PNG)
 
 ##### 4.2.3 Homepage - Navigation Bar - part 2
 When admin press one of the button (snowboards, snowboards shoes, snowboards bindings, snowboards gloves, snowboards helmets, thermoactive clothing) 
@@ -201,62 +201,58 @@ it will load new page with 4 options:
 
 Note: 'xx' - name of equipment that was chosen
 
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_category_gender.PNG)
 
 ##### 4.2.4 Homepage - Equipment not exist in DB 
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_equipment_do_not_exist_in_db.PNG)
 
 ##### 4.2.5 Homepage - Equipment exist in DB 
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_equipment_exist_in_db.PNG)
 
 ##### 4.2.6 Homepage - Create new equipment
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_create_equipment.PNG)
 
 ##### 4.2.7 Homepage - View selected equipment
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_view_equipment.PNG)
 
 ##### 4.2.8 Homepage - Enable actions for selected equipment
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_view_actions_equipment.PNG)
 
 ##### 4.2.9 Homepage - Update - Edit selected equipment
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_edit_equipment.PNG)
 
 ##### 4.2.10 Homepage - Delete selected equipment
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_delete_equipment.PNG)
 
 ##### 4.2.11 Homepage - Navigation Bar - part 3 - Manufacturer
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_manufacturer.PNG)
 
 ##### 4.2.12 Homepage - Navigation Bar - part 4 - Users
--
-
-Can not delete/ update main ADMIN account - it will throw error if somebody will try to delete/ update admin with id = 1
-
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_users.PNG)
 
 ##### 4.2.13 Homepage - Navigation Bar - part 5 - Category
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_categories.PNG)
 
 ##### 4.2.14 Homepage - Navigation Bar - part 6 - Clients
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_clients.PNG)
 
 ##### 4.2.15 Homepage - Navigation Bar - part 7 - Reviews
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_reviews.PNG)
 
 ##### 4.2.16 Homepage - Navigation Bar - part 8 - Orders
--
+-TODO
 
 ##### 4.2.17 Homepage - Orders View Page
--
+-TODO
 
-##### 4.2.18 Homepage - Users View Page
--
+##### 4.2.18 Homepage - Client View Page
+![GitHub Logo](src/main/resources/static/images/websiteScreens/admin_client_detail.PNG)
 
 ##### 4.2.19 Homepage - Page not exist - DB error
 
 Page not exist:
 
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/404.PNG)
 
 For DB error (500) page looks similar but with different error number.
 
