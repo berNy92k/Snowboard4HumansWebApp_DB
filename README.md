@@ -169,19 +169,19 @@ Before admin will be able to do anything it is necessary to login.
 User can choose the type of equipment/gender and other information important for administrators.
 
  *the type of equipment 
- - skis
- - ski boots
- - ski poles
- - ski goggles
- - ski gloves
- - thermoactive clothing
- - manufacturers
- - other information
-   - users
-   - category
-   - clients
-   - reviews
-   - orders
+  - snowboards
+  - snowboard shoes
+  - snowboard bindings
+  - snowboard gloves
+  - snowboard helmets
+  - thermoactive clothing
+  - manufacturers
+  - other information
+    - users
+    - category
+    - clients
+    - reviews
+    - orders
  
  *gender
  - For Men
@@ -191,7 +191,7 @@ User can choose the type of equipment/gender and other information important for
 -
 
 ##### 4.2.3 Homepage - Navigation Bar - part 2
-When admin press one of the button (skis, ski boots, ski poles, ski goggles, ski gloves, thermoactive clothing) 
+When admin press one of the button (snowboards, snowboards shoes, snowboards bindings, snowboards gloves, snowboards helmets, thermoactive clothing) 
 it will load new page with 4 options: 
 
 - All 'xx'
@@ -199,7 +199,7 @@ it will load new page with 4 options:
 - 'xx' for man
 - 'xx' for child
 
-Note: 'xx' - name of equipment that was choosen
+Note: 'xx' - name of equipment that was chosen
 
 -
 
