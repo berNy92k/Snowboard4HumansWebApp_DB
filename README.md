@@ -111,14 +111,14 @@ Example how search button is working.
  ##### 4.1.6 Homepage - Login page
  Example of login page. Necessary to finish order in the shop.
  
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/homepage_login_screen.PNG)
  
 -
  
  ##### 4.1.7 Homepage - Register page
  Example of register page. Necessary to login and finish order in the shop.
  
--
+![GitHub Logo](src/main/resources/static/images/websiteScreens/homepage_register_screen.PNG)
  
  ##### 4.1.8 Homepage - Shopping cart
 -
