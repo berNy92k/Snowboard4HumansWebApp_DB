@@ -26,7 +26,7 @@ public interface ConstantsFrontendPL {
 
     // ------------- MANUFACTURER -------------
     // URL
-    String MANUFACTURER_LIST_URL = "/homepage/manufacturer_list.html";
+    String MANUFACTURER_LIST_URL = "/homepage/manufacturer_list";
     String MANUFACTURER_LIST_OBJECT = "manufacturerList";
 
     // MESSAGES
@@ -34,8 +34,9 @@ public interface ConstantsFrontendPL {
 
     // -------------- EQUIPMENT --------------
     // URL
-    String EQUIPMENT_LIST_URL = "/homepage/equipment_list.html";
-    String EQUIPMENT_VIEW_URL = "/homepage/equipment_view.html";
+    String EQUIPMENT_LIST_URL = "/homepage/equipment_list";
+    String EQUIPMENT_VIEW_URL = "/homepage/equipment_view";
+    String EQUIPMENT_VIEW_URL_CONTROLLER = "/homepage/equipment/viewEquipment";
 
     // MESSAGES
     String LACK_OF_EQUIPMENT_IN_DB = "Brak sprzętu w bazie - zapraszamy wkrótce";
@@ -59,16 +60,16 @@ public interface ConstantsFrontendPL {
 
     // --------------- REVIEW ---------------
     // URL
-    String REVIEW_HOMEPAGE_CREATE_URL = "/homepage/reviewCreateOrUpdate.html";
+    String REVIEW_HOMEPAGE_CREATE_URL = "/homepage/review_create";
 
     // MESSAGES
 
     // --------------- SHOPPING CART ---------------
     // URL
-    String SHOPPING_CART_HOMEPAGE_URL = "/homepage/shoppingCart.html";
-    String SHOPPING_CART_CHECKOUT_HOMEPAGE_URL = "/homepage/shoppingCartCheckout.html";
-    String SHOPPING_CART_FINAL_CHECKOUT_HOMEPAGE_URL = "/homepage/shoppingCartFinalCheckout.html";
-    String PAYMENT_HOMEPAGE_URL = "/homepage/payment.html";
+    String SHOPPING_CART_HOMEPAGE_URL = "/homepage/shoppingCart";
+    String SHOPPING_CART_CHECKOUT_HOMEPAGE_URL = "/homepage/shoppingCartCheckout";
+    String SHOPPING_CART_FINAL_CHECKOUT_HOMEPAGE_URL = "/homepage/shoppingCartFinalCheckout";
+    String PAYMENT_HOMEPAGE_URL = "/homepage/payment";
 
     // MESSAGES
     String SHOPPING_CART_EQUIPMENT_WAS_ADDED = "Dodano nowy sprzęt do koszyka";
@@ -84,8 +85,8 @@ public interface ConstantsFrontendPL {
 
     // --------------- MY ACCOUNT ---------------
     // URL
-    String MY_ACCOUNT_VIEW_URL = "/homepage/myAccount_view.html";
-    String MY_ACCOUNT_CREATE_URL = "/homepage/myAccount_create.html";
+    String MY_ACCOUNT_VIEW_URL = "/homepage/myAccount_view";
+    String MY_ACCOUNT_CREATE_URL = "/homepage/myAccount_create";
 
     // MESSAGES
     String MY_ACCOUNT_CUSTOMER_WAS_UPDATED = "Klient został zaktualizowany";

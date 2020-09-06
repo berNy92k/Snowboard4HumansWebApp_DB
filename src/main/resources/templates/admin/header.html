@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="pl-PL">
 
 <div th:fragment="header">
     <header>
@@ -7,19 +9,18 @@
             <div class="my-auto mr-md-auto">
                 <img class="mb-2 marginRight5" th:src="@{/images/logos/poland.png}" width="15" height="10">Wybierz język
             </div>
+
             <div class="my-auto mr-md-auto">
                 Do kolejnej wysyłki pozostało: 12:56:11
             </div>
 
             <div class="fontSize12">
-                Witaj,
-                <!--<th:if test="${sessionScope.userEmail != null}">-->
-                <!--<c:out value="${sessionScope.userEmail}, "/>-->
-                <!--<a th:href="../admin/logout">Wyloguj się</a>-->
-                <!--</th:if>-->
-                <!--<c:if test="${sessionScope.userEmail == null}">-->
-                Zaloguj się jako administrator aby mieć dostęp
-                <!--</c:if>-->
+                Witaj,&nbsp;&nbsp;
+                <span sec:authorize="isAuthenticated()">
+                    <span sec:authentication="name"></span>
+                    <a>, </a>
+                    <a th:href="@{/logout}">Wyloguj się</a>
+                </span>
             </div>
         </div>
 

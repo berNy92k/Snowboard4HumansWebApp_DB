@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="width98Margin0auto">
+        <div th:align="center">
+            &nbsp;
+            <p>Uzupełnij wszytkie pola w celu dodania nowej recenzji.</p>
+            &nbsp;
+        </div>
+
+        <div>
+            <form action="#"
+                  th:action="@{/homepage/reviews}"
+                  th:method="post"
+                  th:object="${review}"
+                  onsubmit="return validateCreateReviewForm()">
+
+                <div class="form-group">
+                    <label for="headline">Tytuł oceny</label>
+                    <input type="text" class="form-control" id="headline" name="headline"
+                           aria-describedby="headline" placeholder="Wpisz tytuł"
+                           th:field="*{headline}">
+                </div>
+                <div class="form-group">
+                    <label for="rating">Ocena</label>
+                    <input type="number" min="1" max="6" class="form-control" id="rating" name="rating"
+                           aria-describedby="rating" placeholder="Dodaj ocenę (liczby całkowite od 1 do 6)"
+                           th:field="*{rating}">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Komentarz</label>
+                    <textarea class="form-control" rows="4" cols="50" id="comment" name="comment"
+                              aria-describedby="comment"
+                              th:field="*{comment}">Wpisz komentarz...</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="equipmentName">Nazwa producenta</label>
+                    <input type="text" class="form-control" id="equipmentName" disabled="disabled"
+                           aria-describedby="equipmentName"
+                           th:field="*{equipment.name}">
+                    <input type="hidden" id="equipment" name="equipment"
+                           th:field="${review.equipment}" th:value="*{equipment}">
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Nazwa klienta</label>
+                    <input type="text" class="form-control" id="customerEmailView" disabled="disabled"
+                           aria-describedby="customerEmail"
+                           th:field="*{customerEmail}">
+                    <input type="hidden" id="customerEmail" name="customerEmail"
+                           th:field="${review.customerEmail}" th:value="*{customerEmail}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Zatwierdź</button>
+                <button type="button" class="btn btn-primary" id="cancel" onclick="javascript:history.go(-1);">
+                    Anuluj
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div th:replace="homepage/footer :: footer"/>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+
+<script type="text/javascript">
+    function validateCreateReviewForm() {
+        var headline = document.getElementById("headline");
+        var rating = document.getElementById("rating");
+        var comment = document.getElementById("comment");
+
+        if (headline.value.length == 0) {
+            alert("Tytuł jest wymagany");
+            headline.focus();
+            return false;
+        }
+        if (rating.value.length == 0) {
+            alert("Ocena jest wymagana");
+            rating.focus();
+            return false;
+        }
+        if (comment.value.length == 0) {
+            alert("Komentarz jest wymagany");
+            comment.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>

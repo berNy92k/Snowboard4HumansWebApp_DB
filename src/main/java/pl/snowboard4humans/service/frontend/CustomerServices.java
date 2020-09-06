@@ -13,9 +13,7 @@ import pl.snowboard4humans.repository.EquipmentRepo;
 import pl.snowboard4humans.service.SuperService;
 import pl.snowboard4humans.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -47,10 +45,6 @@ public class CustomerServices extends SuperService {
         if (!Utils.isEmpty(customersFoundByEmail)) {
             Customer customer = customersFoundByEmail.get(0);
             if (customer.getPassword().equals(password)) {
-                // TODO - logowanie
-//                HttpSession session = request.getSession();
-//                session.setAttribute(ConstantsFrontendPL.LOGGED_CUSTOMER, customer);
-
                 List<Equipment> top4equipments = getTop4Equipments(equipmentRepo.findAll());
 
                 return getRequestDispatcherWithDefaultMessage(model,
@@ -75,10 +69,6 @@ public class CustomerServices extends SuperService {
     }
 
     public String logoutCustomer(Model model) {
-        // TODO - wylogowanie
-//        HttpSession session = request.getSession();
-//        session.removeAttribute(ConstantsFrontendPL.LOGGED_CUSTOMER);
-
         List<Equipment> top4equipments = getTop4Equipments(equipmentRepo.findAll());
 
         return getRequestDispatcherWithDefaultMessage(model,
@@ -162,9 +152,7 @@ public class CustomerServices extends SuperService {
             Customer newCustomer = getNewCustomer(customerUpdateData, ConstantsUtils.TRUE, customerFoundById);
             Customer customer = customerRepo.save(newCustomer);
 
-            // TODO - finish...
-//            HttpSession session = request.getSession();
-//            session.setAttribute(ConstantsFrontendPL.LOGGED_CUSTOMER, customer);
+            model.addAttribute(ConstantsFrontendPL.LOGGED_CUSTOMER, customer);
 
             myAccountViewCustomer(ConstantsFrontendPL.MY_ACCOUNT_CUSTOMER_WAS_UPDATED, model);
         }

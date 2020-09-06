@@ -115,14 +115,13 @@
             return false;
         }
 
-        // TODO
-        // <c:if test="${customer == null}">
+        /*[# th:if="${customer == null}"]*/
         if (password.value.length == 0) {
             alert("Hasło jest wymagane");
             password.focus();
             return false;
         }
-        // </c:if>
+        /*[/]*/
 
         if (firstName.value.length == 0) {
             alert("Imię jest wymagane");

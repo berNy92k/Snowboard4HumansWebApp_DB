@@ -34,6 +34,9 @@ public class Review {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Transient
+    private String customerEmail;
+
     public Review() {
     }
 
@@ -114,4 +117,13 @@ public class Review {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
+
 }

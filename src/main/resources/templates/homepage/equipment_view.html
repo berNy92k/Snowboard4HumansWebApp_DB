@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="pl-PL">
 
 <head>
     <div th:replace="general/headAndScripts :: head"/>
@@ -134,13 +136,11 @@
                             <div class="width900">
                                 <h5>Recenzja: </h5>
                             </div>
-                            <!--<c:if test="${sessionScope.customerLogged != null}">-->
-                            <div>
+                            <div sec:authorize="isAuthenticated()">
                                 <a th:href="@{/homepage/reviews/preCreateReview(eqId=${equipment.id})}">
                                     <h7>Dodaj nową recenzję</h7>
                                 </a>
                             </div>
-                            <!--</c:if>-->
                         </div>
                         <div class="displayFlex fontSize10">
                             <div class="width295">Data wpisu:</div>

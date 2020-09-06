@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="pl-PL">
 
 <div th:fragment="header">
     <header>
@@ -8,19 +10,24 @@
                 <img class="mb-2 marginRight5" th:src="@{/images/logos/poland.png}"
                      th:width="15" th:height="10">Wybierz język
             </div>
+
             <div class="my-auto mr-md-auto">
                 Do kolejnej wysyłki pozostało: 12:56:11
             </div>
+
             <div class="fontSize12">
-                <!--<c:if test="${sessionScope.customerLogged != null}">-->
-                <!--Witaj,-->
-                <!--<c:out value="${sessionScope.customerLogged.email} || "/>-->
-                <!--<a th:href="@{/homepage/logout}">Wyloguj się</a>-->
-                <!--</c:if>-->
-                <!--<c:if test="${sessionScope.customerLogged == null}">-->
-                <a th:href="@{/homepage/login}" class="marginRight15">Zaloguj się</a>
-                <a th:href="@{/homepage/register}" class="colorRed">Zarejestruj się</a>
-                <!--</c:if>-->
+                Witaj,&nbsp;&nbsp;
+                <span sec:authorize="isAnonymous()">
+                    <a th:href="@{/login}" class="marginRight15">Zaloguj się</a>
+                    <a th:href="@{/homepage/register}" class="colorRed">Zarejestruj się</a>
+                </span>
+
+                <span sec:authorize="isAuthenticated()">
+                    <span sec:authentication="name"></span>
+                    <a>, </a>
+                    <a th:href="@{/logout}">Wyloguj się</a>
+                </span>
+
             </div>
         </div>
 
@@ -38,18 +45,19 @@
                                class="fontWeightRevertBorRad15MinH35MaxH35BorCol109163207099">
                         <button type="submit" class="borderRadius15MinHeight35MaxHeight35">Szukaj</button>
                     </form>
-                    <!--<c:if test="${sessionScope.customerLogged == null}">-->
-                    <a th:href="@{/homepage/register}">
-                        <img class="mb-2 marginLeft5MarginRight15" th:src="@{/images/logos/register.png}"
-                             width="25" height="25" alt="register">
-                    </a>
-                    <!--</c:if>-->
-                    <!--<c:if test="${sessionScope.customerLogged != null}">-->
-                    <a th:href="@{/homepage/myAccount}">
-                        <img class="mb-2 marginLeft5MarginRight15" th:src="@{/images/logos/mojeKonto.PNG}"
-                             width="25" height="24" alt="mojeKonto">
-                    </a>
-                    <!--</c:if>-->
+
+                    <span sec:authorize="isAnonymous()">
+                        <a th:href="@{/homepage/register}">
+                            <img class="mb-2 marginLeft5MarginRight15" th:src="@{/images/logos/register.png}"
+                                 width="25" height="25" alt="register">
+                        </a>
+                    </span>
+                    <span sec:authorize="isAuthenticated()">
+                        <a th:href="@{/homepage/myAccount}">
+                            <img class="mb-2 marginLeft5MarginRight15" th:src="@{/images/logos/mojeKonto.PNG}"
+                                 width="25" height="24" alt="mojeKonto">
+                        </a>
+                    </span>
                     <a th:href="@{/homepage/shoppingCart}">
                         <img class="mb-2 marginLeft5MarginRight15" th:src="@{/images/logos/koszyk.PNG}"
                              width="25" height="25" alt="koszyk">
