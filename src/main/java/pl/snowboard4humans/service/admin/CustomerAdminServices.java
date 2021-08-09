@@ -16,7 +16,8 @@ import java.util.Optional;
 
 @Service
 public class CustomerAdminServices extends SuperService {
-    private CustomerRepo customerRepo;
+
+    private final CustomerRepo customerRepo;
 
     @Autowired
     public CustomerAdminServices(CustomerRepo customerRepo) {

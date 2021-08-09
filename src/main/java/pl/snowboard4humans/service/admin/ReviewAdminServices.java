@@ -20,9 +20,10 @@ import java.util.Optional;
 
 @Service
 public class ReviewAdminServices extends SuperService {
-    private ReviewRepo reviewRepo;
-    private EquipmentRepo equipmentRepo;
-    private CustomerRepo customerRepo;
+
+    private final ReviewRepo reviewRepo;
+    private final EquipmentRepo equipmentRepo;
+    private final CustomerRepo customerRepo;
 
     @Autowired
     public ReviewAdminServices(ReviewRepo reviewRepo,

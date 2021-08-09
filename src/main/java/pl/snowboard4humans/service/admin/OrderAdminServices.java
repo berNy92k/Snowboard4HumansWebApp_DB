@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class OrderAdminServices extends SuperService {
 
-    private OrderRepo orderRepo;
+    private final OrderRepo orderRepo;
 
     @Autowired
     public OrderAdminServices(OrderRepo orderRepo) {

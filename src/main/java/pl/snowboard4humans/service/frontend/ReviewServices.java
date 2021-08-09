@@ -18,9 +18,10 @@ import java.util.Date;
 
 @Service
 public class ReviewServices extends SuperService {
-    private ReviewRepo reviewRepo;
-    private EquipmentRepo equipmentRepo;
-    private CustomerRepo customerRepo;
+
+    private final ReviewRepo reviewRepo;
+    private final EquipmentRepo equipmentRepo;
+    private final CustomerRepo customerRepo;
 
     @Autowired
     public ReviewServices(ReviewRepo reviewRepo,

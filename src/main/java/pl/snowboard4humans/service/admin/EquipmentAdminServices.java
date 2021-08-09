@@ -22,9 +22,10 @@ import java.util.List;
 
 @Service
 public class EquipmentAdminServices extends SuperService {
-    private EquipmentRepo equipmentRepo;
-    private ManufacturerRepo manufacturerRepo;
-    private CategoryRepo categoryRepo;
+
+    private final EquipmentRepo equipmentRepo;
+    private final ManufacturerRepo manufacturerRepo;
+    private final CategoryRepo categoryRepo;
 
     @Autowired
     public EquipmentAdminServices(EquipmentRepo equipmentRepo,

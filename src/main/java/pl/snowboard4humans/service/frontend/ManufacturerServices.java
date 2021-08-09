@@ -14,7 +14,8 @@ import java.util.List;
 
 @Service
 public class ManufacturerServices extends SuperService {
-    private ManufacturerRepo manufacturerRepo;
+
+    private final ManufacturerRepo manufacturerRepo;
 
     @Autowired
     public ManufacturerServices(ManufacturerRepo manufacturerRepo) {

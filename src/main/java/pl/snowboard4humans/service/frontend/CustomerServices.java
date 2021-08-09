@@ -18,8 +18,9 @@ import java.util.List;
 
 @Service
 public class CustomerServices extends SuperService {
-    private CustomerRepo customerRepo;
-    private EquipmentRepo equipmentRepo;
+
+    private final CustomerRepo customerRepo;
+    private final EquipmentRepo equipmentRepo;
 
     @Autowired
     public CustomerServices(CustomerRepo customerRepo,

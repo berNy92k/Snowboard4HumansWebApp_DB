@@ -14,7 +14,8 @@ import java.util.Optional;
 
 @Service
 public class CategoryAdminServices extends SuperService {
-    private CategoryRepo categoryRepo;
+
+    private final CategoryRepo categoryRepo;
 
     @Autowired
     public CategoryAdminServices(CategoryRepo categoryRepo) {

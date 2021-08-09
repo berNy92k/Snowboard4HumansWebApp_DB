@@ -15,7 +15,8 @@ import java.util.Optional;
 
 @Service
 public class ManufacturerAdminServices extends SuperService {
-    private ManufacturerRepo manufacturerRepo;
+
+    private final ManufacturerRepo manufacturerRepo;
 
     @Autowired
     public ManufacturerAdminServices(ManufacturerRepo manufacturerRepo) {
