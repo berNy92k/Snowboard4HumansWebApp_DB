@@ -66,6 +66,7 @@ public interface ConstantsFrontendPL {
 
     // --------------- SHOPPING CART ---------------
     // URL
+    String SHOPPING_CART_OBJECT = "shoppingCart";
     String SHOPPING_CART_HOMEPAGE_URL = "/homepage/shoppingCart";
     String SHOPPING_CART_CHECKOUT_HOMEPAGE_URL = "/homepage/shoppingCartCheckout";
     String SHOPPING_CART_FINAL_CHECKOUT_HOMEPAGE_URL = "/homepage/shoppingCartFinalCheckout";
@@ -78,6 +79,7 @@ public interface ConstantsFrontendPL {
     String SHOPPING_CART_EQUIPMENT_WAS_CLEARED = "Wyczyszczono koszyk z zakupami";
     String SHOPPING_CART_CUSTOMER_NOT_LOGGED = "Użytkownik nie jest zalogowny. " +
             "Proszę o zalogowanie się a następnie powtórzenie czynności.";
+    String SHOPPING_CART_CUSTOMER_LOGGED = "Użytkownik jest zalogowny.";
     String TRANSACTION_FINISHED_WITH_SUCCESFULL = "Zamówienie przyjęte. " +
             "W ciąglu kilku najbliższych dniach przesyłka zostanie do Ciebie dostarczona " +
             "o czym zostaniesz poinformowany mailowo.";

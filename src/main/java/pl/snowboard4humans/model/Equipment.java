@@ -15,7 +15,7 @@ import java.util.Set;
 @Entity
 @Table(name = "equipment",
         uniqueConstraints = @UniqueConstraint(columnNames = "name"))
-public class Equipment {
+public class Equipment extends AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

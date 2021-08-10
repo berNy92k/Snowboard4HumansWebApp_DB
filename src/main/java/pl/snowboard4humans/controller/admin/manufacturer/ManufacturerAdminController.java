@@ -5,46 +5,78 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.snowboard4humans.constants.ConstantsAdminENG;
+import pl.snowboard4humans.controller.frontend.SuperController;
+import pl.snowboard4humans.dto.MsgAndListDto;
 import pl.snowboard4humans.model.Manufacturer;
-import pl.snowboard4humans.service.admin.ManufacturerAdminServices;
+import pl.snowboard4humans.service.admin.ManufacturerAdminService;
 
 @Controller
 @RequestMapping(value = "/admin/manufacturer")
-public class ManufacturerAdminController {
+public class ManufacturerAdminController extends SuperController {
 
-    private ManufacturerAdminServices manufacturerAdminServices;
+    private final ManufacturerAdminService manufacturerAdminService;
 
     @Autowired
-    public ManufacturerAdminController(ManufacturerAdminServices manufacturerAdminServices) {
-        this.manufacturerAdminServices = manufacturerAdminServices;
+    public ManufacturerAdminController(final ManufacturerAdminService manufacturerAdminService) {
+        this.manufacturerAdminService = manufacturerAdminService;
     }
 
     @GetMapping
-    public String getManufacturers(Model model) {
-        return manufacturerAdminServices.getManufacturers(model);
+    public String getManufacturers(final Model model) {
+        final MsgAndListDto<Manufacturer> manufacturers = manufacturerAdminService.getManufacturers();
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                manufacturers.getMessage(),
+                ConstantsAdminENG.MANUFACTURER_LIST_OBJECT,
+                manufacturers.getListOfElements(),
+                ConstantsAdminENG.MANUFACTURER_LIST_URL);
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String addOrUpdateManufacturer(Model model,
-                                          @ModelAttribute Manufacturer manufacturer) {
-        return manufacturerAdminServices.addOrUpdateManufacturer(model, manufacturer);
+    public String addOrUpdateManufacturer(final Model model,
+                                          @ModelAttribute final Manufacturer manufacturer) {
+        final MsgAndListDto<Manufacturer> manufacturers = manufacturerAdminService.addOrUpdateManufacturer(manufacturer);
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                manufacturers.getMessage(),
+                ConstantsAdminENG.MANUFACTURER_LIST_OBJECT,
+                manufacturers.getListOfElements(),
+                ConstantsAdminENG.MANUFACTURER_LIST_URL);
     }
 
     @GetMapping(value = "edit")
-    public String getEditManufactureScreen(@RequestParam(name = "id") int manufacturerId,
-                                           Model model) {
-        return manufacturerAdminServices.getEditManufactureScreen(manufacturerId, model);
+    public String getEditManufactureScreen(@RequestParam(name = "id") final int manufacturerId,
+                                           final Model model) {
+        final MsgAndListDto<Manufacturer> manufacturers = manufacturerAdminService.getEditManufactureScreen(manufacturerId);
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                manufacturers.getMessage(),
+                ConstantsAdminENG.MANUFACTURER_OBJECT,
+                manufacturers.getListOfElements(),
+                ConstantsAdminENG.MANUFACTURER_CREATE_OR_UPDATE_URL);
     }
 
     @GetMapping(value = "create")
-    public String getAddNewManufacturerScreen(Model model) {
-        return manufacturerAdminServices.getAddNewManufacturerScreen(model);
+    public String getAddNewManufacturerScreen(final Model model) {
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_MANUFACTURER_ADMIN,
+                ConstantsAdminENG.MANUFACTURER_OBJECT,
+                new Manufacturer(),
+                ConstantsAdminENG.MANUFACTURER_CREATE_OR_UPDATE_URL);
     }
 
     @GetMapping(value = "deleteManufacturer")
-    public String deleteManufacturer(@RequestParam(name = "id") int manufacturerId,
-                                     Model model) {
-        return manufacturerAdminServices.deleteManufacturer(model,manufacturerId);
+    public String deleteManufacturer(final Model model,
+                                     @RequestParam(name = "id") final int manufacturerId) {
+        final MsgAndListDto<Manufacturer> manufacturer = manufacturerAdminService.deleteManufacturer(manufacturerId);
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                manufacturer.getMessage(),
+                ConstantsAdminENG.MANUFACTURER_LIST_OBJECT,
+                manufacturer.getListOfElements(),
+                ConstantsAdminENG.MANUFACTURER_LIST_URL);
     }
 
 }

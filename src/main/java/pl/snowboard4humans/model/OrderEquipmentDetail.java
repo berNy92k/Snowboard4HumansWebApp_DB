@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "Order_Equipment_Detail")
-public class OrderEquipmentDetail {
+public class OrderEquipmentDetail extends AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

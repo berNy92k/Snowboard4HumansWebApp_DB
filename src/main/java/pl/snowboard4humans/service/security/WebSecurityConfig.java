@@ -15,10 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("user@snowboard4humans.pl")
-                .password(passwordEncoder().encode("password"))
+                .withUser("daw.bernacki@gmail.com")
+                .password(passwordEncoder().encode("dawidek"))
                 .roles("USER")
                 .and()
                 .withUser("admin@snowboard4humans.pl")
@@ -27,7 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
+    protected void configure(final HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")

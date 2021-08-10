@@ -14,7 +14,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "manufacturer")
-public class Manufacturer {
+public class Manufacturer extends AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

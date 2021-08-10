@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "category")
-public class Category {
+public class Category extends AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

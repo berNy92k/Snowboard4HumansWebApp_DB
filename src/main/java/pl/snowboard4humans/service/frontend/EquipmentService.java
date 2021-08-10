@@ -17,14 +17,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Service
-public class EquipmentServices extends SuperService {
+public class EquipmentService extends SuperService {
 
     private final EquipmentRepo equipmentRepo;
     private final ReviewRepo reviewRepo;
 
     @Autowired
-    public EquipmentServices(EquipmentRepo equipmentRepo,
-                             ReviewRepo reviewRepo) {
+    public EquipmentService(EquipmentRepo equipmentRepo,
+                            ReviewRepo reviewRepo) {
 
         this.equipmentRepo = equipmentRepo;
         this.reviewRepo = reviewRepo;

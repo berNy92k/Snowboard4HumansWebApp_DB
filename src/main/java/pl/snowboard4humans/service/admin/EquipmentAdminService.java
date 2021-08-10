@@ -21,16 +21,16 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class EquipmentAdminServices extends SuperService {
+public class EquipmentAdminService extends SuperService {
 
     private final EquipmentRepo equipmentRepo;
     private final ManufacturerRepo manufacturerRepo;
     private final CategoryRepo categoryRepo;
 
     @Autowired
-    public EquipmentAdminServices(EquipmentRepo equipmentRepo,
-                                  ManufacturerRepo manufacturerRepo,
-                                  CategoryRepo categoryRepo) {
+    public EquipmentAdminService(EquipmentRepo equipmentRepo,
+                                 ManufacturerRepo manufacturerRepo,
+                                 CategoryRepo categoryRepo) {
 
         this.equipmentRepo = equipmentRepo;
         this.manufacturerRepo = manufacturerRepo;
@@ -212,7 +212,6 @@ public class EquipmentAdminServices extends SuperService {
     }
 
 
-
     public String searchEquipmentList(Model model,
                                       String searchBy) {
 
@@ -236,4 +235,7 @@ public class EquipmentAdminServices extends SuperService {
         return ConstantsAdminENG.EQUIPMENT_LIST_URL;
     }
 
+    public List<Equipment> findAll() {
+        return equipmentRepo.findAll();
+    }
 }

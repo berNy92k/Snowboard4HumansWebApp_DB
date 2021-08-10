@@ -13,17 +13,18 @@ public class ShoppingCart {
     }
 
     public void addEquipment(Equipment equipment) {
-        if (shoppingCart.containsKey(equipment)) {
-            Integer counter = shoppingCart.get(equipment);
-            counter = counter + 1;
-            shoppingCart.put(equipment, counter);
+        if (isCartContainEquipment(equipment)) {
+            Object[] objects = getAndRemoveFromMap(equipment);
+            Integer counter = (Integer) objects[0] + 1;
+            Equipment equipmentToAdd = (Equipment) objects[1];
+            shoppingCart.put(equipmentToAdd, counter);
         } else {
             shoppingCart.put(equipment, 1);
         }
     }
 
     public void removeEquipmentByEquipment(Equipment equipment) {
-        shoppingCart.remove(equipment);
+        getAndRemoveFromMap(equipment);
     }
 
     public void removeEquipmentById(int id) {
@@ -51,6 +52,7 @@ public class ShoppingCart {
         return sumAmount;
     }
 
+    //TODO
     public void updateShoppingCart(Map<Integer, Integer> eqIdAndQuantity) {
         for (Map.Entry<Integer, Integer> integerIntegerEntry : eqIdAndQuantity.entrySet()) {
             Equipment key = new Equipment();
@@ -61,6 +63,10 @@ public class ShoppingCart {
         }
     }
 
+    public void updateShoppingCart() {
+        Map<Equipment, Integer> shoppingCart = getShoppingCart();
+    }
+
     public int getTotalQuantityOfEquipments() {
         return shoppingCart.size();
     }
@@ -69,7 +75,43 @@ public class ShoppingCart {
         shoppingCart.clear();
     }
 
+    public void setShoppingCart(Map<Equipment, Integer> shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
     public Map<Equipment, Integer> getShoppingCart() {
         return shoppingCart;
+    }
+
+    private boolean isCartContainEquipment(Equipment equipment) {
+        boolean isCartContainEquipment = false;
+        for (Map.Entry<Equipment, Integer> shoppingCartMap : shoppingCart.entrySet()) {
+            Equipment equipmentFromMap = shoppingCartMap.getKey();
+            if (equipmentFromMap.getId().equals(equipment.getId())) {
+                isCartContainEquipment = true;
+                break;
+            }
+        }
+
+        return isCartContainEquipment;
+    }
+
+    private Object[] getAndRemoveFromMap(Equipment equipment) {
+        Object[] objects = new Object[2];
+        Equipment equipmentFromMap = null;
+        Integer equipmenCounter = null;
+        for (Map.Entry<Equipment, Integer> shoppingCartMap : shoppingCart.entrySet()) {
+            equipmentFromMap = shoppingCartMap.getKey();
+            equipmenCounter = shoppingCartMap.getValue();
+            if (equipmentFromMap.getId().equals(equipment.getId())) {
+                shoppingCart.remove(equipmentFromMap);
+                break;
+            }
+        }
+
+        objects[0] = equipmenCounter;
+        objects[1] = equipmentFromMap;
+
+        return objects;
     }
 }

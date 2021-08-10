@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="width98Margin20auto0">
+
+        <!--Form for transaction-->
+        <form th:action="@{/homepage/shoppingCart/continueCheckout}" th:method="post">
+
+            <div class="displayFlex">
+                <!-- Shopping cart -->
+                <div class="width48percentage">
+                    <div th:align="center" class="clearBoth">
+                        <h5>Koszyk</h5>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Zdjęcie</th>
+                            <th scope="col">Nazwa</th>
+                            <th scope="col">Producent</th>
+                            <th scope="col">Ilość</th>
+                            <th scope="col">Kwota [zł]</th>
+                        </tr>
+                        </thead>
+                        <th:block th:if="${shoppingCart.totalQuantityOfEquipments != 0}">
+                            <tbody>
+                            <th:block th:each="cartSingleEq : ${shoppingCart.shoppingCart}">
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                        <th:block th:if="${cartSingleEq.key.image != null}">
+                                            <img src="#" th:src="@{'data:image/jpg;base64,'+*{cartSingleEq.key.base64Image}}" width="55"/>
+                                        </th:block>
+                                            <th:block th:if="${cartSingleEq.key.image == null}">
+                                            Brak zdjęcia
+                                        </th:block>
+                                    </td>
+                                    <td><th:block th:text="${cartSingleEq.key.name}"/></td>
+                                    <td>
+                                        <th:block th:if="${cartSingleEq.key.manufacturer != null}">
+                                            <th:block th:text="${cartSingleEq.key.manufacturer.manufacturerName}"/>
+                                        </th:block>
+                                        <th:block th:if="${cartSingleEq.key.manufacturer == null}">
+                                            Brak informacji o producencie
+                                        </th:block>
+                                    </td>
+                                    <td>
+                                        <th:block th:text="${cartSingleEq.value}"/>
+                                    </td>
+                                    <td>
+                                        <th:block th:text="${cartSingleEq.value * cartSingleEq.key.price}"/>
+                                    </td>
+                                </tr>
+                            </th:block>
+                            <tr>
+                                <th></th>
+                                <td></td>
+                                <td></td>
+                                <td><b>TOTAL</b></td>
+                                <td><th:block th:text="${shoppingCart.totalQuantity}"/></td>
+                                <td><th:block th:text="${shoppingCart.totalAmount}"/></td>
+                            </tr>
+                            </tbody>
+                        </th:block>
+                    </table>
+                </div>
+
+                <!-- Address -->
+                <div class="width48percentage marginLeft4percentage">
+                    <div th:align="center">
+                        <h5>Adres do wysyłki / Dane kontaktowe</h5>
+                    </div>
+
+                    <div class="displayFlex">
+                        <div class="width48percentage">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" aria-describedby="email" placeholder="Wpisz email"
+                                       th:field="${loggedCustomer.email}">
+                            </div>
+                            <div class="form-group">
+                                <label>Imię</label>
+                                <input type="text" class="form-control" aria-describedby="firstName" placeholder="Wpisz imię"
+                                       th:field="${loggedCustomer.firstName}">
+                            </div>
+                            <div class="form-group">
+                                <label>Nazwisko</label>
+                                <input type="text" class="form-control" aria-describedby="lastName" placeholder="Wpisz nazwisko"
+                                       th:field="${loggedCustomer.lastName}">
+                            </div>
+                            <div class="form-group">
+                                <label>Ulica</label>
+                                <input type="text" class="form-control" aria-describedby="street" placeholder="Wpisz nazwę ulicy"
+                                       th:field="${loggedCustomer.street}">
+                            </div>
+                            <div class="form-group">
+                                <label>Numer domu</label>
+                                <input type="text" class="form-control" aria-describedby="homeNumber" placeholder="Wpisz numer domu"
+                                       th:field="${loggedCustomer.homeNumber}">
+                            </div>
+                        </div>
+                        <div class="width48percentage marginLeft4percentage">
+                            <div class="form-group">
+                                <label>Miasto</label>
+                                <input type="text" class="form-control" aria-describedby="city" placeholder="Wpisz miasto"
+                                       th:field="${loggedCustomer.city}">
+                            </div>
+                            <div class="form-group">
+                                <label>Kod pocztowy</label>
+                                <input type="text" class="form-control" aria-describedby="zipCode" placeholder="Wpisz kod pocztowy"
+                                       th:field="${loggedCustomer.zipCode}">
+                            </div>
+                            <div class="form-group">
+                                <label>Kraj</label>
+                                <input type="text" class="form-control" aria-describedby="country" placeholder="Wpisz kraj"
+                                       th:field="${loggedCustomer.country}">
+                            </div>
+                            <div class="form-group">
+                                <label>Numer telefonu</label>
+                                <input type="text" class="form-control" aria-describedby="phone" placeholder="Wpisz numer telefonu"
+                                       th:field="${loggedCustomer.phone}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Finish transaction -->
+            <th:block th:if="*{shoppingCart.totalQuantityOfEquipments != 0}">
+                <table class="border2b57b4BorderRadius10Padding1ex">
+                    <tr>
+                        <td>
+                            <button type="submit">
+                                Przejdź dalej
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary" id="cancel"
+                                    onclick="javascript:history.go(-1);">
+                                Anuluj
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </th:block>
+        </form>
+    </div>
+
+    <footer class="footerFreeSpace30px">
+        <div th:replace="homepage/footer :: footer"/>
+    </footer>
+</div>
+
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+<script>
+    function deleteEquipment(equipmentId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz cała pozycja zostanie usunięta")) {
+            window.location = '/homepage/deleteFromShoppingCart?eq=' + equipmentId;
+        }
+    }
+</script>
+</html>

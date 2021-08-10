@@ -5,22 +5,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.snowboard4humans.service.frontend.ManufacturerServices;
+import pl.snowboard4humans.constants.ConstantsFrontendPL;
+import pl.snowboard4humans.controller.frontend.SuperController;
+import pl.snowboard4humans.dto.MsgAndListDto;
+import pl.snowboard4humans.model.Manufacturer;
+import pl.snowboard4humans.service.frontend.ManufacturerService;
 
 @Controller
 @RequestMapping(value = "/homepage/manufacturer")
-public class ManufacturerController {
+public class ManufacturerController extends SuperController {
 
-    private ManufacturerServices manufacturerServices;
+    private final ManufacturerService manufacturerService;
 
     @Autowired
-    public ManufacturerController(ManufacturerServices manufacturerServices) {
-        this.manufacturerServices = manufacturerServices;
+    public ManufacturerController(final ManufacturerService manufacturerService) {
+        this.manufacturerService = manufacturerService;
     }
 
     @GetMapping
-    public String getManufacturer(Model model) {
-        return manufacturerServices.manufacturerList(model);
+    public String getManufacturer(final Model model) {
+        final MsgAndListDto<Manufacturer> manufacturer = manufacturerService.manufacturerList();
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                manufacturer.getMessage(),
+                ConstantsFrontendPL.MANUFACTURER_LIST_OBJECT,
+                manufacturer.getListOfElements(),
+                ConstantsFrontendPL.MANUFACTURER_LIST_URL);
     }
 
 }

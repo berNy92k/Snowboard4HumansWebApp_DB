@@ -6,22 +6,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.snowboard4humans.model.Equipment;
-import pl.snowboard4humans.service.admin.EquipmentAdminServices;
+import pl.snowboard4humans.service.admin.EquipmentAdminService;
 
 @Controller
 @RequestMapping(value = "/admin/equipment")
 public class EquipmentAdminController {
 
-    private EquipmentAdminServices equipmentAdminServices;
+    private EquipmentAdminService equipmentAdminService;
 
     @Autowired
-    public EquipmentAdminController(EquipmentAdminServices equipmentAdminServices) {
-        this.equipmentAdminServices = equipmentAdminServices;
+    public EquipmentAdminController(EquipmentAdminService equipmentAdminService) {
+        this.equipmentAdminService = equipmentAdminService;
     }
 
     @GetMapping
     public String getEquipmentType(@RequestParam String type) {
-        return equipmentAdminServices.equipmentTypeUrl(type);
+        return equipmentAdminService.equipmentTypeUrl(type);
     }
 
     @GetMapping(value = "details")
@@ -29,7 +29,7 @@ public class EquipmentAdminController {
                                @RequestParam String eqm,
                                @RequestParam String sex) {
 
-        return equipmentAdminServices.equipmentList(model, eqm, sex);
+        return equipmentAdminService.equipmentList(model, eqm, sex);
     }
 
     @PostMapping(value = "details",
@@ -37,7 +37,7 @@ public class EquipmentAdminController {
     public String postEquipment(Model model,
                                 @ModelAttribute Equipment equipment) {
 
-        return equipmentAdminServices.addOrUpdateEquipment(model, equipment);
+        return equipmentAdminService.addOrUpdateEquipment(model, equipment);
     }
 
     @GetMapping(value = "precreateNewEquipment")
@@ -45,26 +45,26 @@ public class EquipmentAdminController {
                                         @RequestParam String eqm,
                                         @RequestParam String sex) {
 
-        return equipmentAdminServices.preCreateNewEquipment(model, eqm, sex);
+        return equipmentAdminService.preCreateNewEquipment(model, eqm, sex);
     }
 
     @GetMapping(value = "editEquipment")
     public String editEquipment(Model model,
                                 @RequestParam(value = "id") int equipmentId) {
 
-        return equipmentAdminServices.editEquipment(model, equipmentId);
+        return equipmentAdminService.editEquipment(model, equipmentId);
     }
 
     @GetMapping(value = "deleteEquipment")
     public String deleteEquipment(@RequestParam(name = "id") int equipmentId,
                                  Model model) {
-        return equipmentAdminServices.deleteEquipment(model, equipmentId);
+        return equipmentAdminService.deleteEquipment(model, equipmentId);
     }
 
     @GetMapping(value = "details/viewEquipment")
     public String viewEquipment(Model model,
                                 @RequestParam int id) {
 
-        return equipmentAdminServices.viewEquipment(model, id);
+        return equipmentAdminService.viewEquipment(model, id);
     }
 }

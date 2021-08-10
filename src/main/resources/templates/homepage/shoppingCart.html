@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl-PL">
+
+<head>
+    <div th:replace="general/headAndScripts :: head"/>
+</head>
+
+<body>
+<div class="container">
+    <!-- Header-->
+    <div th:replace="homepage/header :: header"/>
+
+    <div class="width98Margin20auto0">
+
+        <div th:align="center">
+            <h5>Koszyk</h5>
+        </div>
+
+        <div th:align="center">
+            <h5><p class="color950002" th:text="${message}"></p></h5>
+        </div>
+
+        <form th:action="@{/homepage/shoppingCart/updateEquipmentInShoppingCart}"
+              th:method="post"
+              th:object="${shoppingCart}">
+
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Zdjęcie</th>
+                        <th scope="col">Nazwa</th>
+                        <th scope="col">Nazwa producenta</th>
+                        <th scope="col">Kwota [zł] / szt.</th>
+                        <th scope="col">Ilość</th>
+                        <th scope="col">Kwota [zł]</th>
+                        <th scope="col">Akcje</th>
+                    </tr>
+                    </thead>
+                    <th:block th:if="*{totalQuantityOfEquipments == 0}">
+                        <tbody>
+                        <tr>
+                            <th scope="row" th:text="1"></th>
+                            <td></td>
+                            <td>BRAK</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </th:block>
+                    <th:block th:if="*{totalQuantityOfEquipments != 0}">
+                        <tbody>
+                        <th:block th:each="cartSingleEq, status: *{shoppingCart}">
+                            <tr>
+                                <th scope="row" th:text="${status.index + 1}"></th>
+                                <td>
+                                    <th:block th:if="${cartSingleEq.key.image != null}">
+                                        <img th:src="@{'data:image/jpg;base64,'+${cartSingleEq.key.base64Image}}"
+                                             width="55">
+                                        <input type="hidden" th:value="${cartSingleEq.key.base64Image}">
+                                    </th:block>
+                                    <th:block th:if="${cartSingleEq.key.image == null}">
+                                        Brak zdjęcia
+                                    </th:block>
+                                </td>
+                                <td th:text="${cartSingleEq.key.name}" th:value="${cartSingleEq.key.name}"></td>
+                                <td>
+                                    <th:block th:if="${cartSingleEq.key.manufacturer != null}"
+                                              th:text="${cartSingleEq.key.manufacturer.manufacturerName}">
+                                        <input type="hidden" th:value="${cartSingleEq.key.manufacturer.manufacturerName}">
+                                    </th:block>
+                                    <th:block th:if="${cartSingleEq.key.manufacturer == null}">
+                                        Brak informacji o producencie
+                                    </th:block>
+                                </td>
+                                <td th:text="${cartSingleEq.key.price}">
+                                    <input type="hidden" th:value="${cartSingleEq.key.price}">
+                                </td>
+                                <td>
+                                    <input type="text" th:value="${cartSingleEq.value}">
+                                </td>
+                                <td th:text="${cartSingleEq.value * cartSingleEq.key.price}"></td>
+
+                                <td>
+                                    <a th:href="'javascript:deleteEquipment(\''+${cartSingleEq.key.id}+'\')'">USUŃ</a>
+                                    <p>
+                                        <a th:href="@{/homepage/equipment/viewEquipment(id=${cartSingleEq.key.id})}">PODGLĄD</a>
+                                    </p>
+                                </td>
+                            </tr>
+                        </th:block>
+                        <tr>
+                            <th></th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td th:text="${shoppingCart.totalQuantity}"></td>
+                            <td th:text="${shoppingCart.totalAmount}"></td>
+                            <td><b>TOTAL</b></td>
+                        </tr>
+                        </tbody>
+                    </th:block>
+                </table>
+            </div>
+            <th:block th:if="*{totalQuantityOfEquipments != 0}">
+                <div>
+                    <table class="border2b57b4BorderRadius10Padding1ex">
+                        <tr>
+                            <td>
+                                <button type="submit">Zaaktualizauj dane</button>
+                            </td>
+                            <td>
+                                <a th:href="@{/homepage/shoppingCart/clearShoppingCart}">
+                                    <input type="button" value="Wyczyść kartę"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a th:href="@{/}">
+                                    <input type="button" value="Kontynuuj zakupy"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a th:href="@{/homepage/shoppingCart/checkout}">
+                                    <input type="button" value="Zakup"/>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </th:block>
+        </form>
+
+        <!-- Footer -->
+        <div th:replace="homepage/footer :: footer"/>
+    </div>
+</div>
+
+<!--Scripts JS-->
+<div th:replace="general/headAndScripts :: scripts"/>
+</body>
+<script>
+    function deleteEquipment(equipmentId) {
+        if (confirm("Czy jestes pewny ? Jeżeli się zgodzisz cała pozycja zostanie usunięta")) {
+            window.location = '/homepage/shoppingCart/deleteFromShoppingCart?eq=' + equipmentId;
+        }
+    }
+</script>
+</html>

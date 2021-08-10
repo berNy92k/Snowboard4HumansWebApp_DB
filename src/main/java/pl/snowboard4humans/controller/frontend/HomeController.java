@@ -6,24 +6,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
+import pl.snowboard4humans.constants.ConstantsPL;
+import pl.snowboard4humans.constants.ConstantsUtils;
 import pl.snowboard4humans.model.Equipment;
-import pl.snowboard4humans.service.frontend.HomeServices;
+import pl.snowboard4humans.service.frontend.HomeService;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "")
-public class HomeController {
-    private HomeServices homeServices;
+public class HomeController extends SuperController {
+
+    private final HomeService homeService;
 
     @Autowired
-    public HomeController(HomeServices homeServices) {
-        this.homeServices = homeServices;
+    public HomeController(final HomeService homeService) {
+        this.homeService = homeService;
     }
 
     @GetMapping
-    public String getHomePage(Model model) {
-        return homeServices.getShortListOdEquipments(model);
+    public String getHomePage(final Model model) {
+        final List<Equipment> top4equipments = homeService.getShortListOdEquipments();
+
+        return getRequestDispatcherWithOutDefaultMessageAsBoolean(model,
+                ConstantsPL.MESSAGE_EMPTY,
+                ConstantsUtils.FALSE,
+                ConstantsFrontendPL.EQUIPMENT_SHORT_LIST,
+                top4equipments,
+                ConstantsUtils.INDEX_HTML);
     }
 
     // onas - start

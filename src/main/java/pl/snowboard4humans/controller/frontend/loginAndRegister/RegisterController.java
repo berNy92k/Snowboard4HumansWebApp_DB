@@ -7,28 +7,51 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
+import pl.snowboard4humans.constants.ConstantsPL;
+import pl.snowboard4humans.controller.frontend.SuperController;
+import pl.snowboard4humans.dto.MsgAndListDto;
 import pl.snowboard4humans.model.Customer;
-import pl.snowboard4humans.service.frontend.CustomerServices;
+import pl.snowboard4humans.model.Equipment;
+import pl.snowboard4humans.service.frontend.CustomerService;
 
 @Controller
-public class RegisterController {
+public class RegisterController extends SuperController {
 
-    private CustomerServices customerServices;
+    private final CustomerService customerService;
 
     @Autowired
-    public RegisterController(CustomerServices customerServices) {
-        this.customerServices = customerServices;
+    public RegisterController(final CustomerService customerService) {
+        this.customerService = customerService;
     }
 
     @GetMapping(value = ConstantsFrontendPL.REGISTER_FORM_PAGE)
-    public String getRegisterPage(Model model) {
-        return customerServices.registerFormCustomer(model);
+    public String getRegisterPage(final Model model) {
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                ConstantsPL.NULL,
+                ConstantsFrontendPL.REGISTER_CUSTOMER_OBJECT,
+                new Customer(),
+                ConstantsFrontendPL.REGISTER_FORM_PAGE);
     }
 
     @PostMapping(value = ConstantsFrontendPL.REGISTER_FORM_PAGE)
-    public String postRegisterPage(@ModelAttribute Customer customerRegisterData,
-                                   Model model) {
-        return customerServices.registerCustomer(customerRegisterData, model);
+    public String postRegisterPage(final Model model,
+                                   @ModelAttribute final Customer customerRegisterData) {
+        final MsgAndListDto<Customer> cmald = customerService.registerCustomer(customerRegisterData);
+
+        if (cmald.isAnonymous()) {
+            return getRequestDispatcherWithDefaultMessage(model,
+                    cmald.getMessage(),
+                    ConstantsFrontendPL.REGISTER_CUSTOMER_OBJECT,
+                    new Customer(),
+                    cmald.getUrl());
+        }
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                cmald.getMessage(),
+                ConstantsFrontendPL.LOGIN_CUSTOMER_OBJECT,
+                new Customer(),
+                cmald.getUrl());
     }
 
 }

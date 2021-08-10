@@ -42,13 +42,8 @@
                             <br>
                             <select class="form-control" th:field="*{manufacturer.id}">
                                 <th:block th:each="manufacturer : ${manufacturers}">
-                                    <!--<th:block th:if="${manufacturer.id eq equipment.manufacturer.id}">-->
-                                    <!--<option th:field="${manufacturer.id}" th:text="${manufacturer.id}" selected>-->
-                                    <!--</th:block>-->
-                                    <!--<th:block th:if="${manufacturer.id ne equipment.manufacturer.id}">-->
                                     <option th:text="${manufacturer.manufacturerName}"
                                             th:value="${manufacturer.id}"></option>
-                                    <!--</th:block>-->
                                 </th:block>
                             </select>
                         </div>

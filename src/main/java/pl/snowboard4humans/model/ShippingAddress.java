@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Shipping_Address")
-public class ShippingAddress {
+public class ShippingAddress extends AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

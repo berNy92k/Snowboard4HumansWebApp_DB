@@ -4,46 +4,78 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.snowboard4humans.constants.ConstantsAdminENG;
+import pl.snowboard4humans.controller.frontend.SuperController;
+import pl.snowboard4humans.dto.MsgAndListDto;
 import pl.snowboard4humans.model.Category;
-import pl.snowboard4humans.service.admin.CategoryAdminServices;
+import pl.snowboard4humans.service.admin.CategoryAdminService;
 
 @Controller
 @RequestMapping(value = "/admin/category")
-public class CategoryAdminController {
+public class CategoryAdminController extends SuperController {
 
-    private CategoryAdminServices categoryAdminServices;
+    private final CategoryAdminService categoryAdminService;
 
     @Autowired
-    public CategoryAdminController(CategoryAdminServices categoryAdminServices) {
-        this.categoryAdminServices = categoryAdminServices;
+    public CategoryAdminController(final CategoryAdminService categoryAdminService) {
+        this.categoryAdminService = categoryAdminService;
     }
 
     @GetMapping
-    public String getCategories(Model model) {
-        return categoryAdminServices.getCategories(model);
+    public String getCategories(final Model model) {
+        final MsgAndListDto<Category> categories = categoryAdminService.getCategories();
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                categories.getMessage(),
+                ConstantsAdminENG.CATEGORY_LIST_OBJECT,
+                categories.getListOfElements(),
+                ConstantsAdminENG.CATEGORY_LIST_URL);
     }
 
     @PostMapping
-    public String addCategory(Model model,
-                              @ModelAttribute Category category) {
-        return categoryAdminServices.addOrUpdateCategory(model, category);
+    public String addCategory(final Model model,
+                              @ModelAttribute final Category category) {
+        final MsgAndListDto<Category> categories = categoryAdminService.addOrUpdateCategory(category);
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                categories.getMessage(),
+                ConstantsAdminENG.CATEGORY_LIST_OBJECT,
+                categories.getListOfElements(),
+                ConstantsAdminENG.CATEGORY_LIST_URL);
     }
 
     @GetMapping(value = "deleteCategory")
-    public String deleteCategory(@RequestParam(name = "id") int categoryId,
-                                 Model model) {
-        return categoryAdminServices.deleteCategory(model, categoryId);
+    public String deleteCategory(@RequestParam(name = "id") final int categoryId,
+                                 final Model model) {
+        final MsgAndListDto<Category> categories = categoryAdminService.deleteCategory(categoryId);
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                categories.getMessage(),
+                ConstantsAdminENG.CATEGORY_LIST_OBJECT,
+                categories.getListOfElements(),
+                ConstantsAdminENG.CATEGORY_LIST_URL);
     }
 
     @GetMapping(value = "category_create")
-    public String addNewCategoryScreen(Model model) {
-        return categoryAdminServices.getAddNewCategoryScreen(model);
+    public String addNewCategoryScreen(final Model model) {
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_CATEGORY_ADMIN,
+                ConstantsAdminENG.CATEGORY_OBJECT,
+                new Category(),
+                ConstantsAdminENG.CATEGORY_CREATE_OR_UPDATE_URL);
     }
 
     @GetMapping(value = "editCategory")
-    public String editCategoryScreen(Model model,
-                                     @RequestParam(value = "id") int categoryId) {
-        return categoryAdminServices.getEditCategoryScreen(model, categoryId);
+    public String editCategoryScreen(final Model model,
+                                     @RequestParam(value = "id") final int categoryId) {
+        final MsgAndListDto<Category> categories = categoryAdminService.getEditCategoryScreen(categoryId);
+
+        return getRequestDispatcherWithDefaultMessage(model,
+                categories.getMessage(),
+                ConstantsAdminENG.CATEGORY_OBJECT,
+                categories.getListOfElements().get(0),
+                ConstantsAdminENG.CATEGORY_CREATE_OR_UPDATE_URL);
     }
 
 }

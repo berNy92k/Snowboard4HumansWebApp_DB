@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "review")
-public class Review {
+public class Review extends AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

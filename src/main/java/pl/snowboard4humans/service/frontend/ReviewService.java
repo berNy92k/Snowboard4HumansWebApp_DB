@@ -17,16 +17,16 @@ import pl.snowboard4humans.service.SuperService;
 import java.util.Date;
 
 @Service
-public class ReviewServices extends SuperService {
+public class ReviewService extends SuperService {
 
     private final ReviewRepo reviewRepo;
     private final EquipmentRepo equipmentRepo;
     private final CustomerRepo customerRepo;
 
     @Autowired
-    public ReviewServices(ReviewRepo reviewRepo,
-                          EquipmentRepo equipmentRepo,
-                          CustomerRepo customerRepo) {
+    public ReviewService(ReviewRepo reviewRepo,
+                         EquipmentRepo equipmentRepo,
+                         CustomerRepo customerRepo) {
 
         this.reviewRepo = reviewRepo;
         this.equipmentRepo = equipmentRepo;

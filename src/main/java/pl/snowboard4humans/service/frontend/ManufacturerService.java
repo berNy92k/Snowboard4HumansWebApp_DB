@@ -2,9 +2,9 @@ package pl.snowboard4humans.service.frontend;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import pl.snowboard4humans.constants.ConstantsFrontendPL;
 import pl.snowboard4humans.constants.ConstantsPL;
+import pl.snowboard4humans.dto.MsgAndListDto;
 import pl.snowboard4humans.model.Manufacturer;
 import pl.snowboard4humans.repository.ManufacturerRepo;
 import pl.snowboard4humans.service.SuperService;
@@ -13,29 +13,25 @@ import pl.snowboard4humans.utils.Utils;
 import java.util.List;
 
 @Service
-public class ManufacturerServices extends SuperService {
+public class ManufacturerService extends SuperService {
 
     private final ManufacturerRepo manufacturerRepo;
 
     @Autowired
-    public ManufacturerServices(ManufacturerRepo manufacturerRepo) {
+    public ManufacturerService(ManufacturerRepo manufacturerRepo) {
         this.manufacturerRepo = manufacturerRepo;
     }
 
-    public String manufacturerList(Model model) {
-        String message = ConstantsPL.EMPTY_MESSAGE;
+    public MsgAndListDto<Manufacturer> manufacturerList() {
+        final List<Manufacturer> manufacturers = manufacturerRepo.findAll();
 
-        List<Manufacturer> manufacturers = manufacturerRepo.findAll();
-
-        // if manufacturers list is empty then message change
+        final String message;
         if (Utils.isEmpty(manufacturers)) {
             message = ConstantsFrontendPL.LACK_OF_MANUFACTURER_IN_DB;
+        } else {
+            message = ConstantsPL.EMPTY_MESSAGE;
         }
 
-        return getRequestDispatcherWithDefaultMessage(model,
-                message,
-                ConstantsFrontendPL.MANUFACTURER_LIST_OBJECT,
-                manufacturers,
-                ConstantsFrontendPL.MANUFACTURER_LIST_URL);
+        return new MsgAndListDto<>(message, manufacturers);
     }
 }
