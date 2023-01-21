@@ -32,7 +32,7 @@ CREATE TABLE [EQUIPMENT] (
   [length_or_size] varchar(10) NOT NULL,
   [category_id] int NOT NULL FOREIGN KEY REFERENCES CATEGORY(category_id),
   [publish_date] date NULL,
-	[last_update_time] date NULL
+  [last_update_time] date NULL
 )
 
 CREATE TABLE [CUSTOMER] (

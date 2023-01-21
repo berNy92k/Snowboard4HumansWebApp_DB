@@ -7,14 +7,14 @@ import java.util.List;
 
 public interface EquipmentRepo extends JpaRepository<Equipment, Integer> {
 
-    List<Equipment> findAllByName(String name);
+  List<Equipment> findAllByName(String name);
 
-    List<Equipment> findEquipmentByCategoryId(int category);
+  List<Equipment> findEquipmentByCategoryId(int category);
 
-    List<Equipment> findEquipmentByCategoryIdAndSex(Integer category,
-                                                    String sex);
+  List<Equipment> findEquipmentByCategoryIdAndSex(Integer category,
+                                                  String sex);
 
-    List<Equipment> findEquipmentByNameLikeOrLongDescriptionLikeOrShortDescriptionLike(String name,
-                                                                                       String longDescription,
-                                                                                       String shortDescription);
+  List<Equipment> findEquipmentByNameLikeOrLongDescriptionLikeOrShortDescriptionLike(String name,
+                                                                                     String longDescription,
+                                                                                     String shortDescription);
 }

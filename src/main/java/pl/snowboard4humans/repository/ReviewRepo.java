@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface ReviewRepo extends JpaRepository<Review, Integer> {
 
-    List<Review> findReviewsByEquipmentId(Integer equipmentId);
+  List<Review> findReviewsByEquipmentId(Integer equipmentId);
 
-    Review findReviewById(Integer equipmentId);
+  Review findReviewById(Integer equipmentId);
 
 }
