@@ -1,6 +1,6 @@
 package pl.snowboard4humans.model;
 
-import javax.persistence.*;
+import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class AbstractModel {

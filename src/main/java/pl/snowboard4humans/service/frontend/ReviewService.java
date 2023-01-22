@@ -19,57 +19,54 @@ import java.util.Date;
 @Service
 public class ReviewService extends SuperService {
 
-    private final ReviewRepo reviewRepo;
-    private final EquipmentRepo equipmentRepo;
-    private final CustomerRepo customerRepo;
+  private final ReviewRepo reviewRepo;
+  private final EquipmentRepo equipmentRepo;
+  private final CustomerRepo customerRepo;
 
-    @Autowired
-    public ReviewService(ReviewRepo reviewRepo,
-                         EquipmentRepo equipmentRepo,
-                         CustomerRepo customerRepo) {
+  @Autowired
+  public ReviewService(final ReviewRepo reviewRepo,
+                       final EquipmentRepo equipmentRepo,
+                       final CustomerRepo customerRepo) {
+    this.reviewRepo = reviewRepo;
+    this.equipmentRepo = equipmentRepo;
+    this.customerRepo = customerRepo;
+  }
 
-        this.reviewRepo = reviewRepo;
-        this.equipmentRepo = equipmentRepo;
-        this.customerRepo = customerRepo;
+  public String preCreateReview(final Model model, final Integer equipmentId) {
+    final String username;
+    final Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    if (principal instanceof UserDetails) {
+      username = ((UserDetails) principal).getUsername();
+    } else {
+      username = principal.toString();
     }
 
-    public String preCreateReview(Model model,
-                                  Integer equipmentId) {
-        String username;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof UserDetails) {
-            username = ((UserDetails) principal).getUsername();
-        } else {
-            username = principal.toString();
-        }
+    final Equipment equipment = equipmentRepo.getOne(equipmentId);
+    final Review review = Review.builder()
+        .equipment(equipment)
+        .customerEmail(username)
+        .build();
 
-        Equipment equipment = equipmentRepo.getOne(equipmentId);
+    model.addAttribute("review", review);
 
-        Review review = new Review();
-        review.setEquipment(equipment);
-        review.setCustomerEmail(username);
+    return ConstantsFrontendPL.REVIEW_HOMEPAGE_CREATE_URL;
+  }
 
-        model.addAttribute("review", review);
+  public String createReview(final Model model,
+                             final Review reviewData) {
+    final Equipment equipment = reviewData.getEquipment();
+    final String customerEmail = reviewData.getCustomerEmail();
 
-        return ConstantsFrontendPL.REVIEW_HOMEPAGE_CREATE_URL;
-    }
+    final Customer customer = customerRepo.findCustomerByEmail(customerEmail);
 
-    public String createReview(Model model,
-                               Review reviewData) {
-        Equipment equipment = reviewData.getEquipment();
-        String customerEmail = reviewData.getCustomerEmail();
+    reviewData.setCustomer(customer);
+    reviewData.setReviewTime(new Date());
 
-        Customer customer = customerRepo.findCustomerByEmail(customerEmail);
+    reviewRepo.save(reviewData);
 
-        reviewData.setCustomer(customer);
-        reviewData.setReviewTime(new Date());
+    model.addAttribute("equipment", equipment);
 
-        reviewRepo.save(reviewData);
-
-        model.addAttribute("equipment", equipment);
-        Integer equipmentId = reviewData.getEquipment().getId();
-
-        return (ConstantsFrontendPL.EQUIPMENT_VIEW_URL_CONTROLLER + "?id=" + equipmentId);
-    }
+    return (ConstantsFrontendPL.EQUIPMENT_VIEW_URL_CONTROLLER + "?id=" + reviewData.getEquipment().getId());
+  }
 
 }

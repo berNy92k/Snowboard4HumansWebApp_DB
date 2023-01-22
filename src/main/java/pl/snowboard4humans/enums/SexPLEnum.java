@@ -1,19 +1,16 @@
 package pl.snowboard4humans.enums;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public enum SexPLEnum {
-    ALL("Wszystkie"),
-    MAN("Mężczyzni"),
-    WOMAN("Kobiety"),
-    CHILD("Dzieci"),
-    ZERO("Brak");
+  ALL("Wszystkie"),
+  MAN("Mężczyzni"),
+  WOMAN("Kobiety"),
+  CHILD("Dzieci"),
+  ZERO("Brak");
 
-    private String sex;
-
-    SexPLEnum(String sex) {
-        this.sex = sex;
-    }
-
-    public String getSex() {
-        return sex;
-    }
+  private final String sex;
 }

@@ -17,69 +17,69 @@ import java.util.Optional;
 @Service
 public class ManufacturerAdminService extends SuperService {
 
-    private final ManufacturerRepo manufacturerRepo;
+  private final ManufacturerRepo manufacturerRepo;
 
-    @Autowired
-    public ManufacturerAdminService(final ManufacturerRepo manufacturerRepo) {
-        this.manufacturerRepo = manufacturerRepo;
+  @Autowired
+  public ManufacturerAdminService(final ManufacturerRepo manufacturerRepo) {
+    this.manufacturerRepo = manufacturerRepo;
+  }
+
+  public MsgAndListDto<Manufacturer> getManufacturers() {
+    final List<Manufacturer> manufacturerList = manufacturerRepo.findAll();
+
+    final String message;
+    if (Utils.isEmpty(manufacturerList)) {
+      message = ConstantsAdminENG.LACK_OF_MANUFACTURER_IN_DB;
+    } else {
+      message = ConstantsPL.EMPTY_MESSAGE;
     }
 
-    public MsgAndListDto<Manufacturer> getManufacturers() {
-        final List<Manufacturer> manufacturerList = manufacturerRepo.findAll();
+    return new MsgAndListDto<>(message, manufacturerList);
+  }
 
-        final String message;
-        if (Utils.isEmpty(manufacturerList)) {
-            message = ConstantsAdminENG.LACK_OF_MANUFACTURER_IN_DB;
-        } else {
-            message = ConstantsPL.EMPTY_MESSAGE;
-        }
+  public MsgAndListDto<Manufacturer> addOrUpdateManufacturer(final Manufacturer manufacturer) {
+    final Integer manufacturerId = manufacturer.getId();
+    final Manufacturer manufacturerSaved = manufacturerRepo.save(manufacturer);
 
-        return new MsgAndListDto<>(message, manufacturerList);
+    final String message;
+    if (manufacturerId == null && manufacturerSaved != null && manufacturerSaved.getId() != null) {
+      message = ConstantsAdminENG.NEW_MANUFACTURER_WAS_CREATED;
+    } else if (manufacturerId != null && manufacturerSaved != null && manufacturerSaved.getId() != null) {
+      message = ConstantsAdminENG.MANUFACTURER_WAS_UPDATED;
+    } else if (manufacturerId == null && manufacturerSaved == null) {
+      message = ConstantsAdminENG.NEW_MANUFACTURER_WAS_NOT_CREATED;
+    } else {
+      message = ConstantsAdminENG.MANUFACTURER_WAS_NOT_UPDATED;
     }
 
-    public MsgAndListDto<Manufacturer> addOrUpdateManufacturer(final Manufacturer manufacturer) {
-        final Integer manufacturerId = manufacturer.getId();
-        final Manufacturer manufacturerSaved = manufacturerRepo.save(manufacturer);
+    return new MsgAndListDto<>(message, manufacturerRepo.findAll());
+  }
 
-        final String message;
-        if (manufacturerId == null && manufacturerSaved != null && manufacturerSaved.getId() != null) {
-            message = ConstantsAdminENG.NEW_MANUFACTURER_WAS_CREATED;
-        } else if (manufacturerId != null && manufacturerSaved != null && manufacturerSaved.getId() != null) {
-            message = ConstantsAdminENG.MANUFACTURER_WAS_UPDATED;
-        } else if (manufacturerId == null && manufacturerSaved == null) {
-            message = ConstantsAdminENG.NEW_MANUFACTURER_WAS_NOT_CREATED;
-        } else {
-            message = ConstantsAdminENG.MANUFACTURER_WAS_NOT_UPDATED;
-        }
+  public MsgAndListDto<Manufacturer> getEditManufactureScreen(final int manufacturerId) {
+    final Optional<Manufacturer> manufacturerOptional = manufacturerRepo.findById(manufacturerId);
+    final Manufacturer manufacturer = manufacturerOptional.orElseGet(Manufacturer::new);
 
-        return new MsgAndListDto<>(message, manufacturerRepo.findAll());
+    return new MsgAndListDto<>(ConstantsAdminENG.UPDATE_MODE_CHANGE_FIELDS_MANUFACTURER_ADMIN, Collections.singletonList(manufacturer));
+  }
+
+  public MsgAndListDto<Manufacturer> deleteManufacturer(final int manufacturerId) {
+    final Optional<Manufacturer> manufacturerOptional = manufacturerRepo.findById(manufacturerId);
+
+    String message;
+    if (manufacturerOptional.isPresent()) {
+      manufacturerRepo.deleteById(manufacturerId);
+      message = ConstantsAdminENG.MANUFACTURER_WAS_DELETED;
+    } else {
+      message = ConstantsAdminENG.COULD_NOT_FIND_MANUFACTURER_BY_ID + ConstantsAdminENG.DELETED_BY_ANOTHER_MANUFACTURER_ADMIN;
     }
 
-    public MsgAndListDto<Manufacturer> getEditManufactureScreen(final int manufacturerId) {
-        final Optional<Manufacturer> manufacturerOptional = manufacturerRepo.findById(manufacturerId);
-        final Manufacturer manufacturer = manufacturerOptional.orElseGet(Manufacturer::new);
-
-        return new MsgAndListDto<>(ConstantsAdminENG.UPDATE_MODE_CHANGE_FIELDS_MANUFACTURER_ADMIN, Collections.singletonList(manufacturer));
+    final List<Manufacturer> manufacturerList = manufacturerRepo.findAll();
+    // if manufacturers list is empty then message change
+    if (Utils.isEmpty(manufacturerList)) {
+      message = ConstantsAdminENG.LACK_OF_MANUFACTURER_IN_DB + message;
     }
 
-    public MsgAndListDto<Manufacturer> deleteManufacturer(final int manufacturerId) {
-        final Optional<Manufacturer> manufacturerOptional = manufacturerRepo.findById(manufacturerId);
+    return new MsgAndListDto<>(message, manufacturerList);
 
-        String message;
-        if (manufacturerOptional.isPresent()) {
-            manufacturerRepo.deleteById(manufacturerId);
-            message = ConstantsAdminENG.MANUFACTURER_WAS_DELETED;
-        } else {
-            message = ConstantsAdminENG.COULD_NOT_FIND_MANUFACTURER_BY_ID + ConstantsAdminENG.DELETED_BY_ANOTHER_MANUFACTURER_ADMIN;
-        }
-
-        final List<Manufacturer> manufacturerList = manufacturerRepo.findAll();
-        // if manufacturers list is empty then message change
-        if (Utils.isEmpty(manufacturerList)) {
-            message = ConstantsAdminENG.LACK_OF_MANUFACTURER_IN_DB + message;
-        }
-
-        return new MsgAndListDto<>(message, manufacturerList);
-
-    }
+  }
 }

@@ -11,15 +11,15 @@ import java.util.List;
 @Service
 public class HomeService extends SuperService {
 
-    private final EquipmentRepo equipmentRepo;
+  private final EquipmentRepo equipmentRepo;
 
-    @Autowired
-    public HomeService(final EquipmentRepo equipmentRepo) {
-        this.equipmentRepo = equipmentRepo;
-    }
+  @Autowired
+  public HomeService(final EquipmentRepo equipmentRepo) {
+    this.equipmentRepo = equipmentRepo;
+  }
 
-    public List<Equipment> getShortListOdEquipments() {
-        return getTop4Equipments(equipmentRepo.findAll());
-    }
+  public List<Equipment> getShortListOdEquipments() {
+    return getTop4Equipments(equipmentRepo.findAll());
+  }
 
 }

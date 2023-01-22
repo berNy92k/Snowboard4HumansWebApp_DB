@@ -14,24 +14,24 @@ import java.util.List;
 @Service
 public class OrderAdminService extends SuperService {
 
-    private final OrderRepo orderRepo;
+  private final OrderRepo orderRepo;
 
-    @Autowired
-    public OrderAdminService(OrderRepo orderRepo) {
-        this.orderRepo = orderRepo;
+  @Autowired
+  public OrderAdminService(final OrderRepo orderRepo) {
+    this.orderRepo = orderRepo;
+  }
+
+  public MsgAndListDto<Order> getOrder() {
+    final List<Order> orderList = orderRepo.findAll();
+
+    final String message;
+    if (Utils.isEmpty(orderList)) {
+      message = ConstantsAdminENG.LACK_OF_ORDER_IN_DB;
+    } else {
+      message = ConstantsAdminENG.LIST_OF_ORDER_ADMIN;
     }
 
-    public MsgAndListDto<Order> getOrder() {
-        final List<Order> orderList = orderRepo.findAll();
-
-        final String message;
-        if (Utils.isEmpty(orderList)) {
-            message = ConstantsAdminENG.LACK_OF_ORDER_IN_DB;
-        } else {
-            message = ConstantsAdminENG.LIST_OF_ORDER_ADMIN;
-        }
-
-        return new MsgAndListDto<>(message, orderList);
-    }
+    return new MsgAndListDto<>(message, orderList);
+  }
 
 }

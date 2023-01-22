@@ -15,23 +15,23 @@ import java.util.List;
 @Service
 public class ManufacturerService extends SuperService {
 
-    private final ManufacturerRepo manufacturerRepo;
+  private final ManufacturerRepo manufacturerRepo;
 
-    @Autowired
-    public ManufacturerService(ManufacturerRepo manufacturerRepo) {
-        this.manufacturerRepo = manufacturerRepo;
+  @Autowired
+  public ManufacturerService(final ManufacturerRepo manufacturerRepo) {
+    this.manufacturerRepo = manufacturerRepo;
+  }
+
+  public MsgAndListDto<Manufacturer> manufacturerList() {
+    final List<Manufacturer> manufacturers = manufacturerRepo.findAll();
+
+    final String message;
+    if (Utils.isEmpty(manufacturers)) {
+      message = ConstantsFrontendPL.LACK_OF_MANUFACTURER_IN_DB;
+    } else {
+      message = ConstantsPL.EMPTY_MESSAGE;
     }
 
-    public MsgAndListDto<Manufacturer> manufacturerList() {
-        final List<Manufacturer> manufacturers = manufacturerRepo.findAll();
-
-        final String message;
-        if (Utils.isEmpty(manufacturers)) {
-            message = ConstantsFrontendPL.LACK_OF_MANUFACTURER_IN_DB;
-        } else {
-            message = ConstantsPL.EMPTY_MESSAGE;
-        }
-
-        return new MsgAndListDto<>(message, manufacturers);
-    }
+    return new MsgAndListDto<>(message, manufacturers);
+  }
 }
