@@ -15,32 +15,32 @@ import pl.snowboard4humans.service.admin.OrderAdminService;
 @RequestMapping(value = "/admin/order")
 public class OrderAdminController extends SuperController {
 
-    private final OrderAdminService orderAdminService;
+  private final OrderAdminService orderAdminService;
 
-    @Autowired
-    public OrderAdminController(final OrderAdminService orderAdminService) {
-        this.orderAdminService = orderAdminService;
-    }
+  @Autowired
+  public OrderAdminController(final OrderAdminService orderAdminService) {
+    this.orderAdminService = orderAdminService;
+  }
 
-    @GetMapping
-    public String getOrder(final Model model) {
-        final MsgAndListDto<Order> order = orderAdminService.getOrder();
+  @GetMapping
+  public String getOrder(final Model model) {
+    final MsgAndListDto<Order> order = orderAdminService.getOrder();
 
-        return getRequestDispatcherWithDefaultMessage(model,
-                order.getMessage(),
-                ConstantsAdminENG.ORDER_LIST_OBJECT,
-                order.getListOfElements(),
-                ConstantsAdminENG.ORDER_LIST_URL);
-    }
+    return getRequestDispatcherWithDefaultMessage(model,
+        order.getMessage(),
+        ConstantsAdminENG.ORDER_LIST_OBJECT,
+        order.getListOfElements(),
+        ConstantsAdminENG.ORDER_LIST_URL);
+  }
 
-    @GetMapping(value = "order_create")
-    public String addNewOrderScreen(final Model model) {
+  @GetMapping(value = "order_create")
+  public String addNewOrderScreen(final Model model) {
 
-        return getRequestDispatcherWithDefaultMessage(model,
-                ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_ORDER_ADMIN,
-                ConstantsAdminENG.ORDER_OBJECT,
-                new Order(),
-                ConstantsAdminENG.ORDER_CREATE_OR_UPDATE_URL);
-    }
+    return getRequestDispatcherWithDefaultMessage(model,
+        ConstantsAdminENG.CREATE_MODE_FILL_FIELDS_ORDER_ADMIN,
+        ConstantsAdminENG.ORDER_OBJECT,
+        new Order(),
+        ConstantsAdminENG.ORDER_CREATE_OR_UPDATE_URL);
+  }
 
 }

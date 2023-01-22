@@ -12,18 +12,18 @@ import pl.snowboard4humans.service.admin.EquipmentAdminService;
 @RequestMapping(value = "/admin/search")
 public class SearchAdminController {
 
-    private EquipmentAdminService equipmentAdminService;
+  private final EquipmentAdminService equipmentAdminService;
 
-    @Autowired
-    public SearchAdminController(EquipmentAdminService equipmentAdminService) {
-        this.equipmentAdminService = equipmentAdminService;
-    }
+  @Autowired
+  public SearchAdminController(final EquipmentAdminService equipmentAdminService) {
+    this.equipmentAdminService = equipmentAdminService;
+  }
 
-    @GetMapping
-    public String getEquipmentBy(Model model,
-                                 @RequestParam(value = "searchBy") String searchBy) {
+  @GetMapping
+  public String getEquipmentBy(final Model model,
+                               @RequestParam(value = "searchBy") final String searchBy) {
 
-        return equipmentAdminService.searchEquipmentList(model, searchBy);
-    }
+    return equipmentAdminService.searchEquipmentList(model, searchBy);
+  }
 
 }

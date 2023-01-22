@@ -12,25 +12,25 @@ import pl.snowboard4humans.service.frontend.EquipmentService;
 @RequestMapping(value = "/homepage/equipment")
 public class EquipmentController {
 
-    private EquipmentService equipmentService;
+  private final EquipmentService equipmentService;
 
-    @Autowired
-    public EquipmentController(EquipmentService equipmentService) {
-        this.equipmentService = equipmentService;
-    }
+  @Autowired
+  public EquipmentController(final EquipmentService equipmentService) {
+    this.equipmentService = equipmentService;
+  }
 
-    @GetMapping
-    public String getEquipment(Model model,
-                               @RequestParam String eqm,
-                               @RequestParam String sex) {
+  @GetMapping
+  public String getEquipment(final Model model,
+                             @RequestParam final String eqm,
+                             @RequestParam final String sex) {
 
-        return equipmentService.equipmentList(model, eqm, sex);
-    }
+    return equipmentService.equipmentList(model, eqm, sex);
+  }
 
-    @GetMapping(value = "/viewEquipment")
-    public String viewEquipment(Model model,
-                                @RequestParam Integer id) {
+  @GetMapping(value = "/viewEquipment")
+  public String viewEquipment(final Model model,
+                              @RequestParam final Integer id) {
 
-        return equipmentService.viewEquipment(model, id);
-    }
+    return equipmentService.viewEquipment(model, id);
+  }
 }

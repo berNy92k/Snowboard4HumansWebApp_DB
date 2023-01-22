@@ -12,18 +12,18 @@ import pl.snowboard4humans.service.frontend.EquipmentService;
 @RequestMapping(value = "/homepage/search")
 public class SearchController {
 
-    private final EquipmentService equipmentService;
+  private final EquipmentService equipmentService;
 
-    @Autowired
-    public SearchController(EquipmentService equipmentService) {
-        this.equipmentService = equipmentService;
-    }
+  @Autowired
+  public SearchController(final EquipmentService equipmentService) {
+    this.equipmentService = equipmentService;
+  }
 
-    @GetMapping
-    public String getEquipmentBy(Model model,
-                                 @RequestParam(value = "searchBy") String searchBy) {
+  @GetMapping
+  public String getEquipmentBy(final Model model,
+                               @RequestParam(value = "searchBy") final String searchBy) {
 
-        return equipmentService.searchEquipmentList(model, searchBy);
-    }
+    return equipmentService.searchEquipmentList(model, searchBy);
+  }
 
 }
