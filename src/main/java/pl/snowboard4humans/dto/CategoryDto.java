@@ -1,17 +1,13 @@
 package pl.snowboard4humans.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class CategoryDto extends AbstractIdDto {
 
-    private String name;
-
-    public CategoryDto() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+  private String name;
 }

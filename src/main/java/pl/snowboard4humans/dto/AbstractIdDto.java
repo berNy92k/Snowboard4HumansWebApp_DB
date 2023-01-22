@@ -1,14 +1,11 @@
 package pl.snowboard4humans.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public abstract class AbstractIdDto extends AbstractDto {
 
-    private Integer id;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  private Integer id;
 }
