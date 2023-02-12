@@ -12,22 +12,22 @@ import pl.snowboard4humans.constants.ConstantsFrontendPL;
 import pl.snowboard4humans.controller.frontend.SuperController;
 import pl.snowboard4humans.dto.MsgAndListDto;
 import pl.snowboard4humans.model.shoppingCartAndPayment.ShoppingCart;
-import pl.snowboard4humans.service.frontend.ShoppingCartServices;
+import pl.snowboard4humans.service.frontend.ShoppingCartService;
 
 @Controller
 @RequestMapping(value = "/homepage/shoppingCart")
 public class ShoppingCartController extends SuperController {
 
-  private final ShoppingCartServices shoppingCartServices;
+  private final ShoppingCartService shoppingCartService;
 
   @Autowired
-  public ShoppingCartController(final ShoppingCartServices shoppingCartServices) {
-    this.shoppingCartServices = shoppingCartServices;
+  public ShoppingCartController(final ShoppingCartService shoppingCartService) {
+    this.shoppingCartService = shoppingCartService;
   }
 
   @GetMapping
   public String viewShoppingCart(final Model model) {
-    final MsgAndListDto<ShoppingCart> shoppingCart = shoppingCartServices.viewShoppingCart();
+    final MsgAndListDto<ShoppingCart> shoppingCart = shoppingCartService.viewShoppingCart();
 
     return getRequestDispatcherWithDefaultMessage(model,
         shoppingCart.getMessage(),
@@ -39,7 +39,7 @@ public class ShoppingCartController extends SuperController {
   @GetMapping(value = "/addToShoppingCart")
   public String addToShoppingCartScreen(final Model model,
                                         @RequestParam(value = "eqmId") final Integer id) {
-    final MsgAndListDto<ShoppingCart> shoppingCart = shoppingCartServices.addToShoppingCart(id);
+    final MsgAndListDto<ShoppingCart> shoppingCart = shoppingCartService.addToShoppingCart(id);
 
     return getRequestDispatcherWithDefaultMessage(model,
         shoppingCart.getMessage(),
@@ -50,7 +50,7 @@ public class ShoppingCartController extends SuperController {
 
   @GetMapping(value = "/clearShoppingCart")
   public String clearShoppingCart(final Model model) {
-    final MsgAndListDto<ShoppingCart> shoppingCart = shoppingCartServices.clearShoppingCart();
+    final MsgAndListDto<ShoppingCart> shoppingCart = shoppingCartService.clearShoppingCart();
 
     return getRequestDispatcherWithDefaultMessage(model,
         shoppingCart.getMessage(),
@@ -62,7 +62,7 @@ public class ShoppingCartController extends SuperController {
   @GetMapping(value = "/deleteFromShoppingCart")
   public String deleteFromShoppingCart(final Model model,
                                        @RequestParam(value = "eq") final int id) {
-    final MsgAndListDto<ShoppingCart> shoppingCart = shoppingCartServices.deleteFromShoppingCart(id);
+    final MsgAndListDto<ShoppingCart> shoppingCart = shoppingCartService.deleteFromShoppingCart(id);
 
     return getRequestDispatcherWithDefaultMessage(model,
         shoppingCart.getMessage(),
@@ -74,7 +74,7 @@ public class ShoppingCartController extends SuperController {
   @PostMapping(value = "/updateEquipmentInShoppingCart")
   public String updateEquipmentInShoppingCart(final Model model,
                                               @ModelAttribute(name = "shoppingCart") final ShoppingCart shoppingCart) {
-    final MsgAndListDto<ShoppingCart> shoppingCartMsgAndListDto = shoppingCartServices.updateEquipmentInShoppingCart();
+    final MsgAndListDto<ShoppingCart> shoppingCartMsgAndListDto = shoppingCartService.updateEquipmentInShoppingCart();
 
     return getRequestDispatcherWithDefaultMessage(model,
         shoppingCartMsgAndListDto.getMessage(),
@@ -86,7 +86,7 @@ public class ShoppingCartController extends SuperController {
   @GetMapping(value = "/checkout")
   public String checkout(final Model model,
                          @ModelAttribute(name = "shoppingCart") final ShoppingCart shoppingCart) {
-    final MsgAndListDto<ShoppingCart> scmal = shoppingCartServices.checkoutShoppingCart();
+    final MsgAndListDto<ShoppingCart> scmal = shoppingCartService.checkoutShoppingCart();
 
     if (!scmal.isAnonymous()) {
       model.addAttribute("loggedCustomer", scmal.getCustomer());
@@ -101,7 +101,7 @@ public class ShoppingCartController extends SuperController {
 
   @PostMapping(value = "/continueCheckout")
   public String continueCheckout(final Model model) {
-    final MsgAndListDto<ShoppingCart> scmal = shoppingCartServices.continueCheckoutShoppingCart();
+    final MsgAndListDto<ShoppingCart> scmal = shoppingCartService.continueCheckoutShoppingCart();
 
     if (!scmal.isAnonymous()) {
       model.addAttribute("loggedCustomer", scmal.getCustomer());
